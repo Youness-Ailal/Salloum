@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.hero-bg {
+  background: linear-gradient(
+      to right,
+      rgb(8, 51, 68, 0.95),
+      rgb(8, 51, 68, 0.7)
+        /* rgb(12, 74, 110, 0.9),
+      rgb(12, 74, 110, 0.85) */
+    ),
+    url("./assets//hero-image.jpg");
+  background-position: center;
+  background-size: cover;
+}
+.hero-bg-2 {
+  background: linear-gradient(
+      to bottom right,
+
+      rgb(8, 51, 68, 0.95),
+      rgb(8, 51, 68, 0.7)
+    ),
+    url("./assets//hero-image.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.swiper-pagination-bullet {
+  scale: 1.4;
+}
+
+.animate-drawer {
+  animation: slideIn 0.5s;
+}
+@keyframes slideIn {
+  from {
+    translate: 100% 0;
+  }
+  to {
+    translate: 0 0;
+  }
+}
