@@ -1,16 +1,31 @@
+import { useState } from "react";
 import { BiSearch } from "react-icons/bi";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 function SearchNav() {
+  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
+  const submitSearch = e => {
+    e.preventDefault();
+    if (searchQuery) {
+      navigate("/equipments?query=" + searchQuery);
+      setSearchQuery("");
+    }
+  };
   return (
     <div className="relative w-full text-gray-700 lg:min-w-60 xl:min-w-80">
-      <input
-        type="text"
-        placeholder="Search equipment..."
-        className="p-2 lg:p-3 text-base focus:outline-none rounded-sm w-full h-full"
-      />
-      <p className="absolute right-2 top-1/2 -translate-y-1/2 text-2xl text-gray-500">
-        <BiSearch />{" "}
-      </p>
+      <form onSubmit={submitSearch}>
+        <input
+          value={searchQuery}
+          onChange={e => setSearchQuery(e.target.value)}
+          type="text"
+          placeholder="Search equipment..."
+          className="p-2 lg:p-3 lg:pr-14 text-base focus:outline-none rounded-sm w-full h-full"
+        />
+        <button className="absolute h-full px-2 right-0 top-1/2 -translate-y-1/2 text-2xl text-gray-500">
+          <BiSearch />{" "}
+        </button>
+      </form>
     </div>
   );
 }

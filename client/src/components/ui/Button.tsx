@@ -24,7 +24,7 @@ function Button({
     return (
       <Link
         className={cn(
-          "bg-sky-700 text-white h-full  transition border border-transparent px-6 py-3 text-lg xl:text-xl uppercase font-medium tracking-wide rounded-sm flex items-center gap-2 lg:gap-4 ",
+          "bg-sky-700 text-white h-full  transition border border-transparent px-6 py-3 text-lg xl:text-xl uppercase font-medium tracking-wide rounded-sm flex items-center gap-2 disabled:bg-sky-400 disabled:hover:bg-sky-400 disabled:opacity-70 disabled:cursor-not-allowed lg:gap-4 ",
           {
             "bg-transparent border-white": variant === "outline",
             "hover:bg-sky-600": variant === "default",
@@ -39,7 +39,7 @@ function Button({
   return (
     <button
       className={cn(
-        "bg-sky-700 text-white h-full  transition border border-transparent px-6 py-3 text-lg xl:text-xl uppercase font-medium tracking-wide rounded-sm flex items-center gap-2 lg:gap-4 ",
+        "bg-sky-700 text-white h-full  transition border border-transparent px-6 py-3 text-lg xl:text-xl uppercase font-medium tracking-wide rounded-sm flex items-center gap-2 disabled:bg-sky-400 disabled:hover:bg-sky-400 disabled:opacity-70 disabled:cursor-not-allowed lg:gap-4 ",
         {
           "bg-transparent border-white": variant === "outline",
           "hover:bg-sky-600": variant === "default",

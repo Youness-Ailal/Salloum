@@ -6,6 +6,10 @@ export default {
       backgroundImage: {
         "hero-pattern": "url('src/assets/hero-image.jpg')",
       },
+      backgroundSize: {
+        "110%": "110%",
+        "100%": "100%",
+      },
     },
   },
   plugins: [],

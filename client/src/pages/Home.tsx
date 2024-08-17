@@ -10,6 +10,7 @@ import banner from "@/assets/banner.webp";
 import SellEquiBanner from "@/components/ui/SellEquiBanner";
 import Faq from "@/components/ui/Faq";
 import CantFind from "@/components/ui/CantFind";
+import Brands from "@/components/ui/Brands";
 
 function Home() {
   return (
@@ -20,7 +21,7 @@ function Home() {
             <h1 className="text-xl lg:text-2xl font-bold text-cyan-400 tracking-widest">
               SALLOUM COMPANY
             </h1>
-            <h2 className="text-3xl xl:text-5xl font-semibold mt-4 xl:mt-6 tracking-wide">
+            <h2 className="text-3xl xl:text-5xl font-semibold mt-4 lg:mt-6 tracking-wide">
               Your Sustainable Industrial Source
               <p className="mt-2 lg:mt-3 relative z-50">
                 For{" "}
@@ -33,7 +34,7 @@ function Home() {
                 Equipment !
               </p>
             </h2>
-            <div className="flex flex-wrap items-center gap-4 xl:gap-6 mt-12 xl:mt-20">
+            <div className="flex flex-wrap items-center gap-4 xl:gap-6 mt-16 xl:mt-24">
               <Button as="link" to="/equipments">
                 Buy Equipment
                 <span>
@@ -50,7 +51,8 @@ function Home() {
           </div>
         </main>
       </MainLayout>
-      <div className="bg-white p-8 container mx-auto mt-5 xl:mt-14 flex flex-col gap-8 xl:gap-20">
+      <div className="p-4 container mx-auto mt-4 flex flex-col gap-8 xl:gap-20">
+        <Brands />
         <FeaturedEquipments />
         <img
           className="w-full relative object-cover max-h-[500px] mx-auto rounded-md"
@@ -74,6 +76,7 @@ function Home() {
             </p>
           </div>
         </div>
+
         <div className="mt-4 xl:mt-8">
           <Faq />
         </div>

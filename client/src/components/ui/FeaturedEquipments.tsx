@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import Header from "./Header";
 import { featuredEquipments } from "@/utils/constants";
-import FeaturedEquipmentsItem from "./FeaturedEquipmentsItem";
+import EquipmentItem from "./EquipmentItem";
 
 function FeaturedEquipments() {
   return (
@@ -13,19 +13,24 @@ function FeaturedEquipments() {
       <Swiper
         modules={[Autoplay, Pagination]}
         pagination={{
-          enabled: true,
+          clickable: true,
         }}
-        spaceBetween={50}
+        spaceBetween={40}
+        breakpoints={{
+          950: {
+            spaceBetween: 27,
+          },
+        }}
         autoplay={{
-          delay: 2000,
+          delay: 3000,
         }}
         className="mt-6 xl:mt-12 pb-10 xl:pb-14"
-        slidesPerView={"auto"}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={swiper => console.log(swiper)}>
+        slidesPerView={"auto"}>
         {featuredEquipments?.map(item => (
-          <SwiperSlide className="max-w-96 border border-sky-50 rounded-md overflow-hidden ">
-            <FeaturedEquipmentsItem equipment={item} />
+          <SwiperSlide
+            key={item.id}
+            className="max-w-[350px] border border-sky-50 rounded-md overflow-hidden ">
+            <EquipmentItem equipment={item} />
           </SwiperSlide>
         ))}
       </Swiper>

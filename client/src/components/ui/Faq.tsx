@@ -11,7 +11,9 @@ function Faq() {
       <Header title1={"Questions"} title2={"& Answers"} />
       <div className="grid xl:grid-cols-2 gap-2 xl:gap-4 xl:gap-y-7 mt-4 xl:mt-6">
         {questions?.map(item => (
-          <div className="flex flex-col rounded-md text-sky-950 ">
+          <div
+            key={item.question}
+            className="flex flex-col rounded-md text-sky-950 ">
             <p
               onClick={() =>
                 setShownQuestion(prev =>

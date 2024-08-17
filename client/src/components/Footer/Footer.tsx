@@ -1,13 +1,13 @@
 import logo from "@/assets/logo.png";
 import { BsFacebook, BsLinkedin } from "react-icons/bs";
-import { FaFacebook } from "react-icons/fa";
+
 import { ImLocation, ImPhone } from "react-icons/im";
 import { IoMdMail } from "react-icons/io";
 import { Link } from "react-router-dom";
 function Footer() {
   return (
     <footer className="bg-sky-950 h-full w-full mt-auto p-4">
-      <div className="container p-2 xl:p-6 flex gap-2 flex-wrap xl:gap-10 justify-between border-b border-gray-100">
+      <div className="container p-2 xl:p-6 flex gap-2 gap-y-6 flex-wrap xl:gap-10 justify-between border-b border-gray-100">
         <Link to="/">
           <img src={logo} alt="salloum logo" />
         </Link>
@@ -23,16 +23,16 @@ function Footer() {
           </Link>
         </div>
         <div className="text-white text-lg flex flex-col gap-1 xl:gap-2">
-          <Link className="hover:underline" to={"/equipments"}>
+          <Link className="hover:underline" to={"/contact"}>
             Contact us
           </Link>
-          <Link className="hover:underline" to={"/equipments"}>
+          <Link className="hover:underline" to={"/about"}>
             About us
           </Link>
-          <Link className="hover:underline" to={"/sell-equipments"}>
+          <Link className="hover:underline" to={"/privacy"}>
             Privacy Policy
           </Link>
-          <Link className="hover:underline" to={"/services"}>
+          <Link className="hover:underline" to={"/terms"}>
             Terms & Conditions
           </Link>
         </div>
@@ -79,7 +79,8 @@ function Footer() {
       </div>
       <div className="container p-2 xl:p-4 flex gap-2 flex-wrap justify-between">
         <p className="text-sm text-white">
-          Salloum Company {new Date().getFullYear()} - All rights reserved
+          Salloum Company {new Date().getFullYear()} &copy; - All rights
+          reserved
         </p>
         <a
           target="_blank"

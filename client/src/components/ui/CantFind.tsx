@@ -19,7 +19,7 @@ function CantFind() {
           <Link className="hover:text-sky-400 text-sky-300" to="/contact">
             contact form
           </Link>
-          . We’ll do our best to source it for you."
+          . We’ll do our best to source it for you.
         </p>
       </div>
     </div>
