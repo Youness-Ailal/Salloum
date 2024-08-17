@@ -21,6 +21,7 @@ function ServicesItems() {
             `min-h-40 bg-100% hover:bg-110% transition-all p-4 flex flex-col items-end lg:p-8 overflow-hidden relative lg:min-h-[500px] bg-center`
           )}
           style={{
+            //@ts-ignore
             backgroundImage: `url("${serviceImages[item.title]}")`,
           }}>
           <p className="z-10 p-2 border-b-2 border-gray-50  text-end relative text-white uppercase text-xl lg:text-2xl font-medium">

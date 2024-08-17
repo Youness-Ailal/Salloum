@@ -3,6 +3,7 @@ import Drawer from "../drawer/Drawer";
 import QuoteItem from "../ui/QuoteItem";
 import { useNavigate } from "react-router-dom";
 
+//@ts-ignore
 function QuotesDrawer({ setShowQuote }) {
   const { quotes } = useQuotesContext();
   const navigate = useNavigate();
