@@ -58,11 +58,13 @@ function Home() {
       <div className="p-4 container mx-auto mt-4 flex flex-col gap-8 xl:gap-20">
         <Brands />
         <FeaturedEquipments />
-        <img
-          className="w-full relative object-cover max-h-[200px] sm:max-h-[250px] md:max-h-[300px] lg:max-h-[350px] xl:max-h-[500px] mx-auto rounded-md"
-          src={banner?.image}
-          alt="salloum"
-        />
+        {banner && (
+          <img
+            className="w-full relative object-cover max-h-[200px] sm:max-h-[250px] md:max-h-[300px] lg:max-h-[350px] xl:max-h-[500px] mx-auto rounded-md"
+            src={banner?.image}
+            alt="salloum"
+          />
+        )}
         <Categories />
         <div className="flex flex-col p-4  gap-5 mt-6 xl:mt-14 xl:grid grid-cols-2 xl:gap-9">
           <SellEquiBanner />
