@@ -2,7 +2,7 @@ import EquipmentsFilter from "@/components/Equipments/EquipmentsFilter";
 import { useEffect, useState } from "react";
 import PageHeader from "@/components/ui/PageHeader";
 import { featuredEquipments } from "@/utils/constants";
-import EquipmentItem from "@/components/ui/EquipmentItem";
+import EquipmentItem from "@/components/Equipments/EquipmentItem";
 import { useSearchParams } from "react-router-dom";
 import Footer from "@/components/Footer/Footer";
 import Faq from "@/components/ui/Faq";
@@ -10,9 +10,9 @@ import CantFind from "@/components/ui/CantFind";
 
 function Equipments() {
   const tempEuipments = featuredEquipments;
-  const [category, setCategory] = useState("");
   const [equipments, setEquipments] = useState(tempEuipments);
   const [search, setSearch] = useSearchParams();
+  const category = search.get("category");
   const query = search.get("query");
   useEffect(() => {
     if (query && !category) {
@@ -41,7 +41,7 @@ function Equipments() {
     <div className="min-h-screen flex flex-col">
       <PageHeader title={"Explore Our Equipments"} />
       <div className="p-2 py-4 lg:py-10 container mx-auto">
-        <EquipmentsFilter category={category} setCategory={setCategory} />
+        <EquipmentsFilter />
         <div className="grid auto-rows-max grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-4 lg:gap-8 mt-5 lg:mt-16">
           {!equipments?.length ? (
             <p className="text-center text-xl lg:text-xl text-sky-900 uppercase font-medium">

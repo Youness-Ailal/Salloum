@@ -9,23 +9,35 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import NewQuote from "./pages/NewQuote";
 import SellEquipments from "./pages/SellEquipments";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 function App() {
+  const client = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: 60 * 1000,
+      },
+    },
+  });
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/*" element={<Page404 />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/equipments" element={<Equipments />} />
-        <Route path="/sell-equipments" element={<SellEquipments />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/privacy" element={<Privacy />} />
-        <Route path="/terms" element={<Terms />} />
-        <Route path="/new-quote" element={<NewQuote />} />
-      </Routes>
-    </BrowserRouter>
+    <QueryClientProvider client={client}>
+      <ReactQueryDevtools initialIsOpen={false} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/*" element={<Page404 />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/equipments" element={<Equipments />} />
+          <Route path="/sell-equipments" element={<SellEquipments />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/new-quote" element={<NewQuote />} />
+        </Routes>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 

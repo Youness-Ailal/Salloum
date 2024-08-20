@@ -18,9 +18,10 @@ const icons = {
   "machine tool": <Tool />,
   "pumps & electric motor": <Pumps />,
 };
-function EquipmentsFilter({ setCategory, category }) {
+function EquipmentsFilter() {
   const equipments = featuredEquipments;
   const [search, setSearch] = useSearchParams();
+  const category = search.get("category");
   return (
     <>
       <p className="mb-2 text-lg text-sky-900 font-medium">
@@ -37,9 +38,15 @@ function EquipmentsFilter({ setCategory, category }) {
               }
             )}
             onClick={() => {
-              setCategory(prev => (prev === item.id ? "" : item.id));
-              search.delete("query");
-              setSearch(search);
+              // setCategory(prev => (prev === item.id ? "" : item.id));
+              if (category !== item.id) {
+                search.set("category", item.id);
+                search.delete("query");
+                setSearch(search);
+              } else {
+                search.delete("category");
+                setSearch(search);
+              }
             }}>
             <span className="text-xl xl:text-2xl">
               {icons[item.name.toLocaleLowerCase()] || "..."}
@@ -52,7 +59,7 @@ function EquipmentsFilter({ setCategory, category }) {
             "flex hover:bg-sky-700 hover:text-white text-sky-900 items-center gap-2 transition rounded-sm py-2 px-4 border border-sky-700"
           )}
           onClick={() => {
-            setCategory("");
+            search.delete("category");
             search.delete("query");
             setSearch(search);
           }}>

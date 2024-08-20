@@ -11,6 +11,7 @@ type QuotecontextValue = {
   quotes: quoteType[];
   addQuote: (quote: quoteType) => void;
   removeQuote: (id: string) => void;
+  clearQuotes: () => void;
 };
 
 //@ts-ignore
@@ -25,6 +26,7 @@ function QuotesProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("quotes", JSON.stringify(quotes));
   }, [quotes]);
   const addQuote = (quote: quoteType) => setQuotes(prev => [...prev, quote]);
+  const clearQuotes = () => setQuotes([]);
 
   const removeQuote = (id: string) =>
     setQuotes(prev => [...prev.filter(item => item.id !== id)]);
@@ -35,6 +37,7 @@ function QuotesProvider({ children }: { children: React.ReactNode }) {
         quotes,
         addQuote,
         removeQuote,
+        clearQuotes,
       }}>
       {children}
     </Quotecontext.Provider>

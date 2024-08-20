@@ -4,6 +4,7 @@ import App from "./App.tsx";
 import "./index.css";
 import QuotesProvider from "./context/QuotesProvider.tsx";
 import ReactGA from "react-ga";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 // Initialize Google Analytics
 ReactGA.initialize("G-36TXQY3QWV");

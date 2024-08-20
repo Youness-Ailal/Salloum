@@ -1,15 +1,18 @@
+import useLayout from "@/data/useLayout";
 import { useEffect, useRef } from "react";
 
 function Brands() {
-  const partners = import.meta.glob("../../assets/brands/*.jpg", {
-    eager: true,
-    as: "url",
-  });
-  const images = [];
-  for (const img in partners) {
-    images.push(partners[img]);
-  }
-  console.log(images);
+  // const partners = import.meta.glob("../../assets/brands/*.jpg", {
+  //   eager: true,
+  //   as: "url",
+  // });
+  // const images = [];
+  // for (const img in partners) {
+  //   images.push(partners[img]);
+  // }
+  const { isLoading, layout } = useLayout();
+  //@ts-ignore
+  const brands = layout?.filter(item => item?.type === "partner");
 
   const scrollerRef = useRef(null);
   const scrollerInnerRef = useRef(null);
@@ -48,10 +51,10 @@ function Brands() {
         <ul
           ref={scrollerInnerRef}
           className="tag-list scroller__inner flex items-center justify-center gap-8 xl:gap-16 w-full">
-          {images.map(img => (
-            <li>
+          {brands?.map(item => (
+            <li key={item.id}>
               <img
-                src={img}
+                src={item.image}
                 alt="partner"
                 className="h-10 lg:h-32 object-cover grayscale-[60%] "
               />

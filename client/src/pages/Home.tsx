@@ -1,18 +1,22 @@
 import Footer from "@/components/Footer/Footer";
 import Button from "@/components/ui/Button";
 import Categories from "@/components/ui/Categories";
-import FeaturedEquipments from "@/components/ui/FeaturedEquipments";
+import FeaturedEquipments from "@/components/Equipments/FeaturedEquipments";
 import UnderLine from "@/components/ui/UnderLine";
 import MainLayout from "@/layouts/MainLayout";
 import { BiPurchaseTag } from "react-icons/bi";
 import { BsArrowDownCircle } from "react-icons/bs";
 import banner from "@/assets/banner.webp";
-import SellEquiBanner from "@/components/ui/SellEquiBanner";
 import Faq from "@/components/ui/Faq";
 import CantFind from "@/components/ui/CantFind";
 import Brands from "@/components/ui/Brands";
+import SellEquiBanner from "@/components/Equipments/SellEquiBanner";
+import useLayout from "@/data/useLayout";
 
 function Home() {
+  const { isLoading, layout } = useLayout();
+  //@ts-ignore
+  const banner = layout?.filter(item => item?.type === "banner")[0];
   return (
     <>
       <MainLayout>
@@ -55,8 +59,8 @@ function Home() {
         <Brands />
         <FeaturedEquipments />
         <img
-          className="w-full relative object-cover max-h-[500px] mx-auto rounded-md"
-          src={banner}
+          className="w-full relative object-cover max-h-[200px] sm:max-h-[250px] md:max-h-[300px] lg:max-h-[350px] xl:max-h-[500px] mx-auto rounded-md"
+          src={banner?.image}
           alt="salloum"
         />
         <Categories />

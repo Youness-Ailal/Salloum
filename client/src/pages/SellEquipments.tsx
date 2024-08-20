@@ -1,55 +1,102 @@
 import Footer from "@/components/Footer/Footer";
 import Button from "@/components/ui/Button";
+import InfoBox, { infoBoxProps } from "@/components/ui/InfoBox";
 import Input from "@/components/ui/Input";
 import PageHeader from "@/components/ui/PageHeader";
-import { useEffect, useState } from "react";
+import useSendSellRequest from "@/data/useSendSellRequest";
+import { useState } from "react";
 import { BiEuro } from "react-icons/bi";
 import { BsTrash } from "react-icons/bs";
 import { GoAlert } from "react-icons/go";
 import { HiPhoto } from "react-icons/hi2";
-
+type fileType = {
+  file: File;
+  id: string;
+  image: string;
+};
 function SellEquipments() {
+  const { isLoading, sendRequest } = useSendSellRequest();
+  const [infoBoxData, setInfoBoxData] = useState<infoBoxProps>();
+  const clearInfoBox = () => setInfoBoxData({ type: "error", message: "" });
   const [sellData, setSellData] = useState({
     fullName: "",
     productName: "",
     email: "",
     phone: "",
     price: "",
+    details: "",
   });
-  type fileType = {
-    file: File;
-    id: string;
-  };
   const [images, setImages] = useState<fileType[]>([]);
-  const [imagesSrc, setImagesSrc] = useState<string[]>([]);
 
-  useEffect(() => {
-    images?.forEach(file => {
-      const fileReader = new FileReader();
-      fileReader.onload = () => {
-        //@ts-ignore
-        setImagesSrc(prev => [...prev, fileReader.result?.toString()]);
-      };
-
-      fileReader.readAsDataURL(file.file);
+  const resetFields = () => {
+    setSellData({
+      fullName: "",
+      productName: "",
+      email: "",
+      phone: "",
+      price: "",
+      details: "",
     });
-    return () => setImagesSrc([]);
-  }, [images]);
-
+    setImages([]);
+  };
   function removeImage(id: string) {
     setImages(prev => [...prev.filter(item => item.id !== id)]);
   }
+  //@ts-ignore
   function addImage(e) {
     const file: File = e.target.files[0];
     if (file) {
-      const newFile = { file, id: Math.random() + "" };
-
-      setImages(prev => [...prev, newFile]);
+      const fileReader = new FileReader();
+      fileReader.onload = () => {
+        const newFile = {
+          file,
+          id: Math.random() + "",
+          image: fileReader.result?.toString(),
+        };
+        //@ts-ignore
+        setImages(prev => [...prev, newFile]);
+      };
+      fileReader.readAsDataURL(file);
     }
   }
 
+  //@ts-ignore
   function handleSubmit(e) {
     e.preventDefault();
+    if (!images?.length) {
+      setInfoBoxData({
+        type: "error",
+        message: "please upload some image first",
+      });
+      return;
+    }
+    const { fullName, productName, email, phone, price, details } = sellData;
+    sendRequest(
+      {
+        fullName,
+        productName,
+        email,
+        phone,
+        price,
+        details,
+        photosFiles: images.map(item => item.file),
+      },
+      {
+        onSuccess: () => {
+          globalThis.scrollTo({ top: 0 });
+          setInfoBoxData({
+            type: "success",
+            message: "Sell request received. We'll respond shortly.",
+          });
+          resetFields();
+        },
+        onError: err =>
+          setInfoBoxData({
+            type: "error",
+            message: err.message,
+          }),
+      }
+    );
   }
 
   return (
@@ -61,9 +108,13 @@ function SellEquipments() {
           reach out to you shortly.
         </p>
         <div className="my-2 flex flex-col lg:my-8">
-          {/* <p className=" mt-4 lg:mt-8 py-2 border-b border-sky-900/30 text-lg lg:text-xl text-sky-950">
-            Equipment Details
-          </p> */}
+          {infoBoxData?.message.length && (
+            <InfoBox
+              clear={clearInfoBox}
+              type={infoBoxData.type}
+              message={infoBoxData.message}
+            />
+          )}
           <form
             onSubmit={handleSubmit}
             id="contact"
@@ -107,35 +158,35 @@ function SellEquipments() {
             />
             <Input
               onChange={e =>
-                setSellData(prev => ({ ...prev, price: e.target.value }))
+                setSellData(prev => ({
+                  ...prev,
+                  price: Math.max(0, +e.target.value) + "",
+                }))
               }
+              type="number"
               value={sellData.price}
               icon={<BiEuro />}
               id={"price"}
+              // type="number"
+              inputMode="numeric"
               placeholder="Your Best Price"
               required
             />
-            <Input id={"details"} placeholder="Additional details (optional)" />
-
-            {/* <Input
+            <Input
+              id={"details"}
+              value={sellData.details}
               onChange={e =>
-                //@ts-ignore
-                setSellData(prev => ({ ...prev, image: e.target.files[0] }))
+                setSellData(prev => ({ ...prev, details: e.target.value }))
               }
-              icon={<HiPhoto />}
-              type="file"
-              id={"image"}
-              placeholder="Upload Image"
-              required
-              className=""
-            /> */}
+              placeholder="Additional details (optional)"
+            />
           </form>
           <div className="my-2 flex flex-col lg:my-4">
             {/* <p className=" mt-4 lg:mt-8 py-2 border-b border-sky-900/30 text-lg lg:text-xl text-sky-950">
               Upload Photos
             </p> */}
             <label
-              className="w-full text-sky-950/95 flex items-center justify-center flex-col gap-1 uppercase font-medium cursor-pointer lg:text-lg min-h-20 lg:min-h-32 bg-sky-50/50 border border-gray-400 rounded-sm"
+              className="w-full text-sky-950/95 flex items-center justify-center flex-col gap-1 uppercase font-medium cursor-pointer lg:text-lg min-h-20 lg:min-h-32 mt-2 bg-sky-50/50 border border-gray-400 rounded-sm"
               htmlFor="images">
               <HiPhoto className="text-2xl lg:text-4xl" />
               <p>Click To Upload Images</p>
@@ -152,34 +203,24 @@ function SellEquipments() {
                 accept="image/*"
               />
             </label>
-            {/* <div className="mt-2 grid grid-cols-4 gap-4 lg:gap-8 rounded-sm">
-              {imagesSrc?.map(item => (
-                <div>
-                  <img className="w-full max-h-40 object-cover" src={item} />
-                </div>
-              ))}
-            </div> */}
-            <div className="mt-2 lg:mt-4 flex flex-col gap-2 self-start">
+
+            <div className="mt-2 lg:mt-4 flex gap-3 flex-wrap lg:gap-6 self-start">
               {images.map(item => {
-                const { file } = item;
-                const type = file.type.split("/")[1].toUpperCase();
-                const name = file.name;
-                const size = (file.size / 1024 / 1024).toFixed(2) + " MB";
+                const { image } = item;
+
                 return (
-                  <div className="flex gap-3 lg:gap-6 p-2 overflow-hidden border-b border-sky-950/30 ">
-                    <p className="p-2 rounded-sm flex items-center justify-center font-medium text-sky-950 bg-sky-200 text-sm">
-                      {type}{" "}
-                    </p>
-                    <p className="flex flex-col mx-4 text-gray-800">
-                      <span>{name} </span>
-                      <span className="uppercase text-sm font-medium text-gray-900">
-                        {size}{" "}
-                      </span>
-                    </p>
+                  <div
+                    key={item.id}
+                    className="p-2 lg:p-3 group relative border overflow-hidden border-gray-200 rounded-sm">
+                    <img
+                      className="object-cover h-32 lg: gap-40"
+                      src={image}
+                      alt=""
+                    />
                     <button
-                      className="ml-auto text-xl text-sky-950 hover:text-sky-800"
+                      className="absolute top-0 left-0 h-full w-full bg-red-200/50 text-red-500 text-xl lg:text-3xl opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
                       onClick={() => removeImage(item.id)}>
-                      <BsTrash />{" "}
+                      <BsTrash />
                     </button>
                   </div>
                 );
@@ -187,7 +228,9 @@ function SellEquipments() {
             </div>
           </div>
           <div className="mt-2 lg:mt-4 ml-auto w-full flex justify-end">
-            <Button form="contact">Submit</Button>
+            <Button isLoading={isLoading} form="contact">
+              Submit
+            </Button>
           </div>
         </div>
       </div>

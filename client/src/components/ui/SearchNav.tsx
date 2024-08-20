@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BiSearch } from "react-icons/bi";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function SearchNav() {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ function SearchNav() {
           placeholder="Search equipment..."
           className="p-2 lg:p-3 lg:pr-14 text-base focus:outline-none rounded-sm w-full h-full"
         />
-        <button className="absolute h-full px-2 right-0 top-1/2 -translate-y-1/2 text-2xl text-gray-500">
+        <button className="absolute h-full border-l hover:text-gray-600 hover:border-gray-400 border-gray-300 px-2 xl:px-3 right-0 top-1/2 -translate-y-1/2 text-2xl text-gray-500">
           <BiSearch />{" "}
         </button>
       </form>

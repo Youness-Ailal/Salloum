@@ -70,6 +70,28 @@ export const featuredEquipments: equipment[] = [
     category: "cooling",
   },
 ];
+export type SendSellProps = {
+  productName: string;
+  fullName: string;
+  email: string;
+  phone: string;
+  price: string;
+  details: string;
+  photosFiles: File[];
+};
+export type EquipType = {
+  name: string;
+  image: string;
+};
+export type SendBuyProps = {
+  email: string;
+  fullName: string;
+  message: string;
+  phone: string;
+  entreprise: string;
+  sector: string;
+  equipments: EquipType[];
+};
 
 export const categories: category[] = [
   {

@@ -1,6 +1,6 @@
 import Footer from "@/components/Footer/Footer";
 import CantFind from "@/components/ui/CantFind";
-import FeaturedEquipments from "@/components/ui/FeaturedEquipments";
+import FeaturedEquipments from "@/components/Equipments/FeaturedEquipments";
 import PageHeader from "@/components/ui/PageHeader";
 import ServicesItems from "@/components/ui/ServicesItems";
 

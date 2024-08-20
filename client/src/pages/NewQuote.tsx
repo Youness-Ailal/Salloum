@@ -27,14 +27,14 @@ function NewQuote() {
         )}
         <div className="flex flex-col gap-2 lg:gap-4 mt-2 max-lg:mt-4">
           {quotes?.map(item => (
-            <QuoteItem quote={item} />
+            <QuoteItem key={item.id} quote={item} />
           ))}
         </div>
         <div>
           <p className=" mt-2 lg:mt-4 py-2 border-b border-sky-900/30 text-lg lg:text-xl text-sky-950">
             Your details
           </p>
-          <NewQuoteForm />
+          <NewQuoteForm quotes={quotes} />
         </div>
       </div>
       <Footer />

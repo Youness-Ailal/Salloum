@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
+import hero from "@/assets/hero-image.jpg";
 
 function CantFind() {
   return (
-    <div className="bg-hero-pattern bg-left w-full  lg:grid grid-cols-[1.2fr_1fr] rounded-md">
+    <div
+      className="bg-left w-full  lg:grid grid-cols-[1.2fr_1fr] rounded-md"
+      style={{
+        backgroundImage: `url("${hero}")`,
+      }}>
       <div className="p-5 lg:p-8 lg:py-14 bg-sky-950/90">
         <p className="uppercase text-xl lg:text-3xl text-white font-semibold">
           Can’t Find the Equipment You Need?
