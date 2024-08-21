@@ -2,12 +2,13 @@ import { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 
-function SearchNav() {
+function SearchNav({ closeNav = () => null }) {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const submitSearch = e => {
     e.preventDefault();
     if (searchQuery) {
+      closeNav();
       navigate("/equipments?query=" + searchQuery);
       setSearchQuery("");
     }

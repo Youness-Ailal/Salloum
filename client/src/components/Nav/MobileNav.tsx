@@ -44,14 +44,6 @@ function MobileNav() {
       className={`max-w-[1200px] px-4 mx-auto p-3 border-b border-white ${
         scrollY > 100 && "bg-sky-950/80 backdrop-blur-sm "
       }`}>
-      <div className="container mx-auto w-full flex flex-wrap gap-3 justify-end text-white mb-4 text-sm">
-        <a href="mailto:contact@salloumcompany.com" className="hover:underline">
-          contact@salloumcompany.com
-        </a>
-        <a href="tel:+33 6 41 99 43 83" className="hover:underline">
-          +33 6 41 99 43 83
-        </a>
-      </div>
       <header className="flex gap-4 items-center">
         <Link to="/" className="xl:mr-2">
           <img
@@ -64,8 +56,8 @@ function MobileNav() {
         <div className="ml-auto grid grid-cols-[1fr_auto_auto] items-center gap-4">
           <Button
             onClick={() => setShowQuote(true)}
-            className="w-full !gap-2 !text-base bg-sky-600 hover:bg-sky-500">
-            <span className="text-xl">
+            className="w-full !gap-2 !text-center !text-base bg-sky-600 hover:bg-sky-500">
+            <span className="text-xl text-center">
               <IoBagOutline />
             </span>
             ({quotes.length})

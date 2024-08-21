@@ -20,7 +20,7 @@ import {
 import idv4 from "uuid4";
 
 import { DB } from "../firebase/config";
-import { format } from "date-fns";
+import { differenceInDays, format } from "date-fns";
 export const createdAt = format(new Date(), "dd LLLL yyyy");
 const collectionRef = collection(DB, "equipments");
 
@@ -261,6 +261,15 @@ export async function deleteMessage(id) {
 export async function markMessageAsSeen(id) {
   try {
     await updateDoc(doc(DB, "messages", id), { seen: true });
+  } catch (error) {
+    throw new Error(error?.message);
+  }
+}
+export async function getAnalytics() {
+  try {
+    const res = await getDocs(collection(DB, "analytics"));
+    const data = res.forEach(data => ({ id: data.id, ...data.data() }));
+    return data;
   } catch (error) {
     throw new Error(error?.message);
   }

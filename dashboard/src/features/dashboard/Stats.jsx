@@ -2,53 +2,63 @@ import {
   HiOutlineBanknotes,
   HiOutlineBriefcase,
   HiOutlineCalendarDays,
-  HiOutlineChartBar,
 } from "react-icons/hi2";
-import Stat from "./Stat";
-import { formatCurrency } from "../../utils/helpers";
+import Stat from "../../ui/Stat";
+import { useEquipments } from "../equipments/useEquipments";
+import { useSellEquipmentsRequests } from "../equipments/useSellEquipmentsRequests";
+import { useBuyEquipmentsRequests } from "../equipments/useBuyEquipmentsRequests";
+import { useSearchParams } from "react-router-dom";
+import { differenceInDays } from "date-fns";
+import { VscArrowCircleLeft, VscTools } from "react-icons/vsc";
+import { BiPurchaseTag } from "react-icons/bi";
 
-function Stats({ bookings, confirmedStays, numDays, cabinCount }) {
-  // 1.
-  const numBookings = bookings.length;
+function Stats() {
+  const { isLoading: equipLoading, equipments } = useEquipments();
+  const { data: sells, isLoading: sellsLoading } = useSellEquipmentsRequests();
+  const { data: buys, isLoading: buysLoading } = useBuyEquipmentsRequests();
+  const [searParams] = useSearchParams();
+  const lastDays = searParams.get("last") || "7";
 
-  // 2.
-  const sales = bookings.reduce((acc, cur) => acc + cur.totalPrice, 0);
+  const sellsDays = sells?.filter(item => {
+    return differenceInDays(new Date(), new Date(item.date)) <= +lastDays;
+  });
+  const buysDays = buys?.filter(
+    item => differenceInDays(new Date(), new Date(item.date)) <= +lastDays
+  );
 
-  // 3.
-  const checkins = confirmedStays.length;
-
-  // 4.
-  const occupation =
-    confirmedStays.reduce((acc, cur) => acc + cur.numNights, 0) /
-    (numDays * cabinCount);
-  // num checked in nights / all available nights (num days * num cabins)
-
+  const equipmentsCount = equipments?.length;
+  const sellCount = sellsDays?.length;
+  const buysCount = buysDays?.length;
   return (
     <>
       <Stat
-        title="Bookings"
+        isLoading={equipLoading}
+        title="Equipments"
         color="blue"
-        icon={<HiOutlineBriefcase />}
-        value={numBookings}
+        icon={<VscTools />}
+        value={equipmentsCount}
       />
+
       <Stat
-        title="Sales"
-        color="green"
-        icon={<HiOutlineBanknotes />}
-        value={formatCurrency(sales)}
-      />
-      <Stat
-        title="Check ins"
+        isLoading={buysLoading}
+        title="Buy Requests"
         color="indigo"
-        icon={<HiOutlineCalendarDays />}
-        value={checkins}
+        icon={<BiPurchaseTag />}
+        value={buysCount}
       />
       <Stat
-        title="Occupancy rate"
+        isLoading={sellsLoading}
+        title="Sell Requests"
+        color="yellow"
+        icon={<VscArrowCircleLeft style={{ rotate: "-45deg" }} />}
+        value={sellCount}
+      />
+      {/* <Stat
+        title="Contacts"
         color="yellow"
         icon={<HiOutlineChartBar />}
-        value={Math.round(occupation * 100) + "%"}
-      />
+        value={"numDays"}
+      /> */}
     </>
   );
 }

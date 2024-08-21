@@ -54,7 +54,7 @@ function EquipmentItem({
               "text-red-500": stock <= 0,
             }
           )}>
-          {stock > 0 ? stock + " in stock" : "sold out"}{" "}
+          {stock > 0 ? stock + " in stock" : "sold out"}
         </p>
         <p className="text-lg xl:text-xl text-sky-950 font-medium w-full py-2">
           {name}{" "}

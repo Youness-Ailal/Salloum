@@ -191,6 +191,23 @@ img {
       transform: translate(-50%, -50%) rotate(360deg);
     }}
 
+.dots::after{
+  content: ".";
+  letter-spacing: 4px;
+  animation: dots .7s infinite linear;
+}
+@keyframes dots {
+  0%{
+    content: ".";
+  }
+  50%{
+    content: "..";
+  }
+  100%{
+    content: "...";
+  }
+}
+
 `;
 
 export default GlobalStyles;

@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import DashboardBox from "./DashboardBox";
+
+import DashboardBox from "../../ui/DashboardBox";
 import Heading from "../../ui/Heading";
 import {
   Area,
@@ -23,22 +24,23 @@ const StyledSalesChart = styled(DashboardBox)`
   }
 `;
 
-function SalesChart({ bookings, numDays }) {
+function SalesChart({ bookings = 14, numDays = 8 }) {
   const { isDarkMode } = useDarkMode();
 
   const allDates = eachDayOfInterval({
     start: subDays(new Date(), numDays - 1),
     end: new Date(),
   });
+  return <p>sats</p>;
 
-  const data = allDates.map((date) => {
+  const data = allDates.map(date => {
     return {
       label: format(date, "MMM dd"),
       totalSales: bookings
-        .filter((booking) => isSameDay(date, new Date(booking.created_at)))
+        .filter(booking => isSameDay(date, new Date(booking.created_at)))
         .reduce((acc, cur) => acc + cur.totalPrice, 0),
       extrasSales: bookings
-        .filter((booking) => isSameDay(date, new Date(booking.created_at)))
+        .filter(booking => isSameDay(date, new Date(booking.created_at)))
         .reduce((acc, cur) => acc + cur.extrasPrice, 0),
     };
   });
