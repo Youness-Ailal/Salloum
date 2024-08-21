@@ -67,7 +67,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 10;
   display: flex;
-  color: var(--color-grey-100);
+  color: var(--color-grey-300);
   font-size: 8rem;
   align-items: center;
   justify-content: center;

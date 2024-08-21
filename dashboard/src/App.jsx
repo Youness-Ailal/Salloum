@@ -16,6 +16,7 @@ import { DarkModeProvider } from "./context/DarkModeContext";
 import Equipments from "./pages/Equipments";
 import PurchaseRequests from "./pages/PurchaseRequests";
 import SellRequests from "./pages/SellRequests";
+import Contacts from "./pages/Contacts";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -45,6 +46,7 @@ function App() {
               <Route path="equipments" element={<Equipments />} />
               <Route path="users" element={<Users />} />
               <Route path="layout" element={<Settings />} />
+              <Route path="inbox" element={<Contacts />} />
               <Route path="purchase-requests" element={<PurchaseRequests />} />
               <Route path="sell-requests" element={<SellRequests />} />
               <Route path="account" element={<Account />} />

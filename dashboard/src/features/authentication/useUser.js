@@ -6,7 +6,6 @@ export function useUser() {
     queryKey: ["user"],
     queryFn: getCurrentUser,
     staleTime: 0,
-    refetchOnWindowFocus: true,
   });
 
   return { isLoading, user, isAuthenticated: user };

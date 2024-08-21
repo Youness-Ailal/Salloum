@@ -6,7 +6,6 @@ import UnderLine from "@/components/ui/UnderLine";
 import MainLayout from "@/layouts/MainLayout";
 import { BiPurchaseTag } from "react-icons/bi";
 import { BsArrowDownCircle } from "react-icons/bs";
-import banner from "@/assets/banner.webp";
 import Faq from "@/components/ui/Faq";
 import CantFind from "@/components/ui/CantFind";
 import Brands from "@/components/ui/Brands";
@@ -31,7 +30,7 @@ function Home() {
                 For{" "}
                 <strong>
                   High Quality
-                  <span className="absolute left-0 -bottom-5 -z-10 scale-75">
+                  <span className="absolute left-0 -bottom-5 -z-10 scale-75 hidden sm:block ">
                     <UnderLine />
                   </span>
                 </strong>{" "}

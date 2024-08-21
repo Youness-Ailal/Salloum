@@ -8,8 +8,8 @@ import { useQuotesContext } from "@/context/QuotesProvider";
 //@ts-ignore
 function NewQuoteForm({ quotes }) {
   const { isLoading, sendRequest } = useSendBuyRequest();
-  const [infoBoxData, setInfoBoxData] = useState<infoBoxProps>();
   const { clearQuotes } = useQuotesContext();
+  const [infoBoxData, setInfoBoxData] = useState<infoBoxProps>();
   const clearInfoBox = () => setInfoBoxData({ type: "error", message: "" });
 
   const [buyData, setBuyData] = useState({
@@ -86,7 +86,7 @@ function NewQuoteForm({ quotes }) {
       <form
         onSubmit={handleSubmit}
         id="new-quote"
-        className="grid gap-3 lg:gap-6 lg:grid-cols-2 mt-2 lg:mt-4">
+        className="grid gap-4 lg:gap-6 lg:grid-cols-2 mt-2 lg:mt-4">
         <Input
           onChange={e =>
             setBuyData(prev => ({ ...prev, firstName: e.target.value }))
@@ -148,7 +148,7 @@ function NewQuoteForm({ quotes }) {
             value={buyData.message}
             id={"message"}
             as="textarea"
-            className="min-h-20 lg:min-h-32"
+            className="min-h-28 lg:min-h-32"
             placeholder="Message"
             required
           />

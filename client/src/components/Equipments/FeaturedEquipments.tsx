@@ -10,7 +10,9 @@ import FeaturedEquipmentsSkeleton from "./FeaturedEquipmentsSkeleton";
 function FeaturedEquipments() {
   const { isLoading, equipments } = useEquipments();
   //@ts-ignore
-  const featuredEquipments = equipments?.filter(item => item?.isFeatured);
+  const featuredEquipments = equipments
+    ?.filter(item => item.isActive)
+    .filter(item => item?.isFeatured);
 
   if (isLoading) return <FeaturedEquipmentsSkeleton />;
   return (

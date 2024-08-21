@@ -11,15 +11,6 @@ import { useLayout } from "./useLayout";
 import { useEffect } from "react";
 import { useUpdateLayout } from "./useUpdateLayout";
 
-// const partners = import.meta.glob("../../assets/brands/*.jpg", {
-//   eager: true,
-//   as: "url",
-// });
-// const images = [];
-// for (const img in partners) {
-//   images.push({ image: partners[img], id: idv4() });
-// }
-
 function UpdateSettingsForm() {
   const { isLoading, layout } = useLayout();
   const { isUpdating, update } = useUpdateLayout();

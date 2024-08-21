@@ -63,7 +63,7 @@ function EquipmentRow({ equipment }) {
             </Menus.List>
 
             <Modal.Window name="edit">
-              <CreateEquipmentForm cabinToEdit={equipment} />
+              <CreateEquipmentForm equipmentToEdit={equipment} />
             </Modal.Window>
 
             <Modal.Window name="delete">

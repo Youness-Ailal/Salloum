@@ -4,13 +4,14 @@ export type equipment = {
   name: string;
   category: string;
   description: string;
+  stock: number;
 };
 export type category = {
   id: string;
   image: string;
   name: string;
 };
-export const featuredEquipments: equipment[] = [
+/* export const featuredEquipments: equipment[] = [
   {
     id: "1",
     image: "https://salloumcompany.com/assets/HWAR-L-CuimRJ_5.jpg",
@@ -69,7 +70,7 @@ export const featuredEquipments: equipment[] = [
       "Used 600 m³/hr evaporative cooling towers, manufactured by PQR Cooling Systems, 2014. The cooling towers are constructed from FRP (fiber-reinforced plastic) and are designed for industrial process cooling. The towers feature axial fans, PVC fill media, and drift eliminators for optimal cooling efficiency. Each tower has a height of 8,500mm, a base diameter of 6,500mm, and is equipped with stainless steel fasteners. The system is capable of maintaining a cooling water outlet temperature of 28°C with an inlet of 35°C.",
     category: "cooling",
   },
-];
+]; */
 export type SendSellProps = {
   productName: string;
   fullName: string;

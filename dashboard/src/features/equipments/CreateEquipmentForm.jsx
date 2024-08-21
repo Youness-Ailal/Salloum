@@ -7,23 +7,27 @@ import FileInput from "../../ui/FileInput";
 import Textarea from "../../ui/Textarea";
 import FormRow from "../../ui/FormRow";
 
-import { useEditCabin } from "./useEditCabin";
 import { useCreateEquipment } from "./useCreateEquipment";
 import Select from "../../ui/Select";
 import { categories } from "../../utils/constants";
 import { useState } from "react";
+import { useUpdateEquipment } from "./useUpdateEquipment";
 
-function CreateEquipmentForm({ cabinToEdit = {}, onCloseModal }) {
+function CreateEquipmentForm({ equipmentToEdit = {}, onCloseModal }) {
   const { isCreating, createEquipment } = useCreateEquipment();
-  const [category, setcategory] = useState(categories[0].label);
-  const [isFeatured, setIsFeatured] = useState("No");
-  const [isActive, setIsActive] = useState("Active");
-  const { isEditing, editCabin } = useEditCabin();
-  const isWorking = isCreating || isEditing;
+  const [category, setcategory] = useState(equipmentToEdit.category);
+  const [isFeatured, setIsFeatured] = useState(
+    equipmentToEdit.isFeatured ? "Yes" : "No"
+  );
+  const [isActive, setIsActive] = useState(
+    equipmentToEdit.isActive ? "Active" : "Inactive"
+  );
+  const { updateEquipment, isUpdating } = useUpdateEquipment();
+  const isWorking = isCreating || isUpdating;
 
-  const { id: editId, ...editValues } = cabinToEdit;
+  const { id: editId, ...editValues } = equipmentToEdit;
   const isEditSession = Boolean(editId);
-
+  delete editValues.image;
   const { register, handleSubmit, reset, formState } = useForm({
     defaultValues: isEditSession ? editValues : {},
   });
@@ -34,17 +38,19 @@ function CreateEquipmentForm({ cabinToEdit = {}, onCloseModal }) {
 
     const imageFile = image[0];
     if (isEditSession)
-      editCabin(
+      updateEquipment(
         {
-          newCabinData: {
+          newEquipmentData: {
             name,
             description,
-            imageFile,
+
             stock: +stock,
             category,
             isFeatured: isFeatured === "Yes",
             isActive: isActive === "Active",
           },
+          oldImage: equipmentToEdit.image,
+          newImage: imageFile,
           id: editId,
         },
         {
@@ -119,7 +125,7 @@ function CreateEquipmentForm({ cabinToEdit = {}, onCloseModal }) {
       {isEditSession && (
         <FormRow label="Status">
           <Select
-            value={[
+            options={[
               {
                 value: "Active",
                 label: "Active",
@@ -130,8 +136,8 @@ function CreateEquipmentForm({ cabinToEdit = {}, onCloseModal }) {
               },
             ]}
             disabled={isWorking}
-            onChange={e => setcategory(e.target.value)}
-            options={isActive}
+            onChange={e => setIsActive(e.target.value)}
+            value={isActive}
           />
         </FormRow>
       )}

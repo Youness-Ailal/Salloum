@@ -8,6 +8,7 @@ import {
   setDoc,
   query,
   orderBy,
+  updateDoc,
 } from "firebase/firestore";
 import {
   deleteObject,
@@ -20,7 +21,7 @@ import idv4 from "uuid4";
 
 import { DB } from "../firebase/config";
 import { format } from "date-fns";
-
+export const createdAt = format(new Date(), "dd LLLL yyyy");
 const collectionRef = collection(DB, "equipments");
 
 export async function deleteMultipleImages(imagePaths) {
@@ -104,6 +105,27 @@ export async function deleteEquipment(id) {
     throw new Error("error deleting equipment : " + error?.message);
   }
 }
+export async function updateEquipmentApi({
+  newEquipmentData,
+  oldImage,
+  newImage,
+  id,
+}) {
+  try {
+    const data = { ...newEquipmentData };
+
+    if (newImage) {
+      const url = await uploadImage(newImage);
+      await deleteMultipleImages([oldImage]);
+      data.image = url;
+    }
+
+    const ref = doc(DB, "equipments", id);
+    await updateDoc(ref, data);
+  } catch (error) {
+    throw new Error("error updating equipment : " + error?.message);
+  }
+}
 export async function deleteSellRequestApi(id) {
   try {
     await deleteDoc(doc(DB, "sell-requests", id));
@@ -126,8 +148,6 @@ export async function addEquipment({
   isFeatured = false,
   stock,
 }) {
-  const createdAt = format(new Date(), "dd LLLL yyyy");
-
   const image = await uploadImage(imageFile);
   const data = {
     name,
@@ -210,6 +230,37 @@ export async function getLayout() {
       ...doc.data(),
     }));
     return data;
+  } catch (error) {
+    throw new Error(error?.message);
+  }
+}
+
+export async function getMessages() {
+  try {
+    const res = await getDocs(
+      query(collection(DB, "messages"), orderBy("timestamp", "desc"))
+    );
+    const data = res.docs.map(doc => {
+      return {
+        id: doc.id,
+        ...doc.data(),
+      };
+    });
+    return data;
+  } catch (error) {
+    throw new Error(error?.message);
+  }
+}
+export async function deleteMessage(id) {
+  try {
+    await deleteDoc(doc(DB, "messages", id));
+  } catch (error) {
+    throw new Error(error?.message);
+  }
+}
+export async function markMessageAsSeen(id) {
+  try {
+    await updateDoc(doc(DB, "messages", id), { seen: true });
   } catch (error) {
     throw new Error(error?.message);
   }

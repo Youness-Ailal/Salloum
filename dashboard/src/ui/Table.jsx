@@ -13,7 +13,7 @@ const CommonRow = styled.div`
   display: grid;
   grid-template-columns: ${props => props.columns};
   column-gap: 3rem;
-  align-items: center;
+  align-items: start;
   transition: none;
 `;
 
@@ -29,6 +29,7 @@ const StyledHeader = styled(CommonRow)`
 
 const StyledRow = styled(CommonRow)`
   padding: 1.2rem 2rem;
+  align-self: stretch;
 
   &:not(:last-child) {
     border-bottom: 1px solid var(--color-grey-100);

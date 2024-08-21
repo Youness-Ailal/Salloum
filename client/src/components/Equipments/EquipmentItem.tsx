@@ -14,13 +14,12 @@ function EquipmentItem({
   equipment: equipment;
   className?: string;
 }) {
-  const { name, id, image, description } = equipment;
+  const { name, id, image, description, stock } = equipment;
   const navigate = useNavigate();
   const { quotes, addQuote, removeQuote } = useQuotesContext();
   const isInQuote = quotes.findIndex(item => item.id === id) !== -1;
 
-  // const isNewArrival = Math.random() > 0.5;
-
+  //@ts-ignore
   function addToQuotes(e) {
     e?.preventDefault();
     addQuote({ name, id, description, image });
@@ -34,9 +33,8 @@ function EquipmentItem({
   }
   return (
     <div
-      // to={"equipments/" + id}
       className={cn(
-        "flex flex-col relative overflow-hidden gap-4 xl:gap-6 rounded-sm max-w-96 border border-sky-50",
+        "flex flex-col relative overflow-hidden rounded-sm max-w-72 lg:max-w-96 border border-sky-50",
         className
       )}>
       {/* {isNewArrival && (
@@ -47,8 +45,20 @@ function EquipmentItem({
       <div>
         <img src={image} alt={name} className="h-52 w-full object-cover" />
       </div>
-      <div className="p-2 bg-sky-50 h-full flex flex-col lg:p-4 justify-between gap-3 xl:gap-5">
-        <p className="text-lg xl:text-xl text-gray-800 max-w-72 ">{name} </p>
+      <div className=" bg-sky-50/50 p-2 lg:p-4 h-full flex flex-col justify-between gap-1 xl:gap-2">
+        <p
+          className={cn(
+            "uppercase text-start font-light text-sm tracking-widest",
+            {
+              "text-teal-600": stock > 0,
+              "text-red-500": stock <= 0,
+            }
+          )}>
+          {stock > 0 ? stock + " in stock" : "sold out"}{" "}
+        </p>
+        <p className="text-lg xl:text-xl text-sky-950 font-medium w-full py-2">
+          {name}{" "}
+        </p>
         <div className="grid grid-cols-[1fr_auto] mt-auto gap-2 lg:gap-4  lg:mt-5">
           <button
             onClick={handleContact}

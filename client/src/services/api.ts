@@ -5,7 +5,7 @@ import { addDoc, collection, getDocs } from "firebase/firestore";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 //@ts-ignore
 import idv4 from "uuid4";
-
+export const createdAt = format(new Date(), "dd LLLL yyyy");
 export async function uploadImage(file: File) {
   if (file.size > 5 * 1024 * 1024) {
     throw new Error("Image size is larger than 5MB");
@@ -121,6 +121,44 @@ export async function getLayout() {
       ...doc.data(),
     }));
     return data;
+  } catch (error) {
+    //@ts-ignore
+    throw new Error(error?.message);
+  }
+}
+
+//@ts-ignore
+export async function addPageView(country) {
+  const data = {
+    country,
+    time: new Date(),
+  };
+
+  await addDoc(collection(DB, "analytics"), data);
+}
+export async function sendMessage({
+  firstName,
+  lastName,
+  email,
+  phone,
+  entreprise,
+  sector,
+  message,
+}: any) {
+  const data = {
+    date: createdAt,
+    fullName: firstName + " " + lastName,
+    email,
+    phone,
+    entreprise,
+    sector,
+    message,
+    timestamp: new Date(),
+    seen: false,
+  };
+
+  try {
+    await addDoc(collection(DB, "messages"), data);
   } catch (error) {
     //@ts-ignore
     throw new Error(error?.message);

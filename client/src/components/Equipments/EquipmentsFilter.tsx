@@ -8,6 +8,7 @@ import { Pumps } from "@/assets/icons/Pumps";
 import { Tool } from "@/assets/icons/Tool";
 import { cn } from "@/lib/utils";
 import { useSearchParams } from "react-router-dom";
+import useEquipments from "@/data/useEquipments";
 
 const icons = {
   cooling: <Cooling />,
@@ -19,7 +20,8 @@ const icons = {
   "pumps & electric motor": <Pumps />,
 };
 function EquipmentsFilter() {
-  const equipments = featuredEquipments;
+  const { equipments } = useEquipments();
+
   const [search, setSearch] = useSearchParams();
   const category = search.get("category");
   return (
@@ -63,7 +65,7 @@ function EquipmentsFilter() {
             search.delete("query");
             setSearch(search);
           }}>
-          All Items ({equipments?.length})
+          All Items ({equipments?.filter(item => item.isActive).length})
         </button>
       </div>
     </>

@@ -7,7 +7,7 @@ import {
   HiOutlineHome,
   HiOutlineUsers,
 } from "react-icons/hi2";
-import { BiPurchaseTag } from "react-icons/bi";
+import { BiMessage, BiPurchaseTag } from "react-icons/bi";
 
 const NavList = styled.ul`
   display: flex;
@@ -86,6 +86,12 @@ function MainNav() {
           <StyledNavLink to="/layout">
             <HiOutlineCog6Tooth />
             <span>Layout</span>
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="/inbox">
+            <BiMessage />
+            <span>Messages</span>
           </StyledNavLink>
         </li>
         <li>

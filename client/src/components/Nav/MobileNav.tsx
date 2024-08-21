@@ -1,36 +1,25 @@
 import logo from "@/assets/logo-white.png";
-import { Link, NavLink } from "react-router-dom";
-import SearchNav from "../ui/SearchNav";
+import { Link } from "react-router-dom";
 import Button from "../ui/Button";
 import { useEffect, useState } from "react";
 import { IoBagOutline } from "react-icons/io5";
 import { useQuotesContext } from "@/context/QuotesProvider";
 import QuotesDrawer from "../Quotes/QuotesDrawer";
+import MobileMenu from "./MobileMenu";
+import { CgMenu } from "react-icons/cg";
 
-type link = {
-  name: string;
-  path: string;
-};
-export const links: link[] = [
-  {
-    name: "Equipments to Buy",
-    path: "/equipments",
-  },
-  {
-    name: "Sell Equipments",
-    path: "/sell-equipments",
-  },
-  {
-    name: "Services",
-    path: "/services",
-  },
-  {
-    name: "Contact",
-    path: "/contact",
-  },
-];
-function Nav() {
+function MobileNav() {
   const [showQuote, setShowQuote] = useState(false);
+  const [showNav, setShowNav] = useState(false);
+  const openNav = () => {
+    setShowNav(true);
+    setShowQuote(false);
+    document.body.style.overflow = "hidden";
+  };
+  const closeNav = () => {
+    document.body.style.overflow = "auto";
+    setShowNav(false);
+  };
   useEffect(() => {
     if (showQuote) {
       document.body.style.overflow = "hidden";
@@ -52,10 +41,10 @@ function Nav() {
 
   return (
     <div
-      className={`max-w-[1400px] mx-auto p-3 px-4 border-b border-white ${
+      className={`max-w-[1200px] px-4 mx-auto p-3 border-b border-white ${
         scrollY > 100 && "bg-sky-950/80 backdrop-blur-sm "
       }`}>
-      <div className="container mx-auto w-full flex gap-6 justify-end text-white mb-2 text-sm">
+      <div className="container mx-auto w-full flex flex-wrap gap-3 justify-end text-white mb-4 text-sm">
         <a href="mailto:contact@salloumcompany.com" className="hover:underline">
           contact@salloumcompany.com
         </a>
@@ -68,30 +57,22 @@ function Nav() {
           <img
             src={logo}
             alt="Salloum company"
-            className="object-cover max-h-7 lg:max-h-10"
+            className="object-cover max-h-10"
           />
         </Link>
-        <nav className="flex items-center gap-4 xl:gap-6  text-white font-medium ml-2 lg:ml-6">
-          {links.map(item => (
-            <NavLink
-              key={item.name}
-              className="hover:text-sky-400 transition"
-              to={item.path}>
-              {" "}
-              {item.name}{" "}
-            </NavLink>
-          ))}
-        </nav>
-        <div className="ml-auto grid grid-cols-[1fr_auto] items-center gap-4">
-          <SearchNav />
+        {showNav && <MobileMenu closeNav={closeNav} />}
+        <div className="ml-auto grid grid-cols-[1fr_auto_auto] items-center gap-4">
           <Button
             onClick={() => setShowQuote(true)}
-            className=" !gap-2 !text-base bg-sky-600 hover:bg-sky-500">
+            className="w-full !gap-2 !text-base bg-sky-600 hover:bg-sky-500">
             <span className="text-xl">
               <IoBagOutline />
             </span>
-            Quotes ({quotes.length})
+            ({quotes.length})
           </Button>
+          <button onClick={openNav} className="text-4xl text-sky-50">
+            <CgMenu />
+          </button>
         </div>
       </header>
       {showQuote && <QuotesDrawer setShowQuote={setShowQuote} />}
@@ -99,4 +80,4 @@ function Nav() {
   );
 }
 
-export default Nav;
+export default MobileNav;

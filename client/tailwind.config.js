@@ -7,8 +7,8 @@ export default {
         "hero-pattern": "url('src/assets/hero-image.jpg')",
       },
       backgroundSize: {
-        "110%": "110%",
-        "100%": "100%",
+        "110%": "130%",
+        "100%": "120%",
       },
     },
   },
