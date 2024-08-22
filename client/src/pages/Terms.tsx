@@ -49,16 +49,7 @@ function Terms() {
             damages.
           </p>
         </div>
-        <div className="my-4">
-          <p className="mt-4 lg:mt-8 py-2 border-b border-sky-900/30 text-lg lg:text-xl text-sky-950">
-            Governing Law
-          </p>
-          <p>
-            These terms and conditions are governed by and construed in
-            accordance with the laws of [Your Jurisdiction], and you submit to
-            the exclusive jurisdiction of the courts in that state or location.
-          </p>
-        </div>
+
         <div className="my-4 mb-10">
           <p className="mt-4 lg:mt-8 py-2 border-b border-sky-900/30 text-lg lg:text-xl text-sky-950">
             Changes to Terms and Conditions

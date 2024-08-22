@@ -56,8 +56,8 @@ function Privacy() {
           <p>
             You have the right to access, correct, or delete your personal
             information. If you wish to exercise these rights or have any
-            questions about our Privacy Policy, please contact us at [Contact
-            Information].
+            questions about our Privacy Policy, please contact us at
+            contact@salloumcompany.com
           </p>
         </div>
       </div>
