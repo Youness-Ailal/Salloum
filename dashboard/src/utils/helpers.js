@@ -1,5 +1,6 @@
 import { formatDistance, parseISO } from "date-fns";
 import { differenceInDays } from "date-fns/esm";
+import { countries, timezones } from "./constants";
 
 // We want to make this function work for both Date objects and strings (which come from Supabase)
 export const subtractDates = (dateStr1, dateStr2) =>
@@ -28,3 +29,31 @@ export const formatCurrency = value =>
   new Intl.NumberFormat("en", { style: "currency", currency: "EUR" }).format(
     value
   );
+
+export function getCountryCode(countryName) {
+  if (!countryName) return;
+  // Find the country code where the country name matches
+  for (const code in countries) {
+    if (countries[code].toLowerCase() === countryName.toLowerCase()) {
+      return code;
+    }
+  }
+}
+
+export function getCountry() {
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  if (timezone === "" || !timezone) {
+    return null;
+  }
+
+  //@ts-ignore
+  const _country = timezones[timezone].c[0];
+  //@ts-ignore
+  const country = countries[_country];
+  return country;
+}
+
+export function getCountryFlag(code, size = 32) {
+  return `https://flagsapi.com/${code}/flat/${size}.png`;
+}

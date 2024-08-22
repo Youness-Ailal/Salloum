@@ -13,8 +13,8 @@ function Equipments() {
       </Row>
 
       <Row>
-        <EquipmentsTable />
         <AddEquipment />
+        <EquipmentsTable />
       </Row>
     </>
   );

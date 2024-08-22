@@ -7,6 +7,8 @@ import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
 import { useDeleteMessage } from "./useDeleteMessage";
 import ViewMessage from "./ViewMessage";
+import { getCountryCode, getCountryFlag } from "../../utils/helpers";
+import { ActionButton, ActionButtons, NameFlag } from "../equipments/BuyRow";
 
 const Msg = styled.p`
   max-width: 250px;
@@ -14,6 +16,7 @@ const Msg = styled.p`
   white-space: nowrap;
   text-overflow: ellipsis;
 `;
+
 const Seen = styled.div`
   padding-left: 5px;
   border-left: 1px solid rgba(0, 0, 0, 0.15);
@@ -22,10 +25,11 @@ const Seen = styled.div`
 function MessageRow({ messageItem }) {
   const { isDeleting, deleteRequest } = useDeleteMessage();
 
-  const { id, email, fullName, phone, date, seen, message } = messageItem;
+  const { id, email, fullName, phone, date, seen, message, country } =
+    messageItem;
   return (
     <Table.Row>
-      <div>{fullName}</div>
+      <p>{fullName}</p>
       <p>{phone}</p>
       <div>{email}</div>
       <div>{date}</div>
@@ -34,31 +38,29 @@ function MessageRow({ messageItem }) {
 
       <div>
         <Modal>
-          <Menus.Menu>
-            <Menus.Toggle id={id} />
+          <ActionButtons>
+            <Modal.Open opens="view">
+              <ActionButton>{<HiEye />} </ActionButton>
+            </Modal.Open>
 
-            <Menus.List id={id}>
-              <Modal.Open opens="view">
-                <Menus.Button icon={<HiEye />}>View message</Menus.Button>
-              </Modal.Open>
+            <Modal.Open opens="delete">
+              <ActionButton>
+                <HiTrash />
+              </ActionButton>
+            </Modal.Open>
+          </ActionButtons>
 
-              <Modal.Open opens="delete">
-                <Menus.Button icon={<HiTrash />}>Delete</Menus.Button>
-              </Modal.Open>
-            </Menus.List>
+          <Modal.Window name="view">
+            <ViewMessage itemToView={messageItem} />
+          </Modal.Window>
 
-            <Modal.Window name="view">
-              <ViewMessage itemToView={messageItem} />
-            </Modal.Window>
-
-            <Modal.Window name="delete">
-              <ConfirmDelete
-                resourceName="Message"
-                disabled={isDeleting}
-                onConfirm={() => deleteRequest(id)}
-              />
-            </Modal.Window>
-          </Menus.Menu>
+          <Modal.Window name="delete">
+            <ConfirmDelete
+              resourceName="Message"
+              disabled={isDeleting}
+              onConfirm={() => deleteRequest(id)}
+            />
+          </Modal.Window>
         </Modal>
       </div>
     </Table.Row>

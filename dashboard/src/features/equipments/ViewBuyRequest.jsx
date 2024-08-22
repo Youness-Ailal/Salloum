@@ -3,6 +3,8 @@ import Textarea from "../../ui/Textarea";
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 import styled from "styled-components";
+import { getCountryCode, getCountryFlag } from "../../utils/helpers";
+import InputJsx from "../../ui/InputJsx";
 
 const Image = styled.img`
   width: 10rem;
@@ -41,9 +43,8 @@ function ViewBuyRequest({ itemToView = {}, onCloseModal }) {
     phone,
     date,
     equipments,
+    country,
   } = itemToView;
-
-  function download(file) {}
 
   return (
     <Form type={onCloseModal ? "modal" : "regular"}>
@@ -55,6 +56,12 @@ function ViewBuyRequest({ itemToView = {}, onCloseModal }) {
       </FormRow>
       <FormRow label="Sector">
         <Input value={sector} type="text" id="name" />
+      </FormRow>
+      <FormRow label="Country">
+        <InputJsx>
+          {country}
+          {<img src={getCountryFlag(getCountryCode(country))} alt="" />}
+        </InputJsx>
       </FormRow>
 
       <FormRow label="Phone">

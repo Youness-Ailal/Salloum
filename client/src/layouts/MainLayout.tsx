@@ -18,21 +18,31 @@ function MainLayout({ children, heightMobile = "80vh", height = "70vh" }) {
   const NavHeader = isSmall ? <MobileNav /> : <Nav />;
 
   useEffect(() => {
-    const viewedTime = localStorage.getItem("visited-at");
+    const checkAndSetVisit = async () => {
+      const viewedTime = localStorage.getItem("visited-at");
+      const now = new Date();
 
-    async function setVist() {
+      if (viewedTime) {
+        const viewedDate = new Date(viewedTime);
+        const hrsDiff = differenceInHours(now, viewedDate);
+
+        if (hrsDiff >= 24) {
+          await recordVisit();
+          localStorage.setItem("visited-at", now.toString());
+        }
+      } else {
+        await recordVisit();
+        localStorage.setItem("visited-at", now.toString());
+      }
+    };
+
+    const recordVisit = async () => {
       const country = getCountry();
       await addPageView(country);
-    }
-    if (viewedTime) {
-      const viewedDate = new Date(viewedTime);
-      const hrsDiff = differenceInHours(new Date(), viewedDate);
-      hrsDiff >= 24 ? setVist() : null;
-    } else {
-      localStorage.setItem("visited-at", new Date().toString());
-      setVist();
-    }
-  });
+    };
+
+    checkAndSetVisit();
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);

@@ -3,7 +3,12 @@ import Textarea from "../../ui/Textarea";
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 import styled from "styled-components";
-import { formatCurrency } from "../../utils/helpers";
+import {
+  formatCurrency,
+  getCountryCode,
+  getCountryFlag,
+} from "../../utils/helpers";
+import InputJsx from "../../ui/InputJsx";
 
 const Images = styled.div`
   display: flex;
@@ -21,8 +26,17 @@ const Image = styled.img`
 `;
 
 function ViewSellRequest({ itemToView = {}, onCloseModal }) {
-  const { productName, email, fullName, details, phone, price, date, photos } =
-    itemToView;
+  const {
+    productName,
+    email,
+    fullName,
+    details,
+    country,
+    phone,
+    price,
+    date,
+    photos,
+  } = itemToView;
 
   // function download(file) {}
 
@@ -42,7 +56,10 @@ function ViewSellRequest({ itemToView = {}, onCloseModal }) {
       <FormRow label="Email">
         <Input value={email} id="email" />
       </FormRow>
-
+      <InputJsx>
+        {country}
+        {<img src={getCountryFlag(getCountryCode(country))} alt="" />}
+      </InputJsx>
       <FormRow label="Best price">
         <Input value={formatCurrency(price)} id="price" />
       </FormRow>

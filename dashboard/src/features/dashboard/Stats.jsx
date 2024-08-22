@@ -1,4 +1,5 @@
 import {
+  HiEye,
   HiOutlineBanknotes,
   HiOutlineBriefcase,
   HiOutlineCalendarDays,
@@ -11,11 +12,13 @@ import { useSearchParams } from "react-router-dom";
 import { differenceInDays } from "date-fns";
 import { VscArrowCircleLeft, VscTools } from "react-icons/vsc";
 import { BiPurchaseTag } from "react-icons/bi";
+import { useAnalitics } from "./useAnalitics";
 
 function Stats() {
   const { isLoading: equipLoading, equipments } = useEquipments();
   const { data: sells, isLoading: sellsLoading } = useSellEquipmentsRequests();
   const { data: buys, isLoading: buysLoading } = useBuyEquipmentsRequests();
+  const { analytics, isLoading: analyticsLoading } = useAnalitics();
   const [searParams] = useSearchParams();
   const lastDays = searParams.get("last") || "7";
 
@@ -25,10 +28,14 @@ function Stats() {
   const buysDays = buys?.filter(
     item => differenceInDays(new Date(), new Date(item.date)) <= +lastDays
   );
+  const visitsDays = analytics?.filter(
+    item => differenceInDays(new Date(), new Date(item?.date)) <= +lastDays
+  );
 
   const equipmentsCount = equipments?.length;
   const sellCount = sellsDays?.length;
   const buysCount = buysDays?.length;
+  const visitsCount = visitsDays?.length;
   return (
     <>
       <Stat
@@ -53,12 +60,13 @@ function Stats() {
         icon={<VscArrowCircleLeft style={{ rotate: "-45deg" }} />}
         value={sellCount}
       />
-      {/* <Stat
-        title="Contacts"
-        color="yellow"
-        icon={<HiOutlineChartBar />}
-        value={"numDays"}
-      /> */}
+      <Stat
+        isLoading={analyticsLoading}
+        title="Website visits"
+        color="green"
+        icon={<HiEye />}
+        value={visitsCount}
+      />
     </>
   );
 }

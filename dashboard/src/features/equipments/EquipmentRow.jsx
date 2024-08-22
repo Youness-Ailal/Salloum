@@ -9,6 +9,7 @@ import CreateEquipmentForm from "./CreateEquipmentForm";
 import Tag from "../../ui/Tag";
 import { useCreateEquipment } from "./useCreateEquipment";
 import { useDeleteEquipment } from "./useDeleteEquipment";
+import { ActionButton, ActionButtons } from "./BuyRow";
 
 const Img = styled.img`
   display: block;
@@ -49,31 +50,29 @@ function EquipmentRow({ equipment }) {
       </Tag>
       <div>
         <Modal>
-          <Menus.Menu>
-            <Menus.Toggle id={id} />
+          <ActionButtons>
+            <Modal.Open opens="edit">
+              <ActionButton>{<HiPencil />} </ActionButton>
+            </Modal.Open>
 
-            <Menus.List id={id}>
-              <Modal.Open opens="edit">
-                <Menus.Button icon={<HiPencil />}>Edit</Menus.Button>
-              </Modal.Open>
+            <Modal.Open opens="delete">
+              <ActionButton>
+                <HiTrash />
+              </ActionButton>
+            </Modal.Open>
+          </ActionButtons>
 
-              <Modal.Open opens="delete">
-                <Menus.Button icon={<HiTrash />}>Delete</Menus.Button>
-              </Modal.Open>
-            </Menus.List>
+          <Modal.Window name="edit">
+            <CreateEquipmentForm equipmentToEdit={equipment} />
+          </Modal.Window>
 
-            <Modal.Window name="edit">
-              <CreateEquipmentForm equipmentToEdit={equipment} />
-            </Modal.Window>
-
-            <Modal.Window name="delete">
-              <ConfirmDelete
-                resourceName="Equipment"
-                disabled={isDeleting}
-                onConfirm={() => deleteEquipment(id)}
-              />
-            </Modal.Window>
-          </Menus.Menu>
+          <Modal.Window name="delete">
+            <ConfirmDelete
+              resourceName="Equipment"
+              disabled={isDeleting}
+              onConfirm={() => deleteEquipment(id)}
+            />
+          </Modal.Window>
         </Modal>
       </div>
     </Table.Row>

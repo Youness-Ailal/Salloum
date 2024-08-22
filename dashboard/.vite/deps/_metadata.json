@@ -1,0 +1,176 @@
+{
+  "hash": "ae888f5e",
+  "browserHash": "761a5f63",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "8ecf9ed6",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "de537bbf",
+      "needsInterop": true
+    },
+    "react-error-boundary": {
+      "src": "../../node_modules/react-error-boundary/dist/react-error-boundary.module.js",
+      "file": "react-error-boundary.js",
+      "fileHash": "f91ac221",
+      "needsInterop": false
+    },
+    "styled-components": {
+      "src": "../../node_modules/styled-components/dist/styled-components.browser.esm.js",
+      "file": "styled-components.js",
+      "fileHash": "d6c5e0af",
+      "needsInterop": false
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "819278b1",
+      "needsInterop": false
+    },
+    "@tanstack/react-query": {
+      "src": "../../node_modules/@tanstack/react-query/build/modern/index.js",
+      "file": "@tanstack_react-query.js",
+      "fileHash": "412f4cbd",
+      "needsInterop": false
+    },
+    "@tanstack/react-query-devtools": {
+      "src": "../../node_modules/@tanstack/react-query-devtools/build/modern/index.js",
+      "file": "@tanstack_react-query-devtools.js",
+      "fileHash": "202c0028",
+      "needsInterop": false
+    },
+    "react-hot-toast": {
+      "src": "../../node_modules/react-hot-toast/dist/index.mjs",
+      "file": "react-hot-toast.js",
+      "fileHash": "54bcfc3c",
+      "needsInterop": false
+    },
+    "firebase/auth": {
+      "src": "../../node_modules/firebase/auth/dist/esm/index.esm.js",
+      "file": "firebase_auth.js",
+      "fileHash": "65414f91",
+      "needsInterop": false
+    },
+    "uuid4": {
+      "src": "../../node_modules/uuid4/browser.mjs",
+      "file": "uuid4.js",
+      "fileHash": "883abe29",
+      "needsInterop": false
+    },
+    "firebase/app": {
+      "src": "../../node_modules/firebase/app/dist/esm/index.esm.js",
+      "file": "firebase_app.js",
+      "fileHash": "0148ab6f",
+      "needsInterop": false
+    },
+    "firebase/firestore": {
+      "src": "../../node_modules/firebase/firestore/dist/esm/index.esm.js",
+      "file": "firebase_firestore.js",
+      "fileHash": "3e989d91",
+      "needsInterop": false
+    },
+    "firebase/storage": {
+      "src": "../../node_modules/firebase/storage/dist/esm/index.esm.js",
+      "file": "firebase_storage.js",
+      "fileHash": "348f00f2",
+      "needsInterop": false
+    },
+    "date-fns": {
+      "src": "../../node_modules/date-fns/esm/index.js",
+      "file": "date-fns.js",
+      "fileHash": "af148bfb",
+      "needsInterop": false
+    },
+    "react-icons/bi": {
+      "src": "../../node_modules/react-icons/bi/index.esm.js",
+      "file": "react-icons_bi.js",
+      "fileHash": "2ebef764",
+      "needsInterop": false
+    },
+    "react-hook-form": {
+      "src": "../../node_modules/react-hook-form/dist/index.esm.mjs",
+      "file": "react-hook-form.js",
+      "fileHash": "0b7bf84f",
+      "needsInterop": false
+    },
+    "react-icons/vsc": {
+      "src": "../../node_modules/react-icons/vsc/index.esm.js",
+      "file": "react-icons_vsc.js",
+      "fileHash": "700774ec",
+      "needsInterop": false
+    },
+    "react-icons/hi2": {
+      "src": "../../node_modules/react-icons/hi2/index.esm.js",
+      "file": "react-icons_hi2.js",
+      "fileHash": "7ce27326",
+      "needsInterop": false
+    },
+    "recharts": {
+      "src": "../../node_modules/recharts/es6/index.js",
+      "file": "recharts.js",
+      "fileHash": "4090fdae",
+      "needsInterop": false
+    },
+    "react-dom": {
+      "src": "../../node_modules/react-dom/index.js",
+      "file": "react-dom.js",
+      "fileHash": "19f1cb44",
+      "needsInterop": true
+    },
+    "date-fns/esm": {
+      "src": "../../node_modules/date-fns/esm/index.js",
+      "file": "date-fns_esm.js",
+      "fileHash": "dd260eca",
+      "needsInterop": false
+    },
+    "@supabase/supabase-js": {
+      "src": "../../node_modules/@supabase/supabase-js/dist/module/index.js",
+      "file": "@supabase_supabase-js.js",
+      "fileHash": "2cc5b39c",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "E6UWR6XD-KHZH43RF": {
+      "file": "E6UWR6XD-KHZH43RF.js"
+    },
+    "browser-ponyfill-FRLQ2KMQ": {
+      "file": "browser-ponyfill-FRLQ2KMQ.js"
+    },
+    "chunk-IKHU2UKF": {
+      "file": "chunk-IKHU2UKF.js"
+    },
+    "chunk-M3DGULAL": {
+      "file": "chunk-M3DGULAL.js"
+    },
+    "chunk-FL4BQLXE": {
+      "file": "chunk-FL4BQLXE.js"
+    },
+    "chunk-XZ5STK6Q": {
+      "file": "chunk-XZ5STK6Q.js"
+    },
+    "chunk-EP4NG6PX": {
+      "file": "chunk-EP4NG6PX.js"
+    },
+    "chunk-ARDCWPFF": {
+      "file": "chunk-ARDCWPFF.js"
+    },
+    "chunk-YI3VDVC2": {
+      "file": "chunk-YI3VDVC2.js"
+    },
+    "chunk-FXPUKR2C": {
+      "file": "chunk-FXPUKR2C.js"
+    },
+    "chunk-44N2SFQY": {
+      "file": "chunk-44N2SFQY.js"
+    },
+    "chunk-CLC6CPQL": {
+      "file": "chunk-CLC6CPQL.js"
+    }
+  }
+}

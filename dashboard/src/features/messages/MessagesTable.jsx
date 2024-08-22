@@ -11,7 +11,7 @@ function MessagesTable() {
 
   return (
     <Menus>
-      <Table columns="2.2fr 1.8fr 2fr 1.6fr 4fr .2fr .1fr">
+      <Table columns="2.2fr 1.8fr 2fr 1.6fr 4fr .3fr .5fr">
         <Table.Header>
           <div>Name</div>
           <div>Phone</div>

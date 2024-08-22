@@ -33,7 +33,7 @@ function SellTable() {
 
   return (
     <Menus>
-      <Table columns="0.8fr 1.8fr 1fr 1fr 1.5fr .6fr 1fr .1fr">
+      <Table columns="0.8fr 1.8fr 1fr 1fr 1.5fr .6fr 1fr .5fr">
         <Table.Header>
           <div></div>
           <div>Equipment</div>

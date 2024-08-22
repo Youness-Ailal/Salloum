@@ -3,37 +3,48 @@ import { useEquipments } from "./useEquipments";
 import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
 import { useSearchParams } from "react-router-dom";
-import Empty from "../../ui/Empty";
 import EquipmentRow from "./EquipmentRow";
+import { useEffect } from "react";
+import { useState } from "react";
 
 function EquipmentsTable() {
   const { isLoading, equipments } = useEquipments();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [filteredEquipments, setFilteredEquipments] = useState([]);
 
+  const filterValue = searchParams.get("status") || "all";
+  const search = searchParams.get("search");
+
+  useEffect(() => {
+    if (!isLoading) {
+      if (filterValue === "all") {
+        setFilteredEquipments(equipments);
+      }
+      if (filterValue === "Active")
+        setFilteredEquipments(equipments.filter(item => item.isActive));
+      if (filterValue === "Featured")
+        setFilteredEquipments(equipments.filter(item => item.isFeatured));
+      if (filterValue === "Inactive")
+        setFilteredEquipments(equipments.filter(item => !item.isActive));
+      if (search?.length) {
+        searchParams.delete("status");
+        setSearchParams(searchParams);
+        setFilteredEquipments(
+          equipments.filter(
+            item =>
+              item.name?.toLowerCase().includes(search.toLowerCase()) ||
+              item.description?.toLowerCase().includes(search.toLowerCase()) ||
+              item.category?.toLowerCase().includes(search.toLowerCase())
+          )
+        );
+      }
+    }
+  }, [search, filterValue, isLoading]);
   if (isLoading) return <Spinner />;
-  // if (!equipments.length) return <Empty resourceName="Equipments" />;
-
-  // 1) FILTER
-  const filterValue = searchParams.get("discount") || "all";
-
-  let filteredCabins;
-  if (filterValue === "all") filteredCabins = equipments;
-  if (filterValue === "no-discount")
-    filteredCabins = equipments.filter(cabin => cabin.discount === 0);
-  if (filterValue === "with-discount")
-    filteredCabins = equipments.filter(cabin => cabin.discount > 0);
-
-  // 2) SORT
-  const sortBy = searchParams.get("sortBy") || "startDate-asc";
-  const [field, direction] = sortBy.split("-");
-  const modifier = direction === "asc" ? 1 : -1;
-  const sortedCabins = filteredCabins.sort(
-    (a, b) => (a[field] - b[field]) * modifier
-  );
 
   return (
     <Menus>
-      <Table columns="0.8fr 2.2fr 1.2fr .5fr 1fr .5fr .4fr  .1fr">
+      <Table columns="0.8fr 2.2fr 1.2fr .5fr 1fr .5fr .4fr  .5fr">
         <Table.Header>
           <div></div>
           <div>Equipment</div>
@@ -47,9 +58,7 @@ function EquipmentsTable() {
         </Table.Header>
 
         <Table.Body
-          // data={cabins}
-          // data={filteredCabins}
-          data={sortedCabins}
+          data={filteredEquipments}
           render={equipment => (
             <EquipmentRow equipment={equipment} key={equipment.id} />
           )}

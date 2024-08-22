@@ -4,7 +4,7 @@ import hero from "@/assets/hero-image.jpg";
 function CantFind() {
   return (
     <div
-      className="bg-left w-full  lg:grid grid-cols-[1.2fr_1fr] rounded-md"
+      className="w-full bg-left bg-cover lg:grid grid-cols-[1.2fr_1fr] rounded-md"
       style={{
         backgroundImage: `url("${hero}")`,
       }}>

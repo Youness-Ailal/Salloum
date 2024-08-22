@@ -8,7 +8,7 @@ function SellRequests() {
     <>
       <Row type="horizontal">
         <Heading as="h1">Sell Requests</Heading>
-        <EquipmentsTableOperations />
+        {/* <EquipmentsTableOperations /> */}
       </Row>
 
       <Row>

@@ -7,7 +7,12 @@ import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
 import ViewSellRequest from "./ViewSellRequest";
 import { useDeleteSellRequest } from "./useDeleteSellRequest";
-import { formatCurrency } from "../../utils/helpers";
+import {
+  formatCurrency,
+  getCountryCode,
+  getCountryFlag,
+} from "../../utils/helpers";
+import { ActionButton, ActionButtons, NameFlag } from "./BuyRow";
 const blank =
   "https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg";
 
@@ -39,7 +44,7 @@ function SellRow({ equipment }) {
     <Table.Row>
       <Img src={!photos?.length ? blank : photos[0]} />
       <Equipment>{productName}</Equipment>
-      <div>{fullName}</div>
+      <p>{fullName}</p>
       <div>{phone}</div>
       <div>{email}</div>
       <div>{formatCurrency(price)}</div>
@@ -47,31 +52,29 @@ function SellRow({ equipment }) {
 
       <div>
         <Modal>
-          <Menus.Menu>
-            <Menus.Toggle id={id} />
+          <ActionButtons>
+            <Modal.Open opens="view">
+              <ActionButton>{<HiEye />} </ActionButton>
+            </Modal.Open>
 
-            <Menus.List id={id}>
-              <Modal.Open opens="view">
-                <Menus.Button icon={<HiEye />}>View details</Menus.Button>
-              </Modal.Open>
+            <Modal.Open opens="delete">
+              <ActionButton>
+                <HiTrash />
+              </ActionButton>
+            </Modal.Open>
+          </ActionButtons>
 
-              <Modal.Open opens="delete">
-                <Menus.Button icon={<HiTrash />}>Delete</Menus.Button>
-              </Modal.Open>
-            </Menus.List>
+          <Modal.Window name="view">
+            <ViewSellRequest itemToView={equipment} />
+          </Modal.Window>
 
-            <Modal.Window name="view">
-              <ViewSellRequest itemToView={equipment} />
-            </Modal.Window>
-
-            <Modal.Window name="delete">
-              <ConfirmDelete
-                resourceName="Request"
-                disabled={isDeleting}
-                onConfirm={() => deleteRequest(id)}
-              />
-            </Modal.Window>
-          </Menus.Menu>
+          <Modal.Window name="delete">
+            <ConfirmDelete
+              resourceName="Request"
+              disabled={isDeleting}
+              onConfirm={() => deleteRequest(id)}
+            />
+          </Modal.Window>
         </Modal>
       </div>
     </Table.Row>

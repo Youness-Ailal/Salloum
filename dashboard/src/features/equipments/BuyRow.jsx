@@ -4,9 +4,10 @@ import { HiEye, HiTrash } from "react-icons/hi2";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import Table from "../../ui/Table";
-import Menus from "../../ui/Menus";
 import ViewBuyRequest from "./ViewBuyRequest";
 import { useDeleteBuyRequest } from "./useDeleteBuyRequest";
+import { getCountryCode, getCountryFlag } from "../../utils/helpers";
+
 export const blank =
   "https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg";
 
@@ -15,6 +16,27 @@ const Img = styled.img`
   width: 10rem;
   aspect-ratio: 3 / 2;
   object-fit: cover;
+`;
+export const NameFlag = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+`;
+export const ActionButtons = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+export const ActionButton = styled.button`
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 1.8rem;
+  color: var(--color-brand-600);
+  background-color: var(--color-brand-50);
+  &:hover {
+    background-color: var(--color-brand-100);
+  }
+  border: 1px solid var(--color-grey-200);
 `;
 
 const Equipment = styled.div`
@@ -31,17 +53,8 @@ const Equipment = styled.div`
 function BuyRow({ equipment }) {
   const { isDeleting, deleteRequest } = useDeleteBuyRequest();
 
-  const {
-    id,
-    email,
-    fullName,
-    phone,
-    date,
-    equipments,
-    entreprise,
-    sector,
-    message,
-  } = equipment;
+  const { id, email, fullName, phone, date, equipments, entreprise, country } =
+    equipment;
   const equisCount =
     (equipments?.length + "").length < 2
       ? "0" + equipments?.length
@@ -49,40 +62,37 @@ function BuyRow({ equipment }) {
   return (
     <Table.Row>
       <Img src={!equipments?.length ? blank : equipments[0]?.image} />
-      <div>{fullName}</div>
+      <p>{fullName}</p>
       <Equipment>{equisCount}</Equipment>
       <div>{phone}</div>
       <div>{email}</div>
       <div>{entreprise}</div>
       <div>{date}</div>
-
       <div>
         <Modal>
-          <Menus.Menu>
-            <Menus.Toggle id={id} />
+          <ActionButtons>
+            <Modal.Open opens="view">
+              <ActionButton>{<HiEye />} </ActionButton>
+            </Modal.Open>
 
-            <Menus.List id={id}>
-              <Modal.Open opens="view">
-                <Menus.Button icon={<HiEye />}>View details</Menus.Button>
-              </Modal.Open>
+            <Modal.Open opens="delete">
+              <ActionButton>
+                <HiTrash />
+              </ActionButton>
+            </Modal.Open>
+          </ActionButtons>
 
-              <Modal.Open opens="delete">
-                <Menus.Button icon={<HiTrash />}>Delete</Menus.Button>
-              </Modal.Open>
-            </Menus.List>
+          <Modal.Window name="view">
+            <ViewBuyRequest itemToView={equipment} />
+          </Modal.Window>
 
-            <Modal.Window name="view">
-              <ViewBuyRequest itemToView={equipment} />
-            </Modal.Window>
-
-            <Modal.Window name="delete">
-              <ConfirmDelete
-                resourceName="Request"
-                disabled={isDeleting}
-                onConfirm={() => deleteRequest(id)}
-              />
-            </Modal.Window>
-          </Menus.Menu>
+          <Modal.Window name="delete">
+            <ConfirmDelete
+              resourceName="Request"
+              disabled={isDeleting}
+              onConfirm={() => deleteRequest(id)}
+            />
+          </Modal.Window>
         </Modal>
       </div>
     </Table.Row>

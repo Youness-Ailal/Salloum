@@ -8,7 +8,7 @@ function PurchaseRequests() {
     <>
       <Row type="horizontal">
         <Heading as="h1">Purchase Requests</Heading>
-        <EquipmentsTableOperations />
+        {/* <EquipmentsTableOperations /> */}
       </Row>
 
       <Row>

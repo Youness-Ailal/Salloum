@@ -8,7 +8,7 @@ function QuoteItem({
   quote: quoteType;
   canDelete?: boolean;
 }) {
-  const { id, name, image, description } = quote;
+  const { id, name, image } = quote;
   const { removeQuote } = useQuotesContext();
   function handleRemoveQuote() {
     removeQuote(id);
@@ -16,7 +16,7 @@ function QuoteItem({
   return (
     <div className="flex items-center gap-2 lg:gap-5 py-2 px-2 lg:py-4 border-b border-sky-950/10">
       <img
-        className="lg:h-24 h-16 aspect-square object-cover border-r border-sky-950/10 px-2"
+        className="lg:w-28 aspect-[6/4] w-20 object-cover border-r border-sky-950/10 px-2"
         src={image}
         alt={name}
       />

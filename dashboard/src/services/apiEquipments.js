@@ -61,6 +61,7 @@ export async function getEquipments() {
     const res = await getDocs(
       query(collection(DB, "equipments"), orderBy("timestamp", "desc"))
     );
+
     const data = res.docs.map(doc => ({
       id: doc.id,
       ...doc.data(),
@@ -268,7 +269,10 @@ export async function markMessageAsSeen(id) {
 export async function getAnalytics() {
   try {
     const res = await getDocs(collection(DB, "analytics"));
-    const data = res.forEach(data => ({ id: data.id, ...data.data() }));
+    const data = res.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
     return data;
   } catch (error) {
     throw new Error(error?.message);

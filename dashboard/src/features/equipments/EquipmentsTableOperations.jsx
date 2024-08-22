@@ -1,29 +1,52 @@
 import TableOperations from "../../ui/TableOperations";
 import Filter from "../../ui/Filter";
-import SortBy from "../../ui/SortBy";
+import Input from "../../ui/Input";
+import styled from "styled-components";
+import { CiSearch } from "react-icons/ci";
+import { useSearchParams } from "react-router-dom";
 
+export const Search = styled.div`
+  position: relative;
+  font-weight: 500;
+  font-size: 1.4rem;
+  input {
+    max-height: 35px;
+    padding-right: 28px;
+  }
+  svg {
+    position: absolute;
+    pointer-events: none;
+    right: 8px;
+    font-size: 2rem;
+    top: 50%;
+    translate: 0 -50%;
+  }
+`;
 function EquipmentsTableOperations() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  function search(value) {
+    if (!value.length) {
+      searchParams.delete("search");
+    } else {
+      searchParams.set("search", value);
+    }
+    setSearchParams(searchParams);
+  }
   return (
     <TableOperations>
       <Filter
-        filterField="discount"
+        filterField="status"
         options={[
           { value: "all", label: "All" },
-          { value: "no-discount", label: "No discount" },
-          { value: "with-discount", label: "With discount" },
+          { value: "Featured", label: "Featured" },
+          { value: "Active", label: "Active" },
+          { value: "Inactive", label: "Inactive" },
         ]}
       />
-
-      <SortBy
-        options={[
-          { value: "name-asc", label: "Sort by name (A-Z)" },
-          { value: "name-desc", label: "Sort by name (Z-A)" },
-          { value: "regularPrice-asc", label: "Sort by price (low first)" },
-          { value: "regularPrice-desc", label: "Sort by price (high first)" },
-          { value: "maxCapacity-asc", label: "Sort by capacity (low first)" },
-          { value: "maxCapacity-desc", label: "Sort by capacity (high first)" },
-        ]}
-      />
+      <Search>
+        <Input onChange={e => search(e.target.value)} placeholder="search..." />
+        <CiSearch />
+      </Search>
     </TableOperations>
   );
 }

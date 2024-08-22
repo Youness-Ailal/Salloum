@@ -1,11 +1,12 @@
 import { DB } from "@/firebase/config";
 import { SendBuyProps, SendSellProps } from "@/utils/constants";
+import { getCountry } from "@/utils/helpers";
 import { format } from "date-fns";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 //@ts-ignore
 import idv4 from "uuid4";
-export const createdAt = format(new Date(), "dd LLLL yyyy");
+export const createdAt = () => format(new Date(), "dd LLLL yyyy");
 export async function uploadImage(file: File) {
   if (file.size > 5 * 1024 * 1024) {
     throw new Error("Image size is larger than 5MB");
@@ -53,6 +54,7 @@ export async function sendBuyRequest({
     message,
     date,
     equipments,
+    country: getCountry(),
     timestamp: new Date(),
   };
 
@@ -83,6 +85,7 @@ export async function sendSellRequest({
     phone,
     price,
     date,
+    country: getCountry(),
     photos: [],
     timestamp: new Date(),
   };
@@ -131,7 +134,7 @@ export async function getLayout() {
 export async function addPageView(country) {
   const data = {
     country,
-    time: new Date(),
+    date: createdAt(),
   };
 
   await addDoc(collection(DB, "analytics"), data);
@@ -146,12 +149,13 @@ export async function sendMessage({
   message,
 }: any) {
   const data = {
-    date: createdAt,
+    date: createdAt(),
     fullName: firstName + " " + lastName,
     email,
     phone,
     entreprise,
     sector,
+    country: getCountry(),
     message,
     timestamp: new Date(),
     seen: false,
