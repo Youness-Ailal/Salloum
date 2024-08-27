@@ -77,7 +77,7 @@ function Footer() {
           </a>
         </div>
       </div>
-      <div className="container p-2 xl:p-4 flex gap-2 flex-wrap justify-between">
+      <div className="container mx-auto p-2 xl:p-4 flex gap-2 flex-wrap justify-between">
         <p className="text-sm text-white">
           Salloum Company {new Date().getFullYear()} &copy; - All rights
           reserved
