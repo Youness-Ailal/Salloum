@@ -36,13 +36,13 @@ function EquipmentsFilter() {
             className={cn(
               "flex hover:bg-sky-700 hover:text-white text-sky-900 items-center gap-2 transition rounded-sm py-2 px-4 border border-sky-700",
               {
-                "bg-sky-700 text-white": category === item.id,
+                "bg-sky-700 text-white": category === item.name,
               }
             )}
             onClick={() => {
               // setCategory(prev => (prev === item.id ? "" : item.id));
-              if (category !== item.id) {
-                search.set("category", item.id);
+              if (category !== item.name) {
+                search.set("category", item.name);
                 search.delete("query");
                 setSearch(search);
               } else {

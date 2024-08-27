@@ -18,30 +18,41 @@ function Equipments() {
   const category = search.get("category");
   const query = search.get("query");
   useEffect(() => {
-    if (query && !category) {
-      const newEquipments = tempEuipments?.filter(item => {
-        return (
+    console.log(isLoading);
+
+    if (!isLoading) {
+      if (query?.length && !category) {
+        console.log("im here query");
+
+        const newEquipments = tempEuipments?.filter(item => {
+          return (
+            //@ts-ignore
+            item?.name.toLowerCase().includes(query.toLowerCase()) ||
+            //@ts-ignore
+            item?.description.toLowerCase().includes(query.toLowerCase()) ||
+            //@ts-ignore
+            item?.category.toLowerCase().includes(query.toLowerCase())
+          );
+        });
+        setEquipments(newEquipments);
+      }
+      if (category?.length) {
+        console.log("im here category");
+
+        const newEquipments = tempEuipments?.filter(
           //@ts-ignore
-          item?.name.toLowerCase().includes(query.toLowerCase()) ||
-          //@ts-ignore
-          item?.description.toLowerCase().includes(query.toLowerCase()) ||
-          //@ts-ignore
-          item?.category.toLowerCase().includes(query.toLowerCase())
+          item => item.category === category
         );
-      });
-      setEquipments(newEquipments);
+        setEquipments(newEquipments);
+      }
+      if (!query?.length && !category?.length) {
+        console.log("heeere");
+        console.log(tempEuipments);
+
+        setEquipments(tempEuipments);
+      }
     }
-    if (category) {
-      const newEquipments = tempEuipments?.filter(
-        //@ts-ignore
-        item => item.category === category
-      );
-      setEquipments(newEquipments);
-    }
-    if (!query && !category) {
-      setEquipments(tempEuipments);
-    }
-  }, [query, category]);
+  }, [query, category, isLoading]);
 
   return (
     <div className="min-h-screen flex flex-col">
