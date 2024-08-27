@@ -50,6 +50,7 @@ const TodayItem = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  font-size: 1.4rem;
   color: var(--color-grey-800);
   padding: 6px 10px;
   border-radius: 0.3rem;
