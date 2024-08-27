@@ -57,6 +57,8 @@ function ViewSellRequest({ itemToView = {}, onCloseModal }) {
         <Input value={email} id="email" />
       </FormRow>
       <InputJsx>
+        <FormRow></FormRow>
+
         {country}
         {<img src={getCountryFlag(getCountryCode(country))} alt="" />}
       </InputJsx>
