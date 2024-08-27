@@ -2,11 +2,11 @@ import Spinner from "../../ui/Spinner";
 import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
 import { useSearchParams } from "react-router-dom";
-import Empty from "../../ui/Empty";
+
 import BuyRow from "./BuyRow";
 import { useBuyEquipmentsRequests } from "./useBuyEquipmentsRequests";
 
-function BuyTable() {
+export function BuyTable() {
   const { isLoading, data } = useBuyEquipmentsRequests();
   const [searchParams] = useSearchParams();
 
@@ -55,5 +55,3 @@ function BuyTable() {
     </Menus>
   );
 }
-
-export default BuyTable;
