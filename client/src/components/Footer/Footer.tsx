@@ -6,8 +6,8 @@ import { IoMdMail } from "react-icons/io";
 import { Link } from "react-router-dom";
 function Footer() {
   return (
-    <footer className="bg-sky-950 h-full w-full mt-auto p-4">
-      <div className="container p-2 xl:p-6 flex gap-2 gap-y-6 flex-wrap xl:gap-10 justify-between border-b border-gray-100">
+    <footer className="bg-sky-950  h-full w-full mt-auto p-4">
+      <div className="container mx-auto p-2 xl:p-6 flex gap-2 gap-y-6 flex-wrap xl:gap-10 justify-between border-b border-gray-100">
         <Link to="/">
           <img src={logo} alt="salloum logo" />
         </Link>
@@ -77,7 +77,7 @@ function Footer() {
           </a>
         </div>
       </div>
-      <div className="container p-2 xl:p-4 flex gap-2 flex-wrap justify-between">
+      <div className="container mx-auto p-2 xl:p-4 flex gap-2 flex-wrap justify-between">
         <p className="text-sm text-white">
           Salloum Company {new Date().getFullYear()} &copy; - All rights
           reserved
