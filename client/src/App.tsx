@@ -22,7 +22,7 @@ function App() {
   });
   return (
     <QueryClientProvider client={client}>
-      <ReactQueryDevtools initialIsOpen={false} />
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />

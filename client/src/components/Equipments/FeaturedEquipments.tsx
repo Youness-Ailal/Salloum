@@ -6,9 +6,11 @@ import Header from "../ui/Header";
 import EquipmentItem from "./EquipmentItem";
 import useEquipments from "@/data/useEquipments";
 import FeaturedEquipmentsSkeleton from "./FeaturedEquipmentsSkeleton";
+import { useTranslation } from "react-i18next";
 
 function FeaturedEquipments() {
   const { isLoading, equipments } = useEquipments();
+  const { t } = useTranslation(["translate"]);
   //@ts-ignore
   const featuredEquipments = equipments
     ?.filter(item => item.isActive)
@@ -17,7 +19,10 @@ function FeaturedEquipments() {
   if (isLoading) return <FeaturedEquipmentsSkeleton />;
   return (
     <div className="relative">
-      <Header title1={"Browse Our"} title2={"Featured Equipments"} />
+      <Header
+        title1={t("translate:browse")}
+        title2={t("translate:our_equipments")}
+      />
       <Swiper
         modules={[Autoplay, Pagination]}
         pagination={{

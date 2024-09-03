@@ -7,57 +7,72 @@ function Terms() {
       <PageHeader title={"TERMS & CONDITIONS"} />
       <div className="container mx-auto text-start my-4 lg:my-8 text-lg leading-8 max-w-[80ch]">
         <h4 className="text-2xl lg:text-4xl font-medium text-sky-950 mb-8 leading-8 lg:leading-10">
-          Terms and Conditions for Salloum Company
+          Dispute Resolution
         </h4>
         <p>
-          Welcome to Salloum Company. These terms and conditions outline the
-          rules and regulations for the use of Salloum Company's website and
-          services. By accessing this website, you agree to comply with and be
-          bound by the following terms and conditions.
+          The European Commission provides a platform for online dispute
+          resolution (OS):{" "}
+          <a
+            href="https://ec.europa.eu/consumers/odr"
+            target="_blank"
+            rel="noopener noreferrer">
+            https://ec.europa.eu/consumers/odr
+          </a>
+          . You can find our email address in the legal notice above. We are
+          neither willing nor obliged to participate in a dispute resolution
+          procedure before a consumer arbitration board.
         </p>
         <div className="my-4">
           <p className="mt-4 lg:mt-8 py-2 border-b border-sky-900/30 text-lg lg:text-xl text-sky-950">
-            Intellectual Property Rights
+            Responsibility for Content
           </p>
           <p>
-            Unless otherwise stated, Salloum Company owns the intellectual
-            property rights for all material on this website. All intellectual
-            property rights are reserved. You may access this content for
-            personal use, but you must not republish, sell, or redistribute any
-            material without prior written consent.
+            As a service provider, we are responsible for our own content on
+            these pages in accordance with general laws, pursuant to Section 7,
+            Paragraph 1 of the TMG. However, according to Sections 8 to 10 TMG,
+            as a service provider, we are not obligated to monitor third-party
+            information transmitted or stored, or to investigate circumstances
+            indicating illegal activity. The obligations to remove or block the
+            use of information in accordance with general laws remain
+            unaffected. However, liability in this regard is only possible from
+            the moment we become aware of a concrete violation of the law. If we
+            become aware of corresponding legal violations, we will immediately
+            remove this content.
           </p>
         </div>
         <div className="my-4">
           <p className="mt-4 lg:mt-8 py-2 border-b border-sky-900/30 text-lg lg:text-xl text-sky-950">
-            User Responsibilities
+            Responsibility for Links
           </p>
           <p>
-            By using this website, you agree to use it only for lawful purposes.
-            You must not use this website in any way that causes or may cause
-            damage to the website or impair the availability or accessibility of
-            the website.
+            Our offer contains links to external third-party websites, over
+            whose content we have no influence. Therefore, we cannot assume any
+            responsibility for this external content. The respective provider or
+            operator of the pages is always responsible for the content of the
+            linked pages. Linked pages were checked for possible legal
+            violations at the time of linking. No illegal content was apparent
+            at the time of linking. However, a permanent control of the content
+            of the linked pages is not reasonable without concrete evidence of
+            an infringement. If we become aware of legal violations, we will
+            immediately remove such links.
           </p>
         </div>
         <div className="my-4">
           <p className="mt-4 lg:mt-8 py-2 border-b border-sky-900/30 text-lg lg:text-xl text-sky-950">
-            Limitation of Liability
+            Copyright
           </p>
           <p>
-            Salloum Company will not be held liable for any damages arising out
-            of or in connection with the use of this website. This includes,
-            without limitation, direct, indirect, incidental, or consequential
-            damages.
-          </p>
-        </div>
-
-        <div className="my-4 mb-10">
-          <p className="mt-4 lg:mt-8 py-2 border-b border-sky-900/30 text-lg lg:text-xl text-sky-950">
-            Changes to Terms and Conditions
-          </p>
-          <p>
-            Salloum Company reserves the right to revise these terms and
-            conditions at any time. By using this website, you agree to be bound
-            by the current version of these terms and conditions.
+            The contents and works on these pages created by the site operators
+            are subject to German copyright law. Reproduction, processing,
+            distribution, and any form of exploitation beyond the limits of
+            copyright law require the written consent of the respective author
+            or creator. Downloads and copies of this page are only permitted for
+            private, non-commercial use. If the content of this site was not
+            created by the operator, the copyrights of third parties are
+            respected. Third-party content is specifically marked as such. If
+            you notice any copyright infringement, we ask you to inform us. If
+            we become aware of legal violations, we will immediately remove such
+            content.
           </p>
         </div>
       </div>

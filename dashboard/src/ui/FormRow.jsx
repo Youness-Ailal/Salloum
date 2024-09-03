@@ -38,7 +38,7 @@ const Error = styled.span`
   margin-block: -1rem;
 `;
 
-function FormRow({ label, error, children }) {
+function FormRow({ label, error = null, children }) {
   return (
     <StyledFormRow>
       {label && <Label htmlFor={children.props.id}>{label}</Label>}

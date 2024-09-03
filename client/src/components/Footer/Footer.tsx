@@ -1,5 +1,5 @@
 import logo from "@/assets/logo.png";
-import { BsFacebook, BsLinkedin } from "react-icons/bs";
+import { BsFacebook, BsLinkedin, BsYoutube } from "react-icons/bs";
 
 import { ImLocation, ImPhone } from "react-icons/im";
 import { IoMdMail } from "react-icons/io";
@@ -74,6 +74,13 @@ function Footer() {
             target="_blank"
             rel="noopener noreferrer">
             <BsLinkedin />
+          </a>
+          <a
+            className="text-3xl"
+            href="https://www.youtube.com"
+            target="_blank"
+            rel="noopener noreferrer">
+            <BsYoutube />
           </a>
         </div>
       </div>

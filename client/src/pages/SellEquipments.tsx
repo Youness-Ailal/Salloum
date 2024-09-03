@@ -169,8 +169,7 @@ function SellEquipments() {
               id={"price"}
               // type="number"
               inputMode="numeric"
-              placeholder="Your Best Price"
-              required
+              placeholder="Your Best Price (optional)"
             />
             <Input
               id={"details"}

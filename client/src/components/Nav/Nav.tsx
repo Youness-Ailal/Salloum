@@ -6,7 +6,35 @@ import { useEffect, useState } from "react";
 import { IoBagOutline } from "react-icons/io5";
 import { useQuotesContext } from "@/context/QuotesProvider";
 import QuotesDrawer from "../Quotes/QuotesDrawer";
+import { FranceIcon } from "@/assets/icons/FranceIcon";
+import { GermanyIcon } from "@/assets/icons/GermanyIcon";
+import { EnglishFlag } from "@/assets/icons/EnglishFlag";
+import Select from "react-select";
+import CustomSelect from "../ui/CustomSelect";
+import { useTranslation } from "react-i18next";
+interface OptionType {
+  value: string;
+  label: JSX.Element;
+  icon: JSX.Element;
+}
 
+export const options: OptionType[] = [
+  {
+    value: "fr",
+    label: <FranceIcon className="text-xl" />,
+    icon: <FranceIcon />,
+  },
+  {
+    value: "de",
+    label: <GermanyIcon className="text-xl" />,
+    icon: <GermanyIcon />,
+  },
+  {
+    value: "en",
+    label: <EnglishFlag className="text-xl" />,
+    icon: <EnglishFlag />,
+  },
+];
 type link = {
   name: string;
   path: string;
@@ -17,7 +45,7 @@ export const links: link[] = [
     path: "/equipments",
   },
   {
-    name: "Sell Equipments",
+    name: "Sell Your Equipments",
     path: "/sell-equipments",
   },
   {
@@ -30,7 +58,29 @@ export const links: link[] = [
   },
 ];
 function Nav() {
+  const { t, i18n } = useTranslation(["translate"]);
+  const links: link[] = [
+    {
+      name: t("translate:equipments_to_buy"),
+      path: "/equipments",
+    },
+    {
+      name: t("translate:sell_your_equipments"),
+      path: "/sell-equipments",
+    },
+    {
+      name: t("translate:services"),
+      path: "/services",
+    },
+    {
+      name: t("translate:contact"),
+      path: "/contact",
+    },
+  ];
   const [showQuote, setShowQuote] = useState(false);
+  function handleLanguageChange(lng: "fr" | "en" | "de") {
+    i18n.changeLanguage(lng.value);
+  }
   useEffect(() => {
     if (showQuote) {
       document.body.style.overflow = "hidden";
@@ -55,7 +105,14 @@ function Nav() {
       className={`max-w-[1400px] mx-auto p-3 px-4 border-b border-white ${
         scrollY > 100 && "bg-sky-950/80 backdrop-blur-sm "
       }`}>
-      <div className="container mx-auto w-full flex gap-6 justify-end text-white mb-2 text-sm">
+      <div className="container mx-auto w-full  flex gap-6 justify-end items-start text-white mb-2 text-sm">
+        <div className="flex items-start gap-2">
+          <CustomSelect
+            //@ts-ignore
+            onChange={handleLanguageChange}
+            options={options}
+          />
+        </div>
         <a href="mailto:contact@salloumcompany.com" className="hover:underline">
           contact@salloumcompany.com
         </a>
@@ -90,7 +147,7 @@ function Nav() {
             <span className="text-xl">
               <IoBagOutline />
             </span>
-            Quotes ({quotes.length})
+            ({quotes.length})
           </Button>
         </div>
       </header>

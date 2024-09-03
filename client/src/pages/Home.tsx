@@ -11,9 +11,12 @@ import CantFind from "@/components/ui/CantFind";
 import Brands from "@/components/ui/Brands";
 import SellEquiBanner from "@/components/Equipments/SellEquiBanner";
 import useLayout from "@/data/useLayout";
+import { useTranslation } from "react-i18next";
 
 function Home() {
   const { isLoading, layout } = useLayout();
+  const { t } = useTranslation(["translate"]);
+
   //@ts-ignore
   const banner = layout?.filter(item => item?.type === "banner")[0];
   return (
@@ -21,31 +24,27 @@ function Home() {
       <MainLayout>
         <main className="text-white flex items-center justify-start flex-grow container mx-auto">
           <div className="flex-col gap-4 p-4 xl:p-32">
-            <h1 className="text-xl lg:text-2xl font-bold text-cyan-400 tracking-widest">
-              SALLOUM COMPANY
+            <h1 className="text-xl lg:text-2xl font-bold text-cyan-400 tracking-widest uppercase">
+              {t("translate:header.title")}
             </h1>
             <h2 className="text-3xl xl:text-5xl font-semibold mt-4 lg:mt-6 tracking-wide">
-              Your Sustainable Industrial Source
+              {t("translate:header.subtitle")}
               <p className="mt-2 lg:mt-3 relative z-50">
-                For{" "}
-                <strong>
-                  High Quality
-                  <span className="absolute left-0 -bottom-5 -z-10 scale-75 hidden sm:block ">
-                    <UnderLine />
-                  </span>
-                </strong>{" "}
-                Equipment !
+                {t("translate:header.description")}
+                <span className="absolute left-0 -bottom-5 -z-10 scale-75 hidden sm:block ">
+                  <UnderLine />
+                </span>
               </p>
             </h2>
             <div className="flex flex-wrap items-center gap-4 xl:gap-6 mt-16 xl:mt-24">
               <Button as="link" to="/equipments">
-                Buy Equipment
+                {t("translate:buy_equipments")}
                 <span>
                   <BiPurchaseTag />
                 </span>
               </Button>
               <Button as="link" variant="outline" to="sell-equipments">
-                Sell Equipment
+                {t("translate:sell_your_equipments")}
                 <span className="-rotate-45">
                   <BsArrowDownCircle />
                 </span>

@@ -1,3 +1,4 @@
+import { WhatsappIcon } from "@/assets/icons/WhatsappIcon";
 import MobileNav from "@/components/Nav/MobileNav";
 import Nav from "@/components/Nav/Nav";
 import { cn } from "@/lib/utils";
@@ -5,6 +6,7 @@ import { addPageView } from "@/services/api";
 import { getCountry } from "@/utils/helpers";
 import { differenceInHours } from "date-fns";
 import { useEffect } from "react";
+import { createPortal } from "react-dom";
 //@ts-ignore
 import Headroom from "react-headroom";
 import { useMediaQuery } from "react-responsive";
@@ -48,20 +50,35 @@ function MainLayout({ children, heightMobile = "80vh", height = "70vh" }) {
     window.scrollTo(0, 0);
   }, [url]);
   return (
-    <div className="flex flex-col relative">
-      <div
-        className={cn(`hero-bg flex flex-col`)}
-        style={{
-          minHeight: heightMobile,
-          //@ts-expect-error minWidth
-          ["@media (min-width: 1024px)"]: {
-            minHeight: height,
-          },
-        }}>
-        <Headroom style={{ zIndex: 99 }}>{NavHeader}</Headroom>
-        {children}
+    <>
+      <div className="flex flex-col relative">
+        <div
+          className={cn(`hero-bg flex flex-col`)}
+          style={{
+            minHeight: heightMobile,
+            //@ts-expect-error minWidth
+            ["@media (min-width: 1024px)"]: {
+              minHeight: height,
+            },
+          }}>
+          <Headroom style={{ zIndex: 99 }}>{NavHeader}</Headroom>
+          {children}
+        </div>
       </div>
-    </div>
+      {createPortal(
+        <div className="wh-fixed whatsapp-pulse ">
+          <a
+            href="https://wa.me/+33641994383"
+            className="items-center justify-center flex"
+            target="_blank">
+            <button>
+              <WhatsappIcon className="text-3xl translate-y-1" />
+            </button>
+          </a>
+        </div>,
+        document.body
+      )}
+    </>
   );
 }
 

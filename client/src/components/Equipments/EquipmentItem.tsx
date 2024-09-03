@@ -6,6 +6,7 @@ import { useQuotesContext } from "@/context/QuotesProvider";
 import { cn } from "@/lib/utils";
 import { BiMessage } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function EquipmentItem({
   equipment,
@@ -16,6 +17,7 @@ function EquipmentItem({
 }) {
   const { name, id, image, description, stock } = equipment;
   const navigate = useNavigate();
+  const { t } = useTranslation(["translate"]);
   const { quotes, addQuote, removeQuote } = useQuotesContext();
   const isInQuote = quotes.findIndex(item => item.id === id) !== -1;
 
@@ -63,7 +65,7 @@ function EquipmentItem({
           <button
             onClick={handleContact}
             className="text-sky-800 p-2 lg:p-3 border rounded-sm border-sky-700 font-semibold text-lg flex items-center gap-2">
-            CONTACT US
+            {t("contact_us")}
             <span className="font-bold text-2xl ml-auto">
               <BiMessage />
             </span>

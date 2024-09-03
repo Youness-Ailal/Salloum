@@ -11,6 +11,14 @@ import { DB } from "../firebase/config";
 import Button from "../ui/Button";
 import { useState } from "react";
 import { categories } from "../utils/constants";
+import Categories from "../features/equipments/Categories";
+import styled from "styled-components";
+const FlexItems = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+`;
 const dt = [
   {
     name: "Steam Boiler\nView Details",
@@ -193,7 +201,10 @@ function Equipments() {
       </Row>
 
       <Row>
-        <AddEquipment />
+        <FlexItems>
+          <AddEquipment />
+          <Categories />
+        </FlexItems>
         {/* <Button isLoading={loading} onClick={uploadData}>
           Upload All
         </Button> */}

@@ -8,6 +8,7 @@ import { Food } from "@/assets/icons/Food";
 import { Air } from "@/assets/icons/Air";
 import { Tool } from "@/assets/icons/Tool";
 import { Pumps } from "@/assets/icons/Pumps";
+import { useTranslation } from "react-i18next";
 const icons = {
   cooling: <Cooling />,
   generators: <Generators />,
@@ -19,9 +20,10 @@ const icons = {
 };
 
 function Categories() {
+  const { t } = useTranslation(["translate"]);
   return (
     <div className="">
-      <Header title1={"Check Our"} title2={"Top Categories"} />
+      <Header title1={t("translate:check")} title2={t("translate:our")} />
       <div className="flex flex-wrap gap-5 xl:gap-9 items-center justify-center mt-4 xl:mt-7">
         {categories?.map(item => (
           <Link
