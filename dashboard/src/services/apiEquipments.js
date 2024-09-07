@@ -45,10 +45,13 @@ export async function uploadImage(file) {
   if (file.size > 5 * 1024 * 1024) {
     throw new Error("Image size is larger than 5MB");
   }
+
   try {
     const storage = getStorage();
-    const storageRef = ref(storage, `${file?.name + idv4()}`);
-    const snapshot = await uploadBytes(storageRef, file);
+    const storageRef = ref(storage, idv4());
+    const snapshot = await uploadBytes(storageRef, file, {
+      contentType: file.type,
+    });
     const imageUrl = await getDownloadURL(snapshot.ref);
     return imageUrl;
   } catch (error) {
@@ -107,19 +110,51 @@ export async function deleteEquipment(id) {
   }
 }
 export async function updateEquipmentApi({
-  newEquipmentData,
-  oldImage,
-  newImage,
   id,
+  name,
+  isFeatured,
+  isActive,
+  category,
+  subcategory,
+  subsubcategory,
+  brand,
+  description,
+  stock,
+  condition,
+  imagesApi,
+  imageFiles,
 }) {
+  const imagesToDelete = imagesApi?.filter(item => item.delete);
   try {
-    const data = { ...newEquipmentData };
-
-    if (newImage) {
-      const url = await uploadImage(newImage);
-      await deleteMultipleImages([oldImage]);
-      data.image = url;
+    const data = {
+      name,
+      isFeatured,
+      isActive,
+      category,
+      subcategory,
+      subsubcategory,
+      brand,
+      description,
+      stock,
+      condition,
+    };
+    if (imagesToDelete.length) {
+      await deleteMultipleImages(imagesToDelete.map(item => item.image));
     }
+    let newImages;
+    if (imageFiles.length) {
+      newImages = await Promise.all(
+        imageFiles.map(item => uploadImage(item.file))
+      );
+    }
+    data.images = [
+      ...imagesApi.filter(item => !item.delete).map(item => item.image),
+      ...newImages,
+    ];
+    if (!imageFiles.length && !imagesApi.filter(item => !item.delete).length) {
+      throw new Error("Please upload some images");
+    }
+    console.log(data);
 
     const ref = doc(DB, "equipments", id);
     await updateDoc(ref, data);
@@ -143,21 +178,34 @@ export async function deleteBuyRequestApi(id) {
 }
 export async function addEquipment({
   name,
-  description,
-  imageFile,
-  category,
   isFeatured = false,
+  category,
+  subcategory,
+  subsubcategory,
+  brand,
+  description,
   stock,
+  imageFiles,
+  condition,
 }) {
-  const image = await uploadImage(imageFile);
+  if (!imageFiles.length) throw new Error("Please uplod some images");
+
+  const images = await Promise.all(
+    imageFiles.map(item => item.file).map(file => uploadImage(file))
+  );
+
   const data = {
     name,
-    image,
+    images,
     description,
     isActive: true,
     category,
     isFeatured,
+    subcategory,
+    subsubcategory,
+    brand,
     stock,
+    condition,
     createdAt,
     timestamp: new Date(),
   };
@@ -231,6 +279,27 @@ export async function getLayout() {
       ...doc.data(),
     }));
     return data;
+  } catch (error) {
+    throw new Error(error?.message);
+  }
+}
+export async function getCategories() {
+  try {
+    const res = await getDocs(collection(DB, "categories"));
+    const data = res.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    return data[0].categories;
+  } catch (error) {
+    throw new Error(error?.message);
+  }
+}
+export async function updateCategories(newData) {
+  try {
+    await updateDoc(doc(DB, "categories", "global-categories"), {
+      categories: newData,
+    });
   } catch (error) {
     throw new Error(error?.message);
   }

@@ -44,7 +44,7 @@ function EquipmentsTable() {
 
   return (
     <Menus>
-      <Table columns="0.8fr 2.2fr 1.2fr .5fr 1fr .5fr .4fr  .5fr">
+      <Table columns="0.7fr 1.6fr .7fr .5fr 1fr .8fr .4fr  .5fr">
         <Table.Header>
           <div></div>
           <div>Equipment</div>

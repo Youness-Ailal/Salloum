@@ -1,18 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../../ui/Button";
-import Modal from "../../ui/Modal";
+// import Modal from "../../ui/Modal";
 import CreateEquipmentForm from "./CreateEquipmentForm";
 
 function AddEquipment() {
+  const navigate = useNavigate();
+  const goToAdd = () => navigate("/equipments/new");
   return (
     <div>
-      <Modal>
-        <Modal.Open opens="equipment-form">
-          <Button>Add new equipment</Button>
-        </Modal.Open>
-        <Modal.Window name="equipment-form">
-          <CreateEquipmentForm />
-        </Modal.Window>
-      </Modal>
+      <Button onClick={goToAdd}>Add new equipment</Button>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import { getCountry } from "@/utils/helpers";
 import { differenceInHours } from "date-fns";
 import { useEffect } from "react";
 //@ts-ignore
-import Headroom from "react-headroom";
+// import Headroom from "react-headroom";
 import { useMediaQuery } from "react-responsive";
 
 //@ts-expect-error children
@@ -58,7 +58,8 @@ function MainLayout({ children, heightMobile = "80vh", height = "70vh" }) {
             minHeight: height,
           },
         }}>
-        <Headroom style={{ zIndex: 99 }}>{NavHeader}</Headroom>
+        {/* <Headroom style={{ zIndex: 99 }}>{NavHeader}</Headroom> */}
+        {NavHeader}
         {children}
       </div>
     </div>

@@ -8,8 +8,7 @@ export function useDeleteEquipment() {
   const { status, mutate: deleteEquipment } = useMutation({
     mutationFn: deleteEquipmentapi,
     onSuccess: () => {
-      toast.success("Equipment successfully deleted");
-
+      toast.success("Equipment successfully deleted!");
       queryClient.invalidateQueries({
         queryKey: ["equipments"],
       });
