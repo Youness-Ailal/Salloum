@@ -9,7 +9,6 @@ import QuotesDrawer from "../Quotes/QuotesDrawer";
 import { FranceIcon } from "@/assets/icons/FranceIcon";
 import { GermanyIcon } from "@/assets/icons/GermanyIcon";
 import { EnglishFlag } from "@/assets/icons/EnglishFlag";
-import Select from "react-select";
 import CustomSelect from "../ui/CustomSelect";
 import { useTranslation } from "react-i18next";
 interface OptionType {
@@ -57,7 +56,7 @@ export const links: link[] = [
     path: "/contact",
   },
 ];
-function Nav() {
+function Nav({ scrollYValue = 100 }) {
   const { t, i18n } = useTranslation(["translate"]);
   const links: link[] = [
     {
@@ -79,6 +78,7 @@ function Nav() {
   ];
   const [showQuote, setShowQuote] = useState(false);
   function handleLanguageChange(lng: "fr" | "en" | "de") {
+    //@ts-ignore
     i18n.changeLanguage(lng.value);
   }
   useEffect(() => {
@@ -102,23 +102,23 @@ function Nav() {
 
   return (
     <div
-      className={`max-w-[1400px] mx-auto p-3 px-4 border-b border-white ${
-        scrollY > 100 && "bg-sky-950/80 backdrop-blur-sm "
+      className={`max-w-[1600px] mx-auto py-3 px-4 border-b border-white ${
+        scrollY > scrollYValue && "bg-sky-950/80 backdrop-blur-sm "
       }`}>
       <div className="container mx-auto w-full  flex gap-6 justify-end items-start text-white mb-2 text-sm">
-        <div className="flex items-start gap-2">
-          <CustomSelect
-            //@ts-ignore
-            onChange={handleLanguageChange}
-            options={options}
-          />
-        </div>
         <a href="mailto:contact@salloumcompany.com" className="hover:underline">
           contact@salloumcompany.com
         </a>
         <a href="tel:+33 6 41 99 43 83" className="hover:underline">
           +33 6 41 99 43 83
         </a>
+        <div className="flex items-start gap-2 z-50 -translate-y-2">
+          <CustomSelect
+            //@ts-ignore
+            onChange={handleLanguageChange}
+            options={options}
+          />
+        </div>
       </div>
       <header className="flex gap-4 items-center">
         <Link to="/" className="xl:mr-2">

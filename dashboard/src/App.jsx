@@ -17,6 +17,9 @@ import Equipments from "./pages/Equipments";
 import PurchaseRequests from "./pages/PurchaseRequests";
 import SellRequests from "./pages/SellRequests";
 import Contacts from "./pages/Contacts";
+import NewEquipment from "./pages/NewEquipment";
+import UpdateCategories from "./pages/UpdateCategories";
+import EditEquipment from "./pages/EditEquipment";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -44,6 +47,12 @@ function App() {
               <Route index element={<Navigate replace to="dashboard" />} />
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="equipments" element={<Equipments />} />
+              <Route
+                path="equipments/categories"
+                element={<UpdateCategories />}
+              />
+              <Route path="equipments/new" element={<NewEquipment />} />
+              <Route path="equipments/edit" element={<EditEquipment />} />
               <Route path="users" element={<Users />} />
               <Route path="layout" element={<Settings />} />
               <Route path="inbox" element={<Contacts />} />

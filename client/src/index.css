@@ -273,3 +273,12 @@ button.wh-ap-btn::before {
     opacity: 0;
   }
 }
+
+.formkit-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: theme(colors.sky.700) !important;
+  border-radius: 6px;
+  opacity: 0.8 !important;
+}

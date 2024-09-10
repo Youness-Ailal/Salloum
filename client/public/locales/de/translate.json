@@ -2,7 +2,7 @@
   "contact_email": "contact@salloumcompany.com",
   "phone_number": "+33 6 41 99 43 83",
   "company_name": "Salloum company",
-  "equipments_to_buy": "Zu Kaufende Ausrüstungen",
+  "equipments_to_buy": "Produkte",
   "sell_your_equipments": "Verkaufen Sie Ihre Ausrüstungen",
   "services": "Dienstleistungen",
   "contact": "Kontakt",
@@ -11,33 +11,12 @@
   "explore_our_equipments": "Entdecken Sie Unsere Ausrüstungen",
   "filter_by_category": "NACH KATEGORIE FILTERN",
   "all_items": "Alle Artikel",
-  "contact_us": "KONTAKTIEREN SIE UNS",
+  "contact_us": "Kontaktieren Sie uns",
   "cant_find_equipment": "KÖNNEN SIE DIE BENÖTIGTE AUSRÜSTUNG NICHT FINDEN?",
 
   "questions": "FRAGEN",
   "answers": "& ANTWORTEN",
-  "faq": {
-    "main_activities": "Was sind die Hauptaktivitäten von Salloum Company?",
-    "main_activities_answer": "Salloum Company ist auf den Verkauf, den Kauf und den Wiederverkauf von gebrauchten Industrieanlagen spezialisiert. Wir bieten Verkaufs-, Kauf-, Vermittlungs- und Konsignationsdienste für kürzlich gebrauchte Anlagen, die in verschiedenen industriellen Prozessen verwendet werden.",
-    "types_of_equipment": "Welche Arten von Industrieanlagen verkaufen Sie?",
-    "types_of_equipment_answer": "Wir bieten eine breite Palette von gebrauchten Industrieanlagen an, einschließlich Maschinen, Ausrüstungen und kompletten Einheiten, die alle industriellen Sektoren abdecken.",
-    "how_to_purchase": "Wie kann ich Ausrüstungen bei Salloum Company kaufen?",
-    "how_to_purchase_answer": "Um Ausrüstungen zu kaufen, können Sie unseren Online-Katalog konsultieren, uns direkt für eine persönliche Beratung kontaktieren oder mit einem unserer Experten sprechen, die 24/7 verfügbar sind.",
-    "buy_used_equipment": "Kauft Salloum Company gebrauchte Industrieanlagen?",
-    "buy_used_equipment_answer": "Ja, wir kaufen auch gebrauchte Industrieanlagen. Wenn Sie Maschinen oder Ausrüstungen zu verkaufen haben, kontaktieren Sie uns für eine Bewertung und ein Angebot.",
-    "brokerage_services": "Bieten Sie Vermittlungsdienste für Industrieanlagen an?",
-    "brokerage_services_answer": "Ja, wir bieten Vermittlungsdienste an, um den Verkauf und Kauf von Industrieanlagen zwischen verschiedenen Parteien zu erleichtern.",
-    "advantages_of_buying": "Welche Vorteile hat der Kauf von gebrauchten Anlagen bei Salloum Company?",
-    "advantages_of_buying_answer": "Wenn Sie bei uns kaufen, erhalten Sie schnellen Zugang zu leistungsstarken Anlagen, sparen Kosten im Vergleich zu neuen Anlagen und erhalten 24/7 Expertenunterstützung.",
-    "countries_active": "In wie vielen Ländern ist Salloum Company tätig?",
-    "countries_active_answer": "Salloum Company hat eine internationale Reichweite mit Aktivitäten in über 35 Ländern.",
-    "type_of_support": "Welche Art von Unterstützung bieten Sie an?",
-    "type_of_support_answer": "Wir bieten eine Expertenunterstützung, die 24/7 verfügbar ist, um all Ihre Fragen zu beantworten und Ihnen bei Ihren Käufen und Verkäufen von Industrieanlagen zu helfen.",
-    "visit_warehouse": "Kann ich Ihr Lager besuchen, um die verfügbaren Anlagen zu besichtigen?",
-    "visit_warehouse_answer": "Ja, wir ermutigen unsere Kunden, unser Lager zu besuchen, um die verfügbaren Anlagen zu inspizieren. Bitte kontaktieren Sie uns, um einen Termin zu vereinbaren.",
-    "get_appraisal": "Wie erhalte ich eine Bewertung für meine gebrauchten Industrieanlagen?",
-    "get_appraisal_answer": "Sie können eine Bewertung erhalten, indem Sie uns direkt kontaktieren. Unsere Experten bewerten Ihre Anlagen und unterbreiten Ihnen ein wettbewerbsfähiges Angebot."
-  },
+
   "salloum_logo": "salloum logo",
   "buy_equipments": "Ausrüstungen Kaufen",
   "sell_equipments": "Verkaufen Sie Ihre Ausrüstungen",
@@ -62,5 +41,104 @@
   "browse": "STÖBERN SIE UNSERE",
   "our_equipments": "FEATURED AUSSTATTUNG",
   "check": "ÜBERPRÜFEN SIE UNSERE",
-  "top": "TOP-KATEGORIEN"
+  "top": "TOP-KATEGORIEN",
+  "stock_out": "Nicht auf Lager",
+  "stock_in": "Auf Lager",
+  "get_quote": "Angebot erhalten",
+  "description": "Beschreibung",
+  "technical": "Technische Details",
+  "subscribe": "Abonnieren Sie unseren Newsletter",
+  "new": "Neu",
+  "used": "Gebraucht",
+  "refurbished": "Generalüberholt",
+  "by_category": "NACH KATEGORIE FILTERN",
+  "by_condition": "NACH ZUSTAND FILTERN",
+  "by_sub": "NACH UNTERKATEGORIE FILTERN",
+  "by_subSub": "NACH UNTER-UNTERKATEGORIE FILTERN",
+  "our_services": "UNSERE DIENSTLEISTUNGEN",
+  "request_quote": "Angebot Anfordern",
+  "looking_sell": "Möchten Sie Ihre Ausrüstung verkaufen? Füllen Sie einfach dieses Formular aus, und wir werden uns in Kürze bei Ihnen melden.",
+  "services_beyond": "Neben dem Handel mit gebrauchtem Industrieequipment geht die Salloum Company noch einen Schritt weiter, indem sie zusätzliche Dienstleistungen anbietet, um einen reibungslosen und effizienten Ablauf des gesamten Kauf- oder Verkaufsprozesses zu gewährleisten. Unten können Sie einige der von uns angebotenen Dienstleistungen erkunden, und wir stehen Ihnen auch für andere Anliegen zur Verfügung. Zögern Sie nicht, uns per E-Mail mit Ihren Anfragen zu kontaktieren, und wir sind bestrebt, eine Lösung zu finden, die Ihren Erwartungen entspricht.",
+  "dismantling": "Demontage",
+  "sales": "Verkauf",
+  "transport": "Transport",
+  "purchasing": "Einkauf",
+  "by_status": "Nach Status filtern",
+  "faq": [
+    {
+      "question": "Was sind die Hauptaktivitäten von Salloum Company?",
+      "answer": "Salloum Company ist auf den Verkauf, Kauf und Weiterverkauf von gebrauchten Industrieanlagen spezialisiert. Wir bieten Verkaufs-, Kauf-, Makler- und Konsignationsdienste für neuwertige Gebrauchtgeräte an, die in verschiedenen industriellen Prozessen eingesetzt werden."
+    },
+    {
+      "question": "Kümmert sich Ihr Unternehmen um die Exportdokumente für den Zoll?",
+      "answer": "Ja, unser Unternehmen kümmert sich um die Exportdokumente und ist bei CargoX für Exporte nach Ägypten registriert."
+    },
+    {
+      "question": "Welche Arten von Industrieanlagen verkaufen Sie?",
+      "answer": "Wir bieten eine breite Palette an gebrauchten Industrieanlagen an, darunter Maschinen, Geräte und komplette Einheiten für alle industriellen Sektoren."
+    },
+    {
+      "question": "Wie kann ich Ausrüstungen bei Salloum Company kaufen?",
+      "answer": "Um Ausrüstungen zu kaufen, können Sie unseren Online-Katalog durchsuchen, uns direkt für eine persönliche Beratung kontaktieren oder einen unserer Experten, die rund um die Uhr verfügbar sind, sprechen."
+    },
+    {
+      "question": "Kauft Salloum Company gebrauchte Industrieanlagen?",
+      "answer": "Ja, wir kaufen auch gebrauchte Industrieanlagen. Wenn Sie Maschinen oder Geräte zu verkaufen haben, kontaktieren Sie uns für eine Bewertung und ein Angebot."
+    },
+    {
+      "question": "Bieten Sie Maklerdienste für Industrieanlagen an?",
+      "answer": "Ja, wir bieten Maklerdienste an, um den Verkauf und Kauf von Industrieanlagen zwischen verschiedenen Parteien zu erleichtern."
+    },
+    {
+      "question": "Welche Vorteile bietet der Kauf von Gebrauchtgeräten bei Salloum Company?",
+      "answer": "Wenn Sie bei uns kaufen, erhalten Sie schnellen Zugriff auf leistungsstarke Geräte, sparen Kosten im Vergleich zu neuen Geräten und erhalten einen 24/7-Expertensupport."
+    },
+    {
+      "question": "In wie vielen Ländern ist Salloum Company tätig?",
+      "answer": "Salloum Company ist international tätig und operiert in über 35 Ländern."
+    },
+    {
+      "question": "Welche Art von Unterstützung bieten Sie an?",
+      "answer": "Wir bieten einen 24/7-Expertensupport, der alle Ihre Fragen beantwortet und Ihnen beim Kauf und Verkauf von Industrieanlagen hilft."
+    },
+    {
+      "question": "Kann ich Ihr Lager besuchen, um die verfügbaren Geräte zu besichtigen?",
+      "answer": "Ja, wir ermutigen unsere Kunden, unser Lager zu besuchen, um die verfügbaren Geräte zu inspizieren. Bitte kontaktieren Sie uns, um einen Termin zu vereinbaren."
+    },
+    {
+      "question": "Wie bekomme ich eine Bewertung für meine gebrauchten Industrieanlagen?",
+      "answer": "Sie können eine Bewertung erhalten, indem Sie uns direkt kontaktieren. Unsere Experten bewerten Ihre Ausrüstung und unterbreiten Ihnen ein wettbewerbsfähiges Angebot."
+    }
+  ],
+  "always_welcome": "Sie sind jederzeit herzlich willkommen, uns zu besuchen, aber wir würden es begrüßen, wenn Sie im Voraus einen Termin vereinbaren könnten.",
+  "by_plane": "Mit dem Flugzeug / Zug",
+  "directions": "Sie können zum Flughafen Luxemburg, Flughafen Lothringen (Nancy/Metz) oder Flughafen Saarbrücken fliegen, und wir können Sie dort abholen.",
+  "can_reach": "Sie können uns an Wochentagen zwischen 08:00 und 17:00 Uhr oder per E-Mail erreichen.",
+  "send_an_email": "E-Mail senden",
+  "subscribe_now": "Jetzt abonnieren",
+  "your_details": "Ihre Angaben",
+  "first_name": "Vorname",
+  "last_name": "Nachname",
+  "email": "E-Mail",
+  "phone": "Telefon",
+  "enterprise": "Unternehmen",
+  "sector": "Sektor",
+  "message": "Nachricht",
+  "send_request": "Anfrage senden",
+  "selected_equipments": "Ausgewählte Ausrüstungen",
+  "full_name": "Vollständiger Name",
+  "product_name": "Produktname",
+  "your_best_price": "Ihr bester Preis",
+  "additional_details": "Zusätzliche Details",
+  "optional": "(optional)",
+  "click_to_upload_images": "Klicken Sie hier, um Bilder hochzuladen",
+  "max_file_size": "Maximale Dateigröße: 5MB",
+  "submit": "Einreichen",
+  "welcome_at": "Willkommen bei",
+  "welcome_text": "Salloum Company kauft und verkauft Verarbeitungsmaschinen, spezialisiert auf gebrauchte Ausrüstungen. Unser Sortiment an gebrauchten Produkten umfasst Produktionslinien und komplette Lebensmittelverarbeitungsanlagen für Fleisch, Fisch, Geflügel, Gemüse sowie vegetarische und vegane Produkte.",
+  "more_about_us": "Mehr über uns",
+  "sell_your_machines": "VERKAUFEN SIE IHRE MASCHINEN",
+  "whatsapp_instructions": "Scannen Sie den QR-Code oder klicken Sie hier, um einen WhatsApp-Chat mit unserem Bewertungsteam zu starten. Senden Sie uns Fotos Ihrer Maschinen, und wir melden uns bald bei Ihnen.",
+  "to_sell": "Sie haben eine Ausrüstung zu verkaufen",
+  "to_sell_text_1": "Wenn Sie eine Ausrüstung besitzen und uns verkaufen möchten, lassen Sie es uns wissen."
 }

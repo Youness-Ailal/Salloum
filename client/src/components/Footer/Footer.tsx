@@ -1,39 +1,53 @@
 import logo from "@/assets/logo.png";
+import { useTranslation } from "react-i18next";
 import { BsFacebook, BsLinkedin, BsYoutube } from "react-icons/bs";
 
 import { ImLocation, ImPhone } from "react-icons/im";
 import { IoMdMail } from "react-icons/io";
 import { Link } from "react-router-dom";
 function Footer() {
+  const { t } = useTranslation("translate");
+
   return (
     <footer className="bg-sky-950  h-full w-full mt-auto p-4">
       <div className="container mx-auto p-2 xl:p-6 flex gap-2 gap-y-6 flex-wrap xl:gap-10 justify-between border-b border-gray-100">
-        <Link to="/">
-          <img src={logo} alt="salloum logo" />
-        </Link>
+        <div>
+          <Link to="/">
+            <img src={logo} alt="salloum logo" />
+          </Link>
+          <div className="my-4">
+            <p className="text-white text-lg pb-4">{t("subscribe")}</p>
+            <a
+              className="uppercase py-2 tracking-widest px-4 bg-sky-700 text-center text-white w-full "
+              data-formkit-toggle="172432890a"
+              href="https://salloum-company.ck.page/172432890a">
+              {t("subscribe_now")}
+            </a>
+          </div>
+        </div>
         <div className="text-white text-lg flex flex-col gap-1 xl:gap-2">
           <Link className="hover:underline" to={"/equipments"}>
-            Buy Equipments
+            {t("buy_equipments")}
           </Link>
           <Link className="hover:underline" to={"/sell-equipments"}>
-            Sell Equipments
+            {t("sell_equipments")}
           </Link>
           <Link className="hover:underline" to={"/services"}>
-            Services
+            {t("services")}
           </Link>
         </div>
         <div className="text-white text-lg flex flex-col gap-1 xl:gap-2">
           <Link className="hover:underline" to={"/contact"}>
-            Contact us
+            {t("contact_us")}
           </Link>
           <Link className="hover:underline" to={"/about"}>
-            About us
+            {t("about_us")}
           </Link>
           <Link className="hover:underline" to={"/privacy"}>
-            Privacy Policy
+            {t("privacy_policy")}
           </Link>
           <Link className="hover:underline" to={"/terms"}>
-            Terms & Conditions
+            {t("terms_and_conditions")}
           </Link>
         </div>
         <div className="text-white text-lg flex flex-col gap-1 xl:gap-2">
@@ -60,23 +74,23 @@ function Footer() {
             Schlossbergstrasse 115, 66798 Wallerfangen, Deutschland
           </p>
         </div>
-        <div className="text-white text-lg flex gap-2 xl:gap-3">
+        <div className="text-white  self-start text-lg flex gap-2 xl:gap-3">
           <a
-            className="text-3xl"
+            className="text-3xl hover:text-sky-300"
             href="https://www.facebook.com/salloumcompany"
             target="_blank"
             rel="noopener noreferrer">
             <BsFacebook />
           </a>
           <a
-            className="text-3xl"
+            className="text-3xl hover:text-sky-300"
             href="https://www.linkedin.com"
             target="_blank"
             rel="noopener noreferrer">
             <BsLinkedin />
           </a>
           <a
-            className="text-3xl"
+            className="text-3xl hover:text-sky-300"
             href="https://www.youtube.com"
             target="_blank"
             rel="noopener noreferrer">
@@ -85,15 +99,12 @@ function Footer() {
         </div>
       </div>
       <div className="container mx-auto p-2 xl:p-4 flex gap-2 flex-wrap justify-between">
-        <p className="text-sm text-white">
-          Salloum Company {new Date().getFullYear()} &copy; - All rights
-          reserved
-        </p>
+        <p className="text-sm text-white">{t("footer_copyright")}</p>
         <a
           target="_blank"
           href="https://viralwave.agency/"
           className="text-sm text-white">
-          Created by ViralWave
+          {t("created_by")}
         </a>
       </div>
     </footer>

@@ -11,6 +11,7 @@ import NewQuote from "./pages/NewQuote";
 import SellEquipments from "./pages/SellEquipments";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import EquipmentPage from "./pages/EquipmentPage";
 
 function App() {
   const client = new QueryClient({
@@ -22,13 +23,14 @@ function App() {
   });
   return (
     <QueryClientProvider client={client}>
-      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+      <ReactQueryDevtools initialIsOpen={false} />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/*" element={<Page404 />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/equipments" element={<Equipments />} />
+          <Route path="/equipments/:id" element={<EquipmentPage />} />
           <Route path="/sell-equipments" element={<SellEquipments />} />
           <Route path="/services" element={<Services />} />
           <Route path="/about" element={<About />} />

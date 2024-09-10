@@ -2,7 +2,7 @@
   "contact_email": "contact@salloumcompany.com",
   "phone_number": "+33 6 41 99 43 83",
   "company_name": "Salloum company",
-  "equipments_to_buy": "Équipements à Acheter",
+  "equipments_to_buy": "Produits",
   "sell_your_equipments": "Vendez Vos Équipements",
   "services": "Services",
   "contact": "Contact",
@@ -11,37 +11,15 @@
   "explore_our_equipments": "Explorez Nos Équipements",
   "filter_by_category": "FILTRER PAR CATÉGORIE",
   "all_items": "Tous les Articles",
-  "contact_us": "CONTACTEZ-NOUS",
+  "contact_us": "Contactez-nous",
   "cant_find_equipment": "VOUS NE TROUVEZ PAS L'ÉQUIPEMENT DONT VOUS AVEZ BESOIN?",
 
   "questions": "QUESTIONS",
   "answers": "& RÉPONSES",
-  "faq": {
-    "main_activities": "Quelles sont les principales activités de Salloum Company?",
-    "main_activities_answer": "Salloum Company est spécialisée dans la vente, l'achat et la revente d'équipements industriels d'occasion. Nous offrons des services de vente, d'achat, de courtage et de consignation pour des équipements d'occasion récents utilisés dans divers processus industriels.",
-    "types_of_equipment": "Quels types d'équipements industriels vendez-vous?",
-    "types_of_equipment_answer": "Nous proposons une large gamme d'équipements industriels d'occasion, y compris des machines, des équipements et des unités complètes, couvrant tous les secteurs industriels.",
-    "how_to_purchase": "Comment puis-je acheter un équipement chez Salloum Company?",
-    "how_to_purchase_answer": "Pour acheter un équipement, vous pouvez consulter notre catalogue en ligne, nous contacter directement pour un conseil personnalisé ou parler à l'un de nos experts disponibles 24/7.",
-    "buy_used_equipment": "Salloum Company achète-t-elle des équipements industriels d'occasion?",
-    "buy_used_equipment_answer": "Oui, nous achetons également des équipements industriels d'occasion. Si vous avez des machines ou des équipements à vendre, contactez-nous pour une évaluation et une offre.",
-    "brokerage_services": "Offrez-vous des services de courtage pour les équipements industriels?",
-    "brokerage_services_answer": "Oui, nous offrons des services de courtage pour faciliter la vente et l'achat d'équipements industriels entre différentes parties.",
-    "advantages_of_buying": "Quels sont les avantages d'acheter des équipements d'occasion chez Salloum Company?",
-    "advantages_of_buying_answer": "Lorsque vous achetez chez nous, vous avez un accès rapide à des équipements performants, vous économisez sur les coûts par rapport aux équipements neufs, et vous bénéficiez d'un support d'experts disponible 24/7.",
-    "countries_active": "Dans combien de pays Salloum Company est-elle active?",
-    "countries_active_answer": "Salloum Company a une portée internationale, avec des opérations dans plus de 35 pays.",
-    "type_of_support": "Quel type de support offrez-vous?",
-    "type_of_support_answer": "Nous offrons un support expert disponible 24/7 pour répondre à toutes vos questions et vous aider dans vos achats et ventes d'équipements industriels.",
-    "visit_warehouse": "Puis-je visiter votre entrepôt pour voir les équipements disponibles?",
-    "visit_warehouse_answer": "Oui, nous encourageons nos clients à visiter notre entrepôt pour inspecter les équipements disponibles. Veuillez nous contacter pour prendre rendez-vous.",
-    "get_appraisal": "Comment puis-je obtenir une évaluation de mon équipement industriel d'occasion?",
-    "get_appraisal_answer": "Vous pouvez obtenir une évaluation en nous contactant directement. Nos experts évalueront votre équipement et vous fourniront une offre compétitive."
-  },
   "salloum_logo": "logo salloum",
   "buy_equipments": "Acheter des Équipements",
   "sell_equipments": "Vendez Vos Équipements",
-
+  "always_welcome": "Vous êtes toujours les bienvenus pour nous rendre visite, mais nous vous serions reconnaissants de bien vouloir prendre rendez-vous à l'avance.",
   "about_us": "À propos de nous",
   "privacy_policy": "Politique de Confidentialité",
   "terms_and_conditions": "Termes & Conditions",
@@ -62,5 +40,103 @@
   "cant_find_form": "formulaire de contact",
   "cant_find_do": "Nous ferons de notre mieux pour le trouver pour vous.",
   "check": "CONSULTEZ NOS",
-  "top": "TOP CATÉGORIES"
+  "top": "TOP CATÉGORIES",
+  "stock_out": "Rupture de stock",
+  "stock_in": "En stock",
+  "get_quote": "Obtenir un devis",
+  "description": "Description",
+  "technical": "Détails techniques",
+  "subscribe": "Abonnez-vous à notre newsletter",
+  "new": "Neuf",
+  "used": "Occasion",
+  "refurbished": "Réconditionné",
+  "by_category": "FILTRER PAR CATÉGORIE",
+  "by_condition": "FILTRER PAR CONDITION",
+  "by_sub": "FILTRER PAR SOUS-CATÉGORIE",
+  "by_subSub": "FILTRER PAR SOUS-SOUS-CATÉGORIE",
+  "our_services": "NOS SERVICES",
+  "request_quote": "Demander un Devis",
+  "looking_sell": "Vous cherchez à vendre votre équipement ? Remplissez simplement ce formulaire, et nous vous contacterons sous peu.",
+  "services_beyond": "Au-delà du commerce de matériel industriel d'occasion, Salloum Company va plus loin en offrant des services supplémentaires pour garantir une résolution fluide et efficace de l'ensemble du processus d'achat ou de vente. Vous pouvez découvrir ci-dessous certains des services que nous proposons, et nous restons également à votre disposition pour toute autre question. N'hésitez pas à nous contacter par email pour toute demande, et nous nous engageons à trouver une solution qui vous satisfera.",
+  "dismantling": "Démantèlement",
+  "sales": "Ventes",
+  "transport": "Transport",
+  "purchasing": "Achat",
+  "by_status": "Filtrer par statut",
+  "faq": [
+    {
+      "question": "Quelles sont les principales activités de Salloum Company ?",
+      "answer": "Salloum Company se spécialise dans la vente, l'achat et la revente d'équipements industriels d'occasion. Nous proposons des services de vente, d'achat, de courtage et de consignation pour des équipements d'occasion récents utilisés dans divers processus industriels."
+    },
+    {
+      "question": "Votre entreprise gère-t-elle les documents d'exportation avec les douanes ?",
+      "answer": "Oui, notre entreprise gère les documents d'exportation et est enregistrée auprès de CargoX pour les exportations vers l'Égypte."
+    },
+    {
+      "question": "Quels types d'équipements industriels vendez-vous ?",
+      "answer": "Nous proposons une large gamme d'équipements industriels d'occasion, notamment des machines, des équipements et des unités complètes, couvrant tous les secteurs industriels."
+    },
+    {
+      "question": "Comment puis-je acheter un équipement chez Salloum Company ?",
+      "answer": "Pour acheter un équipement, vous pouvez consulter notre catalogue en ligne, nous contacter directement pour des conseils personnalisés ou parler à l'un de nos experts disponibles 24/7."
+    },
+    {
+      "question": "Salloum Company achète-t-elle des équipements industriels d'occasion ?",
+      "answer": "Oui, nous achetons également des équipements industriels d'occasion. Si vous avez des machines ou des équipements à vendre, contactez-nous pour une évaluation et une offre."
+    },
+    {
+      "question": "Proposez-vous des services de courtage pour les équipements industriels ?",
+      "answer": "Oui, nous proposons des services de courtage pour faciliter la vente et l'achat d'équipements industriels entre différentes parties."
+    },
+    {
+      "question": "Quels sont les avantages d'acheter des équipements d'occasion chez Salloum Company ?",
+      "answer": "Lorsque vous achetez chez nous, vous bénéficiez d'un accès rapide à des équipements performants, vous économisez par rapport à des équipements neufs et vous recevez un support expert disponible 24/7."
+    },
+    {
+      "question": "Dans combien de pays Salloum Company est-elle active ?",
+      "answer": "Salloum Company a une portée internationale, avec des opérations dans plus de 35 pays."
+    },
+    {
+      "question": "Quel type de support proposez-vous ?",
+      "answer": "Nous offrons un support expert disponible 24/7 pour répondre à toutes vos questions et vous aider dans vos achats et ventes d'équipements industriels."
+    },
+    {
+      "question": "Puis-je visiter votre entrepôt pour voir les équipements disponibles ?",
+      "answer": "Oui, nous encourageons nos clients à visiter notre entrepôt pour inspecter les équipements disponibles. Veuillez nous contacter pour prendre rendez-vous."
+    },
+    {
+      "question": "Comment obtenir une évaluation de mon équipement industriel d'occasion ?",
+      "answer": "Vous pouvez obtenir une évaluation en nous contactant directement. Nos experts évalueront votre équipement et vous proposeront une offre compétitive."
+    }
+  ],
+  "by_plane": "En avion / train",
+  "directions": "Vous pouvez prendre un vol vers l'aéroport de Luxembourg, l'aéroport de Lorraine (Nancy/Metz) ou l'aéroport de Sarrebruck, et nous pouvons venir vous y chercher.",
+  "can_reach": "Vous pouvez nous contacter en semaine entre 08h00 et 17h00 ou par email.",
+  "send_an_email": "Envoyer un Email",
+  "subscribe_now": "Abonnez-vous maintenant",
+  "your_details": "Vos coordonnées",
+  "first_name": "Prénom",
+  "last_name": "Nom de famille",
+  "email": "Email",
+  "phone": "Téléphone",
+  "enterprise": "Entreprise",
+  "sector": "Secteur",
+  "message": "Message",
+  "send_request": "Envoyer la demande",
+  "selected_equipments": "Équipements sélectionnés",
+  "full_name": "Nom complet",
+  "product_name": "Nom du produit",
+  "your_best_price": "Votre meilleur prix",
+  "additional_details": "Détails supplémentaires",
+  "optional": "(optionnel)",
+  "click_to_upload_images": "Cliquez pour télécharger des images",
+  "max_file_size": "Taille de fichier max : 5 Mo",
+  "submit": "Soumettre",
+  "welcome_at": "Bienvenue chez",
+  "welcome_text": "Salloum Company achète et vend des machines de transformation, spécialisées dans l'équipement d'occasion. Notre gamme de produits d'occasion comprend des lignes de production et des équipements complets de transformation alimentaire pour la viande, le poisson, la volaille, les légumes ainsi que des produits végétariens et végan.",
+  "more_about_us": "En savoir plus sur nous",
+  "sell_your_machines": "VENDRE VOS MACHINES",
+  "whatsapp_instructions": "Scannez le code QR ou cliquez ici pour démarrer une conversation WhatsApp avec notre équipe d'évaluation. Envoyez-nous des photos de vos machines et nous vous répondrons bientôt.",
+  "to_sell": "Vous avez un équipement à vendre",
+  "to_sell_text_1": "Si vous possédez un équipement et souhaitez nous le vendre, faites-le nous savoir."
 }

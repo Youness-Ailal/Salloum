@@ -1,10 +1,10 @@
-import EquipmentItemSkeleton from "./EquipmentItemSkeleton";
+import Skeleton from "react-loading-skeleton";
 
 function EquipmentsSkeleton() {
   return (
-    <div className="grid auto-rows-max grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-4 lg:gap-5 mt-5 ">
+    <div className="flex flex-col gap-8">
       {Array.from({ length: 10 }).map((_, i) => (
-        <EquipmentItemSkeleton key={i} />
+        <Skeleton className="h-32 w-full lg:h-48" />
       ))}
     </div>
   );

@@ -4,11 +4,16 @@ import InfoBox, { infoBoxProps } from "@/components/ui/InfoBox";
 import Input from "@/components/ui/Input";
 import PageHeader from "@/components/ui/PageHeader";
 import useSendSellRequest from "@/data/useSendSellRequest";
-import { useState } from "react";
+import { RECAPTCHA_KEY } from "@/utils/constants";
+import { useRef, useState } from "react";
 import { BiEuro } from "react-icons/bi";
 import { BsTrash } from "react-icons/bs";
 import { GoAlert } from "react-icons/go";
 import { HiPhoto } from "react-icons/hi2";
+//@ts-ignore
+import ReCAPTCHA from "react-google-recaptcha";
+import { useTranslation } from "react-i18next";
+
 type fileType = {
   file: File;
   id: string;
@@ -17,6 +22,11 @@ type fileType = {
 function SellEquipments() {
   const { isLoading, sendRequest } = useSendSellRequest();
   const [infoBoxData, setInfoBoxData] = useState<infoBoxProps>();
+  const recaptchaRef = useRef(null);
+  const [captchaToken, setCaptchaToken] = useState("");
+  const handleCaptchaChange = (token: string) => {
+    setCaptchaToken(token);
+  };
   const clearInfoBox = () => setInfoBoxData({ type: "error", message: "" });
   const [sellData, setSellData] = useState({
     fullName: "",
@@ -27,7 +37,7 @@ function SellEquipments() {
     details: "",
   });
   const [images, setImages] = useState<fileType[]>([]);
-
+  const { t, i18n } = useTranslation("translate");
   const resetFields = () => {
     setSellData({
       fullName: "",
@@ -63,6 +73,10 @@ function SellEquipments() {
   //@ts-ignore
   function handleSubmit(e) {
     e.preventDefault();
+    if (!captchaToken) {
+      alert("Please complete the reCAPTCHA");
+      return;
+    }
     if (!images?.length) {
       setInfoBoxData({
         type: "error",
@@ -101,12 +115,9 @@ function SellEquipments() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <PageHeader title={"Sell Your Equipments"} />
+      <PageHeader title={t("sell_your_equipments")} />
       <div className=" container mx-auto p-2 py-5 lg:py-10">
-        <p className="text-lg text-sky-950 lg:text-xl">
-          Looking to sell your equipment? Just complete this form, and we’ll
-          reach out to you shortly.
-        </p>
+        <p className="text-lg text-sky-950 lg:text-xl">{t("looking_sell")}</p>
         <div className="my-2 flex flex-col lg:my-8">
           {infoBoxData?.message.length && (
             <InfoBox
@@ -125,7 +136,7 @@ function SellEquipments() {
                 setSellData(prev => ({ ...prev, fullName: e.target.value }))
               }
               id={"fullName"}
-              placeholder="Full name *"
+              placeholder={t("full_name") + " *"}
               required
             />
             <Input
@@ -134,7 +145,7 @@ function SellEquipments() {
               }
               value={sellData.productName}
               id={"productName"}
-              placeholder="Product name *"
+              placeholder={t("product_name") + " *"}
               required
             />
             <Input
@@ -143,7 +154,7 @@ function SellEquipments() {
               }
               value={sellData.email}
               id={"email"}
-              placeholder="Email *"
+              placeholder={t("email") + " *"}
               type="email"
               required
             />
@@ -153,7 +164,7 @@ function SellEquipments() {
               value={sellData.phone}
               id={"phone"}
               as="phone"
-              placeholder="Phone *"
+              placeholder={t("phone") + " *"}
               required
             />
             <Input
@@ -169,7 +180,7 @@ function SellEquipments() {
               id={"price"}
               // type="number"
               inputMode="numeric"
-              placeholder="Your Best Price (optional)"
+              placeholder={t("your_best_price") + " " + t("optional")}
             />
             <Input
               id={"details"}
@@ -177,7 +188,7 @@ function SellEquipments() {
               onChange={e =>
                 setSellData(prev => ({ ...prev, details: e.target.value }))
               }
-              placeholder="Additional details (optional)"
+              placeholder={t("additional_details") + " " + t("optional")}
             />
           </form>
           <div className="my-2 flex flex-col lg:my-4">
@@ -188,11 +199,11 @@ function SellEquipments() {
               className="w-full text-sky-950/95 flex items-center justify-center flex-col gap-1 uppercase font-medium cursor-pointer lg:text-lg min-h-20 lg:min-h-32 mt-2 bg-sky-50/50 border border-gray-400 rounded-sm"
               htmlFor="images">
               <HiPhoto className="text-2xl lg:text-4xl" />
-              <p>Click To Upload Images</p>
+              <p>{t("click_to_upload_images")}</p>
               <p className="text-sm flex items-center gap-1 normal-case">
                 {" "}
                 <GoAlert />
-                Max file size : 5MB
+                {t("max_file_size")}
               </p>
               <input
                 onChange={addImage}
@@ -225,10 +236,18 @@ function SellEquipments() {
                 );
               })}
             </div>
+            <div>
+              <ReCAPTCHA
+                hl={i18n.language || "en"}
+                ref={recaptchaRef}
+                sitekey={RECAPTCHA_KEY}
+                onChange={handleCaptchaChange}
+              />
+            </div>
           </div>
           <div className="mt-2 lg:mt-4 ml-auto w-full flex justify-end">
             <Button isLoading={isLoading} form="contact">
-              Submit
+              {t("submit")}
             </Button>
           </div>
         </div>

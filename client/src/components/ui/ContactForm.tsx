@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
 import { useSendMessage } from "@/data/useSendMessage";
 import InfoBox, { infoBoxProps } from "./InfoBox";
+//@ts-ignore
+import ReCAPTCHA from "react-google-recaptcha";
+import { RECAPTCHA_KEY } from "@/utils/constants";
+import { useTranslation } from "react-i18next";
 
 function ContactForm() {
   const [ContactValues, setContactValues] = useState({
@@ -14,7 +18,13 @@ function ContactForm() {
     sector: "",
     message: "",
   });
+  const { t, i18n } = useTranslation("translate");
   const [infoBoxData, setInfoBoxData] = useState<infoBoxProps>();
+  const recaptchaRef = useRef(null);
+  const [captchaToken, setCaptchaToken] = useState("");
+  const handleCaptchaChange = (token: string) => {
+    setCaptchaToken(token);
+  };
   const clearInfoBox = () => setInfoBoxData({ type: "error", message: "" });
   const clearForm = () =>
     setContactValues({
@@ -30,6 +40,10 @@ function ContactForm() {
   //@ts-ignore
   const handleSubmit = e => {
     e.preventDefault();
+    if (!captchaToken) {
+      alert("Please complete the reCAPTCHA");
+      return;
+    }
     send(
       { ...ContactValues },
       {
@@ -70,7 +84,7 @@ function ContactForm() {
           }
           value={ContactValues.firstName}
           id={"first-name"}
-          placeholder="First name *"
+          placeholder={t("first_name")}
           required
         />
         <Input
@@ -79,7 +93,7 @@ function ContactForm() {
           }
           value={ContactValues.lastName}
           id={"last-name"}
-          placeholder="Last name *"
+          placeholder={t("last_name")}
           required
         />
         <Input
@@ -88,7 +102,7 @@ function ContactForm() {
           }
           value={ContactValues.email}
           id={"email"}
-          placeholder="Email *"
+          placeholder={t("email")}
           type="email"
           required
         />
@@ -100,7 +114,7 @@ function ContactForm() {
           value={ContactValues.phone}
           id={"phone"}
           as="phone"
-          placeholder="Phone *"
+          placeholder={t("phone")}
           required
         />
         <Input
@@ -109,7 +123,7 @@ function ContactForm() {
           }
           value={ContactValues.entreprise}
           id={"enterprise"}
-          placeholder="Enterprise"
+          placeholder={t("enterprise")}
         />
         <Input
           onChange={e =>
@@ -117,7 +131,7 @@ function ContactForm() {
           }
           value={ContactValues.sector}
           id={"sector"}
-          placeholder="Sector"
+          placeholder={t("sector")}
         />
         <div className="col-span-full">
           <Input
@@ -128,14 +142,22 @@ function ContactForm() {
             id={"message"}
             as="textarea"
             className="min-h-20 lg:min-h-32"
-            placeholder="Message"
+            placeholder={t("message")}
             required
           />
         </div>
       </form>
+      <div className="mt-4">
+        <ReCAPTCHA
+          hl={i18n.language || "fr"}
+          ref={recaptchaRef}
+          sitekey={RECAPTCHA_KEY}
+          onChange={handleCaptchaChange}
+        />
+      </div>
       <div className="mt-2 lg:mt-4 ml-auto w-full flex justify-end">
         <Button isLoading={isSending} form="contact">
-          Send Message
+          {t("submit")}
         </Button>
       </div>
     </div>

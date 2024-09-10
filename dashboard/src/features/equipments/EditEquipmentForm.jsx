@@ -8,20 +8,34 @@ import FormRow from "../../ui/FormRow";
 
 import { useCreateEquipment } from "./useCreateEquipment";
 import Select from "../../ui/Select";
+import { categories as cates } from "../../utils/constants";
 import { useEffect, useState } from "react";
+import { useUpdateEquipment } from "./useUpdateEquipment";
 import { useCategories } from "./useCategories";
 import uuid4 from "uuid4";
 import { BiTrash } from "react-icons/bi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useEquipments } from "./useEquipments";
+import Spinner from "../../ui/Spinner";
 
-function CreateEquipmentForm() {
+function EditEquipmentForm() {
   const { categories: catesApi, isLoading } = useCategories();
+  const { equipments, isLoading: equipsLoading } = useEquipments();
   const navigate = useNavigate();
-
-  const { isCreating, createEquipment } = useCreateEquipment();
-  const [category, setcategory] = useState(catesApi?.at(0)?.category);
+  const [searchParam] = useSearchParams();
+  const equipId = searchParam.get("id");
+  useEffect(() => {
+    if (!equipId) navigate("/equipments");
+  }, [equipId]);
+  const equipmentToEdit = equipments?.find(item => item.id === equipId);
+  const { updateEquipment, isUpdating } = useUpdateEquipment();
+  const [category, setcategory] = useState(equipmentToEdit?.category);
   const [images, setImages] = useState([]);
   const [imageFiles, setImageFiles] = useState([]);
+  const [imagesApi, setImagesApi] = useState(
+    equipmentToEdit?.images.map(item => ({ image: item, delete: false })) || []
+  );
+
   function addImage(file) {
     const fileReader = new FileReader();
     setImageFiles(prev => [...prev, { file, id: uuid4(), isNew: true }]);
@@ -33,11 +47,32 @@ function CreateEquipmentForm() {
       ]);
     };
   }
-  function removeImage(id) {
+  function removeImage(id, isApi) {
+    if (isApi) {
+      setImagesApi(prev => [
+        ...prev.map(item => {
+          if (item.image === id) return { ...item, delete: true };
+          return item;
+        }),
+      ]);
+      return;
+    }
     setImageFiles(prev => [...prev.filter(item => item.id !== id)]);
     setImages(prev => [...prev.filter(item => item.id !== id)]);
   }
 
+  useEffect(() => {
+    if (!isLoading && !equipsLoading) {
+      setcategory(equipmentToEdit?.category);
+      setSubcategory(equipmentToEdit?.subcategory);
+      setSubsubcategory(equipmentToEdit?.subsubcategory);
+      setImagesApi(
+        equipmentToEdit?.images.map(
+          item => ({ image: item, delete: false } || [])
+        )
+      );
+    }
+  }, [isLoading, equipsLoading]);
   const categories = catesApi?.map(item => ({
     value: item.category,
     label: item.category,
@@ -54,56 +89,68 @@ function CreateEquipmentForm() {
       value: item,
       label: item,
     }));
-  const [subcategory, setSubcategory] = useState(
-    catesApi?.at(0)?.subCategories[0]
-  );
+  const [subcategory, setSubcategory] = useState(equipmentToEdit?.subcategory);
   const [subsubcategory, setSubsubcategory] = useState(
-    catesApi?.at(0)?.subSubCategories[0]
+    equipmentToEdit?.subsubcategory
   );
-  useEffect(() => {
-    if (!isLoading) {
-      setcategory(catesApi[0].category);
-      setSubcategory(catesApi?.at(0)?.subCategories[0]);
-      setSubsubcategory(catesApi?.at(0)?.subSubCategories[0]);
-    }
-  }, [isLoading]);
-  const [isFeatured, setIsFeatured] = useState("No");
-  const [stock, setStock] = useState("In stock");
-  const [condition, setCondition] = useState("New");
-  const isWorking = isCreating;
+  const [isFeatured, setIsFeatured] = useState(
+    equipmentToEdit?.isFeatured ? "Yes" : "No"
+  );
+  const [stock, setStock] = useState(equipmentToEdit?.stock || "In stock");
+  const [condition, setCondition] = useState(
+    equipmentToEdit?.condition || "New"
+  );
+  const [isActive, setIsActive] = useState(
+    equipmentToEdit?.isActive ? "Active" : "Inactive"
+  );
+  const isWorking = isUpdating;
 
-  const { register, handleSubmit, reset, formState } = useForm();
+  const { id, ...editValues } = equipmentToEdit || {};
+
+  delete editValues.image;
+  const { register, handleSubmit, reset, formState } = useForm({
+    defaultValues: editValues,
+  });
   const { errors } = formState;
 
   function onSubmit(data) {
     const { name, description, brand, brochure } = data;
 
-    createEquipment(
+    updateEquipment(
       {
+        id,
         name,
         isFeatured: isFeatured === "Yes",
+        isActive: isActive === "Active",
+        brochure: brochure[0],
         category,
         subcategory,
-        brochure: brochure[0],
         subsubcategory,
         brand,
         description,
         stock,
-        imageFiles,
         condition,
+        imagesApi,
+        imageFiles,
       },
       {
-        onSuccess: () => navigate("/"),
+        onSuccess: data => {
+          reset();
+        },
       }
     );
-
-    return;
   }
 
   function onError(errors) {
     // console.log(errors);
   }
+  if (equipsLoading) return;
+  <Spinner />;
 
+  if (!equipId || !equipmentToEdit) return;
+  <div className="h-full w-full flex items-center justify-center text-4xl">
+    <p>No equipment found!</p>
+  </div>;
   return (
     <form
       className="bg-white px-10 py-16"
@@ -148,7 +195,7 @@ function CreateEquipmentForm() {
       <FormRow label="Brand name" error={errors?.name?.message}>
         <Input
           type="text"
-          id="brand"
+          id="name"
           disabled={isWorking}
           {...register("brand", {
             required: "This field is required",
@@ -171,6 +218,24 @@ function CreateEquipmentForm() {
           disabled={isWorking}
           onChange={e => setStock(e.target.value)}
           value={stock}
+        />
+      </FormRow>
+
+      <FormRow label="Status">
+        <Select
+          options={[
+            {
+              value: "Active",
+              label: "Active",
+            },
+            {
+              value: "Inactive",
+              label: "Inactive",
+            },
+          ]}
+          disabled={isWorking}
+          onChange={e => setIsActive(e.target.value)}
+          value={isActive}
         />
       </FormRow>
 
@@ -238,8 +303,26 @@ function CreateEquipmentForm() {
           onChange={e => addImage(e.target.files[0])}
         />
       </FormRow>
-      {images.length > 0 && (
+      {(images.length > 0 ||
+        imagesApi?.filter(item => !item.delete).length > 0) && (
         <div className="flex gap-6 max-w-[1000px] ml-auto flex-wrap p-4 border border-gray-300 rounded-md">
+          {imagesApi
+            ?.filter(item => !item.delete)
+            .map(item => (
+              <div
+                key={item?.image}
+                onClick={() => removeImage(item?.image, true)}
+                className="group border relative overflow-hidden cursor-pointer border-gray-300 rounded-sm">
+                <img
+                  className="size-52 object-cover"
+                  src={item?.image}
+                  alt=""
+                />
+                <span className="absolute opacity-0 group-hover:opacity-100 transition h-full w-full text-6xl text-gray-700 flex items-center justify-center bg-red-300/50 top-0 left-0">
+                  <BiTrash />
+                </span>
+              </div>
+            ))}
           {images?.map(item => (
             <div
               key={item?.id}
@@ -256,11 +339,11 @@ function CreateEquipmentForm() {
 
       <FormRow>
         <Button disabled={isWorking} isLoading={isWorking}>
-          Create new equipment
+          Edit equipment
         </Button>
       </FormRow>
     </form>
   );
 }
 
-export default CreateEquipmentForm;
+export default EditEquipmentForm;

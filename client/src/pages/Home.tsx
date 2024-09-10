@@ -7,11 +7,12 @@ import MainLayout from "@/layouts/MainLayout";
 import { BiPurchaseTag } from "react-icons/bi";
 import { BsArrowDownCircle } from "react-icons/bs";
 import Faq from "@/components/ui/Faq";
-import CantFind from "@/components/ui/CantFind";
 import Brands from "@/components/ui/Brands";
-import SellEquiBanner from "@/components/Equipments/SellEquiBanner";
 import useLayout from "@/data/useLayout";
 import { useTranslation } from "react-i18next";
+import VisitUs from "@/components/ui/VisitUs";
+import Welcome from "@/components/ui/Welcome";
+import SellMachineBanner from "@/components/ui/SellMachineBanner";
 
 function Home() {
   const { isLoading, layout } = useLayout();
@@ -53,8 +54,9 @@ function Home() {
           </div>
         </main>
       </MainLayout>
-      <div className="p-4 container mx-auto mt-4 flex flex-col gap-8 xl:gap-20">
+      <div className="p-4 container mx-auto mt-10 flex flex-col gap-8 xl:gap-20">
         <Brands />
+        <Welcome />
         <FeaturedEquipments />
         {banner && (
           <img
@@ -64,7 +66,7 @@ function Home() {
           />
         )}
         <Categories />
-        <div className="flex flex-col p-4  gap-5 mt-6 xl:mt-14 xl:grid grid-cols-2 xl:gap-9">
+        {/* <div className="flex flex-col p-4  gap-5 mt-6 xl:mt-14 xl:grid grid-cols-2 xl:gap-9">
           <SellEquiBanner />
           <div>
             <h4 className="text-2xl xl:text-4xl uppercase font-bold tracking-wider text-sky-950 mt-4">
@@ -79,13 +81,15 @@ function Home() {
               brokerage, and end-to-end logistics.
             </p>
           </div>
+        </div> */}
+        <div className="mt-4 xl:mt-8">
+          <VisitUs />
         </div>
-
         <div className="mt-4 xl:mt-8">
           <Faq />
         </div>
         <div className="mt-4 xl:mt-7">
-          <CantFind />
+          <SellMachineBanner />
         </div>
       </div>
       <Footer />

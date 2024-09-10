@@ -2,7 +2,7 @@
   "contact_email": "contact@salloumcompany.com",
   "phone_number": "+33 6 41 99 43 83",
   "company_name": "Salloum company",
-  "equipments_to_buy": "Equipments to Buy",
+  "equipments_to_buy": "Products",
   "sell_your_equipments": "Sell Your Equipments",
   "services": "Services",
   "contact": "Contact",
@@ -11,7 +11,7 @@
   "explore_our_equipments": "Explore Our Equipments",
   "filter_by_category": "FILTER BY CATEGORY",
   "all_items": "All Items",
-  "contact_us": "CONTACT US",
+  "contact_us": "Contact us",
   "cant_find_equipment": "CAN’T FIND THE EQUIPMENT YOU NEED?",
   "cant_find_equipment_details": "If the process equipment you’re looking for isn’t listed on our website, contact us at",
   "cant_find_or": "or fill out our",
@@ -19,28 +19,7 @@
   "cant_find_do": "We’ll do our best to source it for you.",
   "questions": "QUESTIONS",
   "answers": "& ANSWERS",
-  "faq": {
-    "main_activities": "What are the main activities of Salloum Company?",
-    "main_activities_answer": "Salloum Company specializes in the sale, purchase, and resale of used industrial equipment. We offer sales, purchase, brokerage, and consignment services for recent used equipment used in various industrial processes.",
-    "types_of_equipment": "What types of industrial equipment do you sell?",
-    "types_of_equipment_answer": "We offer a wide range of used industrial equipment, including machinery, equipment, and complete units, covering all industrial sectors.",
-    "how_to_purchase": "How can I purchase equipment from Salloum Company?",
-    "how_to_purchase_answer": "To purchase equipment, you can consult our online catalog, contact us directly for personalized advice, or speak to one of our experts available 24/7.",
-    "buy_used_equipment": "Does Salloum Company buy used industrial equipment?",
-    "buy_used_equipment_answer": "Yes, we also buy used industrial equipment. If you have any machinery or equipment to sell, contact us for an evaluation and offer.",
-    "brokerage_services": "Do you offer brokerage services for industrial equipment?",
-    "brokerage_services_answer": "Yes, we offer brokerage services to facilitate the sale and purchase of industrial equipment between different parties.",
-    "advantages_of_buying": "What are the advantages of buying used equipment from Salloum Company?",
-    "advantages_of_buying_answer": "When you buy from us, you get quick access to high-performance equipment, save on costs compared to new equipment, and receive 24/7 expert support.",
-    "countries_active": "In how many countries is Salloum Company active?",
-    "countries_active_answer": "Salloum Company has an international reach, with operations in over 35 countries.",
-    "type_of_support": "What type of support do you offer?",
-    "type_of_support_answer": "We offer expert support available 24/7 to answer all your questions and help you with your purchases and sales of industrial equipment.",
-    "visit_warehouse": "Can I visit your warehouse to see the available equipment?",
-    "visit_warehouse_answer": "Yes, we encourage our customers to visit our warehouse to inspect the available equipment. Please contact us to make an appointment.",
-    "get_appraisal": "How do I get an appraisal for my used industrial equipment?",
-    "get_appraisal_answer": "You can get an assessment by contacting us directly. Our experts will assess your equipment and provide you with a competitive offer."
-  },
+  "always_welcome": "You are always welcome to visit us, but we would appreciate it if you could make an appointment in advance.",
   "salloum_logo": "salloum logo",
   "buy_equipments": "Buy Equipments",
   "sell_equipments": "Sell Your Equipments",
@@ -50,7 +29,7 @@
   "company_address": "Schlossbergstrasse 115, 66798 Wallerfangen, Deutschland",
   "footer_copyright": "Salloum Company 2024 © - All rights reserved",
   "created_by": "Created by ViralWave",
-
+  "subscribe_now": "Subscribe now",
   "header": {
     "title": "SALLOUM COMPANY",
     "subtitle": "Your Sustainable Industrial Source",
@@ -60,5 +39,102 @@
   "our_equipments": "FEATURED EQUIPMENTS",
   "check": "CHECK OUR",
 
-  "top": "TOP CATEGORIES"
+  "top": "TOP CATEGORIES",
+  "stock_out": "Out of stock",
+  "stock_in": "In stock",
+  "get_quote": "Get a quote",
+  "description": "Description",
+  "technical": "Technical Details",
+  "subscribe": "Subscribe to our Newsletter",
+  "new": "New",
+  "used": "Used",
+  "refurbished": "Refurbished",
+  "by_category": "FILTER BY CATEGORY",
+  "by_condition": "FILTER BY CONDITION",
+  "by_sub": "FILTER BY SUB CATEGORY",
+  "by_subSub": "FILTER BY SUB SUB-CATEGORY",
+  "our_services": "OUR SERVICES",
+  "request_quote": "Request a Quote",
+  "looking_sell": "Looking to sell your equipment? Just complete this form, and we’ll reach out to you shortly.",
+  "services_beyond": "Beyond the trade of used industrial equipment, Salloum Company goes the extra mile by offering additional services to ensure a smooth and efficient resolution to the entire buying or selling process. Below, you can explore some of the services we provide, and we are also at your disposal for assistance with any other concerns. Don't hesitate to contact us via email with your inquiries, and we are committed to finding a solution that meets your satisfaction.",
+  "dismantling": "Dismantling",
+  "sales": "Sales",
+  "transport": "Transport",
+  "purchasing": "Purchasing",
+  "by_status": "Filter by status",
+  "faq": [
+    {
+      "question": "What are the main activities of Salloum Company?",
+      "answer": "Salloum Company specializes in the sale, purchase, and resale of used industrial equipment. We offer sales, purchase, brokerage, and consignment services for recent used equipment used in various industrial processes."
+    },
+    {
+      "question": "Does your company handle the export paperwork with customs?",
+      "answer": "Yes, our company manages the export paperwork and is registered with CargoX for exports to Egypt."
+    },
+    {
+      "question": "What types of industrial equipment do you sell?",
+      "answer": "We offer a wide range of used industrial equipment, including machinery, equipment, and complete units, covering all industrial sectors."
+    },
+    {
+      "question": "How can I purchase equipment from Salloum Company?",
+      "answer": "To purchase equipment, you can consult our online catalog, contact us directly for personalized advice, or speak to one of our experts available 24/7."
+    },
+    {
+      "question": "Does Salloum Company buy used industrial equipment?",
+      "answer": "Yes, we also buy used industrial equipment. If you have any machinery or equipment to sell, contact us for an evaluation and offer."
+    },
+    {
+      "question": "Do you offer brokerage services for industrial equipment?",
+      "answer": "Yes, we offer brokerage services to facilitate the sale and purchase of industrial equipment between different parties."
+    },
+    {
+      "question": "What are the advantages of buying used equipment from Salloum Company?",
+      "answer": "When you buy from us, you get quick access to high-performance equipment, save on costs compared to new equipment, and receive 24/7 expert support."
+    },
+    {
+      "question": "In how many countries is Salloum Company active?",
+      "answer": "Salloum Company has an international reach, with operations in over 35 countries."
+    },
+    {
+      "question": "What type of support do you offer?",
+      "answer": "We offer expert support available 24/7 to answer all your questions and help you with your purchases and sales of industrial equipment."
+    },
+    {
+      "question": "Can I visit your warehouse to see the available equipment?",
+      "answer": "Yes, we encourage our customers to visit our warehouse to inspect the available equipment. Please contact us to make an appointment."
+    },
+    {
+      "question": "How do I get an appraisal for my used industrial equipment?",
+      "answer": "You can get an assessment by contacting us directly. Our experts will assess your equipment and provide you with a competitive offer."
+    }
+  ],
+  "by_plane": "By Plane / Train",
+  "directions": "You can fly to Luxembourg Airport, Lorraine Airport (Nancy/Metz), or Saarbrücken Airport, and we can pick you up there.",
+  "can_reach": "You can reach us on weekdays between 08:00 AM and 5:00 PM or by email.",
+  "send_an_email": "Send an Email",
+  "your_details": "Your details",
+  "first_name": "First name",
+  "last_name": "Last name",
+  "email": "Email",
+  "phone": "Phone",
+  "enterprise": "Enterprise",
+  "sector": "Sector",
+  "message": "Message",
+  "send_request": "Send Request",
+  "selected_equipments": "Selected Equipments",
+  "full_name": "Full name",
+  "product_name": "Product name",
+  "your_best_price": "Your best price",
+  "additional_details": "Additional details",
+  "optional": "(optional)",
+  "click_to_upload_images": "Click to upload images",
+  "max_file_size": "Max file size: 5MB",
+  "submit": "Submit",
+  "welcome_at": "Welcome at",
+  "welcome_text": "Salloum Company buys and sells processing machinery, specializing in used equipment. Our second-hand product range includes production lines and complete food processing equipment for meat, fish, poultry, vegetables, and both vegetarian and vegan products.",
+  "more_about_us": "More about us",
+  "sell_your_machines": "SELL YOUR MACHINES",
+  "whatsapp_instructions": "Scan the QR code or click here to start a WhatsApp chat with our valuation team. Send us photos of your machinery, and we’ll get back to you soon.",
+  "to_sell": "You got equipment to sell",
+  "to_sell_text_1": "If you own equipment and would like to sell it to us, let us know."
 }

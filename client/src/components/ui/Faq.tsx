@@ -1,14 +1,16 @@
-import { questions } from "@/utils/constants";
 import Header from "./Header";
 import { BsArrowDown } from "react-icons/bs";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 function Faq() {
+  const { t } = useTranslation("translate");
   const [shownQuestion, setShownQuestion] = useState("");
+  const questions = t("faq", { returnObjects: true });
   return (
     <div>
-      <Header title1={"Questions"} title2={"& Answers"} />
+      <Header title1={t("questions")} title2={t("answers")} />
       <div className="grid xl:grid-cols-2 gap-2 xl:gap-4 xl:gap-y-7 mt-4 xl:mt-6">
         {questions?.map(item => (
           <div

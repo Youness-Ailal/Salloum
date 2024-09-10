@@ -1,15 +1,25 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
 import InfoBox, { infoBoxProps } from "../ui/InfoBox";
 import useSendBuyRequest from "@/data/useSendBuyRequest";
-import { EquipType } from "@/utils/constants";
+import { EquipType, RECAPTCHA_KEY } from "@/utils/constants";
 import { useQuotesContext } from "@/context/QuotesProvider";
 //@ts-ignore
+import ReCAPTCHA from "react-google-recaptcha";
+import { useTranslation } from "react-i18next";
+
+//@ts-ignore
 function NewQuoteForm({ quotes }) {
+  const { t, i18n } = useTranslation("translate");
   const { isLoading, sendRequest } = useSendBuyRequest();
   const { clearQuotes } = useQuotesContext();
   const [infoBoxData, setInfoBoxData] = useState<infoBoxProps>();
+  const recaptchaRef = useRef(null);
+  const [captchaToken, setCaptchaToken] = useState("");
+  const handleCaptchaChange = (token: string) => {
+    setCaptchaToken(token);
+  };
   const clearInfoBox = () => setInfoBoxData({ type: "error", message: "" });
 
   const [buyData, setBuyData] = useState({
@@ -37,7 +47,10 @@ function NewQuoteForm({ quotes }) {
   //@ts-ignore
   function handleSubmit(e) {
     e.preventDefault();
-
+    if (!captchaToken) {
+      alert("Please complete the reCAPTCHA");
+      return;
+    }
     const { firstName, lastName, entreprise, email, phone, sector, message } =
       buyData;
     //@ts-ignore
@@ -93,7 +106,7 @@ function NewQuoteForm({ quotes }) {
           }
           value={buyData.firstName}
           id={"first-name"}
-          placeholder="First name *"
+          placeholder={t("first_name") + " *"}
           required
         />
         <Input
@@ -102,7 +115,7 @@ function NewQuoteForm({ quotes }) {
           }
           value={buyData.lastName}
           id={"last-name"}
-          placeholder="Last name *"
+          placeholder={t("last_name") + " *"}
           required
         />
         <Input
@@ -111,7 +124,7 @@ function NewQuoteForm({ quotes }) {
           }
           value={buyData.email}
           id={"email"}
-          placeholder="Email *"
+          placeholder={t("email") + " *"}
           type="email"
           required
         />
@@ -121,7 +134,7 @@ function NewQuoteForm({ quotes }) {
           value={buyData.phone}
           id={"phone"}
           as="phone"
-          placeholder="Phone *"
+          placeholder={t("phone") + " *"}
           required
         />
         <Input
@@ -130,7 +143,7 @@ function NewQuoteForm({ quotes }) {
           }
           value={buyData.entreprise}
           id={"enterprise"}
-          placeholder="Enterprise"
+          placeholder={t("enterprise")}
         />
         <Input
           onChange={e =>
@@ -138,7 +151,7 @@ function NewQuoteForm({ quotes }) {
           }
           value={buyData.sector}
           id={"sector"}
-          placeholder="Sector"
+          placeholder={t("sector")}
         />
         <div className="col-span-full">
           <Input
@@ -149,14 +162,22 @@ function NewQuoteForm({ quotes }) {
             id={"message"}
             as="textarea"
             className="min-h-28 lg:min-h-32"
-            placeholder="Message"
+            placeholder={t("message")}
             required
+          />
+        </div>
+        <div>
+          <ReCAPTCHA
+            hl={i18n.language || "en"}
+            ref={recaptchaRef}
+            sitekey={RECAPTCHA_KEY}
+            onChange={handleCaptchaChange}
           />
         </div>
       </form>
       <div className="mt-2 lg:mt-4 ml-auto w-full flex justify-end">
         <Button isLoading={isLoading} form="new-quote">
-          Send Request
+          {t("send_request")}
         </Button>
       </div>
     </div>

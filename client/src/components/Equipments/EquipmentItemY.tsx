@@ -8,7 +8,7 @@ import { BiMessage } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-function EquipmentItem({
+function EquipmentItemY({
   equipment,
   className,
 }: {
@@ -44,34 +44,37 @@ function EquipmentItem({
     <Link
       to={"/equipments/" + id}
       className={cn(
-        "flex flex-col group relative rounded max-w-72 lg:max-w-96 hover:border-sky-300 border border-sky-200 overflow-hidden",
+        "flex flex-col items-start sm:grid sm:grid-cols-[250px_1fr] lg:grid-cols-[300px_1fr] w-full group relative bg-sky-100/60 gap-8 whitespace-nowrap text-ellipsis rounded-sm border-2 border-sky-200 hover:border-sky-300 hover:shadow-md hover:bg-sky-100/80 transition-all",
         className
       )}>
-      <div>
+      <div className="p-4 ">
         <img
           src={images[0]}
           alt={name}
-          className="h-52 border-b border-sky-200 w-full object-cover"
+          className="xl:w-96 xl:h-60 h-52 w-80 object-cover rounded border-2 border-sky-200/70"
         />
       </div>
-      <div className="group-hover:bg-sky-100/60 bg-sky-100/50 p-2 lg:p-4 h-full flex flex-col justify-between gap-1 xl:gap-2">
+      <div className="p-2 lg:p-4 flex w-full flex-col  h-full gap-1 xl:gap-2 overflow-hidden">
         <p
           className={cn(
             "uppercase text-start font-light text-sm tracking-widest",
             {
-              "text-teal-600": isInStock,
+              "text-lime-700": isInStock,
               "text-red-500": !isInStock,
             }
           )}>
           {stockText}
         </p>
-        <p className="text-lg group-hover:text-sky-900 group-hover:underline line-clamp-2 xl:text-xl text-sky-950 font-medium w-full my-2">
+        <p className="text-lg group-hover:text-sky-900 group-hover:underline xl:text-2xl text-sky-800 font-medium my-2 overflow-hidden overflow-ellipsis whitespace-nowrap">
           {name}{" "}
         </p>
-        <div className="grid grid-cols-[1fr_auto] mt-auto gap-2 lg:gap-4  lg:mt-5">
+        <p className="whitespace-nowrap text-ellipsis overflow-hidden max-w-96 opacity-75 text-sky-950">
+          {description}
+        </p>
+        <div className="flex flex-wrap sm:grid sm:grid-cols-[1fr_auto] max-w-[500px] pt-4 mt-auto gap-2 lg:gap-4  lg:mt-5">
           <button
             onClick={handleContact}
-            className="text-sky-800 p-2 lg:p-3 border rounded-sm border-sky-700 font-semibold text-lg flex items-center gap-2 uppercase outline outline-1 outline-transparent hover:outline-sky-700">
+            className="text-sky-800 p-2 lg:p-3 px-4 border rounded-sm border-sky-700 font-semibold text-lg flex items-center gap-2 uppercase outline outline-1 outline-transparent hover:outline-sky-700">
             {t("get_quote")}
             <span className="font-bold text-2xl ml-auto">
               <BiMessage />
@@ -96,4 +99,4 @@ function EquipmentItem({
   );
 }
 
-export default EquipmentItem;
+export default EquipmentItemY;

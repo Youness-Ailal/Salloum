@@ -129,6 +129,19 @@ export async function getLayout() {
     throw new Error(error?.message);
   }
 }
+export async function getCategories() {
+  try {
+    const res = await getDocs(collection(DB, "categories"));
+    const data = res.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    return data[0].categories;
+  } catch (error) {
+    //@ts-ignore
+    throw new Error(error?.message);
+  }
+}
 
 //@ts-ignore
 export async function addPageView(country) {
