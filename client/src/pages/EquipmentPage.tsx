@@ -223,7 +223,7 @@ function EquipmentPage() {
       </main>
 
       <div className="w-[min(1500px,100%)] mx-auto my-8 mt-16 p-4">
-        <CantFind />
+        <SellMachineBanner />
       </div>
       <Footer />
     </div>
