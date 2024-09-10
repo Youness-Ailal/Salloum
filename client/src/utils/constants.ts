@@ -2757,3 +2757,7 @@ export const services = [
     text: "Salloum Company actively seeks to acquire used or surplus industrial equipment. We aim to expand our inventory with quality machinery. If you have equipment available for sale, we offer competitive prices and a straightforward purchasing process.",
   },
 ];
+
+export const EMAILJS_KEY = "sAPoVNgXAiDX9qYvU";
+export const EMAILJS_TEMPLATE = "template_xpw713c";
+export const EMAILJS_SERVICE_ID = "service_bp4lm9j";

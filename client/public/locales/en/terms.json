@@ -1,0 +1,46 @@
+{
+  "dispute_resolution": "Dispute Resolution",
+  "dispute_resolution_text": "The European Commission provides a platform for online dispute resolution (OS):",
+  "odr_link": "https://ec.europa.eu/consumers/odr",
+  "responsibility_for_content": "Responsibility for Content",
+  "content_text": "As a service provider, we are responsible for our own content on these pages in accordance with general laws, pursuant to Section 7, Paragraph 1 of the TMG. However, according to Sections 8 to 10 TMG, we are not obligated to monitor third-party information transmitted or stored, or to investigate circumstances indicating illegal activity. The obligations to remove or block the use of information in accordance with general laws remain unaffected. However, liability in this regard is only possible from the moment we become aware of a concrete violation of the law. If we become aware of corresponding legal violations, we will immediately remove this content.",
+  "responsibility_for_links": "Responsibility for Links",
+  "links_text": "Our offer contains links to external third-party websites, over whose content we have no influence. Therefore, we cannot assume any responsibility for this external content. The respective provider or operator of the pages is always responsible for the content of the linked pages. Linked pages were checked for possible legal violations at the time of linking. No illegal content was apparent at the time of linking. However, permanent control of the content of the linked pages is not reasonable without concrete evidence of an infringement. If we become aware of legal violations, we will immediately remove such links.",
+  "copyright": "Copyright",
+  "copyright_text": "The contents and works on these pages created by the site operators are subject to German copyright law. Reproduction, processing, distribution, and any form of exploitation beyond the limits of copyright law require the written consent of the respective author or creator. Downloads and copies of this page are only permitted for private, non-commercial use. If the content of this site was not created by the operator, the copyrights of third parties are respected. Third-party content is specifically marked as such. If you notice any copyright infringement, we ask you to inform us. If we become aware of legal violations, we will immediately remove such content.",
+  "privacy_policy": {
+    "title": "PRIVACY POLICY",
+    "heading": "Privacy Policy",
+    "intro": "We are very pleased about your interest in our company. Data protection is a high priority for the management of Salloum Company...",
+    "data_protection": "The processing of personal data such as name, address, email...",
+    "security_measures": "As the data controller, Salloum Company has implemented...",
+    "definitions": {
+      "title": "1. Definitions",
+      "intro": "The data protection declaration of Salloum Company is based on the...",
+      "personal_data": {
+        "title": "Personal Data",
+        "definition": "Personal data is any information relating to an identified..."
+      },
+      "data_subject": {
+        "title": "Data Subject",
+        "definition": "The data subject is any identified or identifiable natural person..."
+      },
+      "processing": {
+        "title": "Processing",
+        "definition": "Processing is any operation or set of operations performed..."
+      }
+    },
+    "controller": {
+      "title": "2. Name and Address of the Data Controller",
+      "description": "The controller within the meaning of the General Data Protection Regulation...",
+      "address": "Salloum Company, Schlossbergstrasse 115, 66798 Wallerfangen, Germany",
+      "phone": "Phone: +33 6 41 99 43 83 / +4917636862705",
+      "email": "Email: contact@salloumcompany.com",
+      "website": "Website: www.salloumcompany.com"
+    },
+    "cookies": {
+      "title": "3. Cookies",
+      "description": "The website of Salloum Company uses cookies. Cookies are text files..."
+    }
+  }
+}

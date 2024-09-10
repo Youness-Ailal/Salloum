@@ -1,9 +1,16 @@
 import { DB } from "@/firebase/config";
-import { SendBuyProps, SendSellProps } from "@/utils/constants";
+import {
+  EMAILJS_KEY,
+  EMAILJS_SERVICE_ID,
+  EMAILJS_TEMPLATE,
+  SendBuyProps,
+  SendSellProps,
+} from "@/utils/constants";
 import { getCountry } from "@/utils/helpers";
 import { format } from "date-fns";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import axios from "axios";
 //@ts-ignore
 import idv4 from "uuid4";
 export const createdAt = () => format(new Date(), "dd LLLL yyyy");
@@ -66,6 +73,7 @@ export async function sendBuyRequest({
       error?.message || "we couldn't send your request at the moment"
     );
   }
+  await senEmail({ request_name: "Buy", from_name: fullName });
 }
 export async function sendSellRequest({
   email,
@@ -101,6 +109,7 @@ export async function sendSellRequest({
       error?.message || "we couldn't send your request at the moment"
     );
   }
+  await senEmail({ request_name: "Sell", from_name: fullName });
 }
 
 export async function getEquipments() {
@@ -180,4 +189,21 @@ export async function sendMessage({
     //@ts-ignore
     throw new Error(error?.message);
   }
+  await senEmail({
+    request_name: "Message",
+    from_name: firstName + " " + lastName,
+  });
+}
+
+export async function senEmail({ request_name, from_name }) {
+  const data = {
+    service_id: EMAILJS_SERVICE_ID,
+    template_id: EMAILJS_TEMPLATE,
+    user_id: EMAILJS_KEY,
+    template_params: {
+      request_name,
+      from_name,
+    },
+  };
+  await axios.post("https://api.emailjs.com/api/v1.0/email/send", data);
 }
