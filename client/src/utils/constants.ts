@@ -2761,3 +2761,9 @@ export const services = [
 export const EMAILJS_KEY = "sAPoVNgXAiDX9qYvU";
 export const EMAILJS_TEMPLATE = "template_xpw713c";
 export const EMAILJS_SERVICE_ID = "service_bp4lm9j";
+export const social_links = {
+  facebook: "https://www.facebook.com/salloumcompany",
+  youtube: "https://www.youtube.com",
+  linkedin: "https://www.linkedin.com",
+  instagram: "https://www.instagram.com",
+};

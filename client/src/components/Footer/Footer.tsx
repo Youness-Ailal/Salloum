@@ -1,6 +1,7 @@
 import logo from "@/assets/logo.png";
+import { social_links } from "@/utils/constants";
 import { useTranslation } from "react-i18next";
-import { BsFacebook, BsLinkedin, BsYoutube } from "react-icons/bs";
+import { BsFacebook, BsInstagram, BsLinkedin, BsYoutube } from "react-icons/bs";
 
 import { ImLocation, ImPhone } from "react-icons/im";
 import { IoMdMail } from "react-icons/io";
@@ -77,24 +78,31 @@ function Footer() {
         <div className="text-white  self-start text-lg flex gap-2 xl:gap-3">
           <a
             className="text-3xl hover:text-sky-300"
-            href="https://www.facebook.com/salloumcompany"
+            href={social_links.facebook}
             target="_blank"
             rel="noopener noreferrer">
             <BsFacebook />
           </a>
           <a
             className="text-3xl hover:text-sky-300"
-            href="https://www.linkedin.com"
+            href={social_links.linkedin}
             target="_blank"
             rel="noopener noreferrer">
             <BsLinkedin />
           </a>
           <a
             className="text-3xl hover:text-sky-300"
-            href="https://www.youtube.com"
+            href={social_links.youtube}
             target="_blank"
             rel="noopener noreferrer">
             <BsYoutube />
+          </a>
+          <a
+            className="text-3xl hover:text-sky-300"
+            href={social_links.instagram}
+            target="_blank"
+            rel="noopener noreferrer">
+            <BsInstagram />
           </a>
         </div>
       </div>

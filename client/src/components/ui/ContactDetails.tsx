@@ -1,4 +1,5 @@
-import { BsFacebook, BsLinkedin, BsYoutube } from "react-icons/bs";
+import { social_links } from "@/utils/constants";
+import { BsFacebook, BsInstagram, BsLinkedin, BsYoutube } from "react-icons/bs";
 import { ImLocation, ImPhone } from "react-icons/im";
 import { IoMdMail } from "react-icons/io";
 
@@ -38,24 +39,31 @@ function ContactDetails() {
       <div className="mt-4 flex gap-3 xl:gap-6">
         <a
           className="text-3xl p-2 bg-sky-900 text-white rounded-md"
-          href="https://www.facebook.com/salloumcompany"
+          href={social_links.facebook}
           target="_blank"
           rel="noopener noreferrer">
           <BsFacebook />
         </a>
         <a
           className="text-3xl p-2 bg-sky-900 text-white rounded-md"
-          href="https://www.linkedin.com"
+          href={social_links.linkedin}
           target="_blank"
           rel="noopener noreferrer">
           <BsLinkedin />
         </a>
         <a
           className="text-3xl p-2 bg-sky-900 text-white rounded-md"
-          href="https://www.youtube.com"
+          href={social_links.youtube}
           target="_blank"
           rel="noopener noreferrer">
           <BsYoutube />
+        </a>
+        <a
+          className="text-3xl p-2 bg-sky-900 text-white rounded-md"
+          href={social_links.instagram}
+          target="_blank"
+          rel="noopener noreferrer">
+          <BsInstagram />
         </a>
       </div>
     </div>

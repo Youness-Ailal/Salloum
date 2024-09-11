@@ -11,6 +11,7 @@ import { CgMenu } from "react-icons/cg";
 function MobileNav() {
   const [showQuote, setShowQuote] = useState(false);
   const [showNav, setShowNav] = useState(false);
+
   const openNav = () => {
     setShowNav(true);
     setShowQuote(false);
