@@ -82,14 +82,14 @@ function Home() {
             </p>
           </div>
         </div> */}
-        <div className="mt-4 xl:mt-8">
-          <VisitUs />
+        <div className="mt-4 xl:mt-7">
+          <SellMachineBanner />
         </div>
         <div className="mt-4 xl:mt-8">
           <Faq />
         </div>
-        <div className="mt-4 xl:mt-7">
-          <SellMachineBanner />
+        <div className="mt-4 xl:mt-8">
+          <VisitUs />
         </div>
       </div>
       <Footer />

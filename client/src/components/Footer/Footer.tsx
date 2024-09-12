@@ -11,20 +11,11 @@ function Footer() {
 
   return (
     <footer className="bg-sky-950  h-full w-full mt-auto p-4">
-      <div className="container mx-auto p-2 xl:p-6 flex gap-2 gap-y-6 flex-wrap xl:gap-10 justify-between border-b border-gray-100">
+      <div className="w-[min(1800px,100%)] mx-auto p-2 xl:p-6 flex gap-2 gap-y-6 flex-wrap xl:gap-10 justify-between border-b border-gray-100">
         <div>
           <Link to="/">
-            <img src={logo} alt="salloum logo" />
+            <img src={logo} className="xl:h-20" alt="salloum logo" />
           </Link>
-          <div className="my-4">
-            <p className="text-white text-lg pb-4">{t("subscribe")}</p>
-            <a
-              className="uppercase py-2 tracking-widest px-4 bg-sky-700 text-center text-white w-full "
-              data-formkit-toggle="172432890a"
-              href="https://salloum-company.ck.page/172432890a">
-              {t("subscribe_now")}
-            </a>
-          </div>
         </div>
         <div className="text-white text-lg flex flex-col gap-1 xl:gap-2">
           <Link className="hover:underline" to={"/equipments"}>
@@ -75,35 +66,46 @@ function Footer() {
             Schlossbergstrasse 115, 66798 Wallerfangen, Deutschland
           </p>
         </div>
-        <div className="text-white  self-start text-lg flex gap-2 xl:gap-3">
-          <a
-            className="text-3xl hover:text-sky-300"
-            href={social_links.facebook}
-            target="_blank"
-            rel="noopener noreferrer">
-            <BsFacebook />
-          </a>
-          <a
-            className="text-3xl hover:text-sky-300"
-            href={social_links.linkedin}
-            target="_blank"
-            rel="noopener noreferrer">
-            <BsLinkedin />
-          </a>
-          <a
-            className="text-3xl hover:text-sky-300"
-            href={social_links.youtube}
-            target="_blank"
-            rel="noopener noreferrer">
-            <BsYoutube />
-          </a>
-          <a
-            className="text-3xl hover:text-sky-300"
-            href={social_links.instagram}
-            target="_blank"
-            rel="noopener noreferrer">
-            <BsInstagram />
-          </a>
+        <div>
+          <div className="text-white  self-start text-lg flex gap-2 xl:gap-3">
+            <a
+              className="text-3xl hover:text-sky-300"
+              href={social_links.facebook}
+              target="_blank"
+              rel="noopener noreferrer">
+              <BsFacebook />
+            </a>
+            <a
+              className="text-3xl hover:text-sky-300"
+              href={social_links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer">
+              <BsLinkedin />
+            </a>
+            <a
+              className="text-3xl hover:text-sky-300"
+              href={social_links.youtube}
+              target="_blank"
+              rel="noopener noreferrer">
+              <BsYoutube />
+            </a>
+            <a
+              className="text-3xl hover:text-sky-300"
+              href={social_links.instagram}
+              target="_blank"
+              rel="noopener noreferrer">
+              <BsInstagram />
+            </a>
+          </div>
+          <div className="my-4">
+            <p className="text-white text-lg pb-4">{t("subscribe")}</p>
+            <a
+              className="uppercase py-2 tracking-widest px-4 bg-sky-700 text-center text-white w-full "
+              data-formkit-toggle="172432890a"
+              href="https://salloum-company.ck.page/172432890a">
+              {t("subscribe_now")}
+            </a>
+          </div>
         </div>
       </div>
       <div className="container mx-auto p-2 xl:p-4 flex gap-2 flex-wrap justify-between">

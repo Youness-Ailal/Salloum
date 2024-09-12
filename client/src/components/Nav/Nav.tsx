@@ -109,8 +109,12 @@ function Nav({ scrollYValue = 100 }) {
         <a href="mailto:contact@salloumcompany.com" className="hover:underline">
           contact@salloumcompany.com
         </a>
-        <a href="tel:+33 6 41 99 43 83" className="hover:underline">
-          +33 6 41 99 43 83
+        <a
+          href={`tel:${
+            i18n.language === "de" ? "+4917636862705" : "+33641994383"
+          }`}
+          className="hover:underline">
+          {i18n.language === "de" ? "+49 17 63 68 62 705" : "+33 6 41 99 43 83"}
         </a>
         <div className="flex items-start gap-2 z-50 -translate-y-2">
           <CustomSelect
