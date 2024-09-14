@@ -56,7 +56,7 @@ function Brands() {
               <img
                 src={item.image}
                 alt="partner"
-                className="h-10 lg:h-32 object-cover grayscale-[60%] "
+                className="max-h-10 lg:max-h-20  object-cover grayscale-[60%] "
               />
             </li>
           ))}

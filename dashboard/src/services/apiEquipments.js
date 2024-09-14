@@ -20,7 +20,7 @@ import {
 import idv4 from "uuid4";
 
 import { DB } from "../firebase/config";
-import { differenceInDays, format } from "date-fns";
+import { format } from "date-fns";
 export const createdAt = format(new Date(), "dd LLLL yyyy");
 const collectionRef = collection(DB, "equipments");
 
@@ -30,14 +30,15 @@ export async function deleteMultipleImages(imagePaths) {
   const deletePromises = imagePaths.map(path => {
     const imageRef = ref(storage, path);
     return deleteObject(imageRef).catch(error => {
-      throw new Error(`Failed to delete ${path} : ${error.message}`);
+      console.log(`Failed to delete ${path} : ${error.message}`);
+      return null;
     });
   });
 
   try {
     await Promise.all(deletePromises);
   } catch (error) {
-    throw new Error("Error deleting one or more images");
+    throw new Error(error?.message || "Error deleting one or more images");
   }
 }
 
@@ -139,7 +140,7 @@ export async function updateEquipmentApi({
       stock,
       condition,
     };
-    if (imagesToDelete.length) {
+    if (imagesToDelete.length > 0) {
       await deleteMultipleImages(imagesToDelete.map(item => item.image));
     }
     let newImages = [];

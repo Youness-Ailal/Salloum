@@ -22,7 +22,9 @@ function SellMachineBanner() {
             +33 6 41 99 43 83
           </a>{" "}
           {t("translate:cant_find_or")}{" "}
-          <Link className="hover:text-sky-400 text-sky-300" to="/contact">
+          <Link
+            className="hover:text-sky-400 text-sky-300"
+            to="/sell-equipments">
             {t("translate:cant_find_form")}{" "}
           </Link>
           {t("translate:cant_find_do")}

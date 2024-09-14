@@ -141,9 +141,6 @@ function UpdatCategories() {
       } else if (!subCategories.length) {
         toast.error("missing subcategories for " + category);
         hasErrors = true;
-      } else if (!subSubCategories.length) {
-        toast.error("missing sub-subcategories for " + category);
-        hasErrors = true;
       }
     });
     !hasErrors && updateCategoriesApi(categoriesData);
