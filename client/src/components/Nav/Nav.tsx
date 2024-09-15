@@ -8,9 +8,15 @@ import { useQuotesContext } from "@/context/QuotesProvider";
 import QuotesDrawer from "../Quotes/QuotesDrawer";
 import { FranceIcon } from "@/assets/icons/FranceIcon";
 import { GermanyIcon } from "@/assets/icons/GermanyIcon";
+import { Icon } from "@iconify-icon/react";
 import { EnglishFlag } from "@/assets/icons/EnglishFlag";
 import CustomSelect from "../ui/CustomSelect";
 import { useTranslation } from "react-i18next";
+import useCategories from "@/data/useCategories";
+import { useHover } from "@uidotdev/usehooks";
+import { cn } from "@/lib/utils";
+import { useSharedHover } from "@/hooks/useSharedHover";
+
 interface OptionType {
   value: string;
   label: JSX.Element;
@@ -90,7 +96,8 @@ function Nav({ scrollYValue = 100 }) {
   }, [showQuote]);
   const [scrollY, setScrollY] = useState(0);
   const { quotes } = useQuotesContext();
-
+  const { categoriesApi, categoriesLoading } = useCategories();
+  const { onMouseEnter, onMouseLeave, isHovering } = useSharedHover();
   useEffect(() => {
     const changeScrollY = () => {
       setScrollY(window.scrollY);
@@ -102,7 +109,7 @@ function Nav({ scrollYValue = 100 }) {
 
   return (
     <div
-      className={`max-w-[1600px] mx-auto py-3 px-4 border-b border-white ${
+      className={`max-w-[1600px] mx-auto py-3 px-4 border-b border-white relative ${
         scrollY > scrollYValue && "bg-sky-950/80 backdrop-blur-sm "
       }`}>
       <div className="container mx-auto w-full  flex gap-6 justify-end items-start text-white mb-2 text-sm">
@@ -135,6 +142,12 @@ function Nav({ scrollYValue = 100 }) {
         <nav className="flex items-center gap-4 xl:gap-6  text-white font-medium ml-2 lg:ml-6">
           {links.map(item => (
             <NavLink
+              onMouseEnter={
+                item.path === "/equipments" ? onMouseEnter : () => null
+              }
+              onMouseLeave={
+                item.path === "/equipments" ? onMouseLeave : () => null
+              }
               key={item.name}
               className="hover:text-sky-400 transition"
               to={item.path}>
@@ -156,6 +169,29 @@ function Nav({ scrollYValue = 100 }) {
         </div>
       </header>
       {showQuote && <QuotesDrawer setShowQuote={setShowQuote} />}
+      <div
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        className={cn(
+          "absolute -bottom-24 py-6 cursor-pointer translate-y-0 transition  h-full left-44 ",
+          {
+            "opacity-0 pointer-events-none translate-y-3": !isHovering,
+          }
+        )}>
+        <div className="bg-sky-50 w-full py-5 flex flex-col font-medium text-sky-900 gap-2">
+          {categoriesApi?.map(item => (
+            <Link
+              key={item.category}
+              to={"/equipments?category=" + item.category}
+              className="flex items-center gap-4 p-2 px-6 hover:bg-sky-100 hover:text-sky-950">
+              <span className="text-sky-700 text-2xl">
+                <Icon icon={item.icon} />
+              </span>
+              {item.category}
+            </Link>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

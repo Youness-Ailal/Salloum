@@ -44,14 +44,22 @@ function EquipmentItemY({
     <Link
       to={"/equipments/" + id}
       className={cn(
-        "flex flex-col items-start sm:grid sm:grid-cols-[250px_1fr] lg:grid-cols-[300px_1fr] w-full group relative bg-sky-100/60 gap-8 whitespace-nowrap text-ellipsis rounded-sm border-2 border-sky-200 hover:border-sky-300 hover:shadow-md hover:bg-sky-100/80 transition-all",
+        "flex flex-col p-2 items-start sm:grid sm:grid-cols-[250px_1fr] lg:grid-cols-[300px_1fr] w-full group relative bg-sky-100/60 gap-8 whitespace-nowrap text-ellipsis rounded-sm border-2 border-sky-200 hover:border-sky-300 hover:shadow-md hover:bg-sky-100/80 transition-all",
+        { "grayscale-[.4]": !isInStock },
         className
       )}>
-      <div className="p-4 ">
+      <div className="relative overflow-hidden">
+        {!isInStock && (
+          <p className="absolute w-full bg-red-600/80 !grayscale-0 text-red-50 text-base lg:text-lg uppercase font-medium p-2 top-1/2 -translate-y-1/2 left-0 z-50 text-center">
+            {t("soldOut")}{" "}
+          </p>
+        )}
         <img
           src={images[0]}
           alt={name}
-          className="xl:w-96 xl:h-60 h-52 w-80 object-cover rounded border-2 border-sky-200/70"
+          className={cn(
+            "xl:w-96 xl:h-60 h-52 w-80 object-cover rounded border-2 border-sky-200/70"
+          )}
         />
       </div>
       <div className="p-2 lg:p-4 flex w-full flex-col  h-full gap-1 xl:gap-2 overflow-hidden">

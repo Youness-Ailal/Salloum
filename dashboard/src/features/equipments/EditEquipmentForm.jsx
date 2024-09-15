@@ -17,6 +17,7 @@ import { BiTrash } from "react-icons/bi";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEquipments } from "./useEquipments";
 import Spinner from "../../ui/Spinner";
+import { addEmptyOption } from "./CreateEquipmentForm";
 
 function EditEquipmentForm() {
   const { categories: catesApi, isLoading } = useCategories();
@@ -89,6 +90,8 @@ function EditEquipmentForm() {
       value: item,
       label: item,
     }));
+  addEmptyOption(subCategories);
+  addEmptyOption(SubsubCategories);
   const [subcategory, setSubcategory] = useState(equipmentToEdit?.subcategory);
   const [subsubcategory, setSubsubcategory] = useState(
     equipmentToEdit?.subsubcategory
@@ -108,13 +111,15 @@ function EditEquipmentForm() {
   const { id, ...editValues } = equipmentToEdit || {};
 
   delete editValues.image;
+  const defaultDescription = editValues?.description?.replace(/<br\/>/g, "\n");
   const { register, handleSubmit, reset, formState } = useForm({
-    defaultValues: editValues,
+    defaultValues: { ...editValues, description: defaultDescription },
   });
   const { errors } = formState;
 
   function onSubmit(data) {
     const { name, description, brand, brochure } = data;
+    const newDesc = description.replace(/\n/g, "<br/>");
 
     updateEquipment(
       {
@@ -127,7 +132,7 @@ function EditEquipmentForm() {
         subcategory,
         subsubcategory,
         brand,
-        description,
+        description: newDesc,
         stock,
         condition,
         imagesApi,
@@ -298,9 +303,10 @@ function EditEquipmentForm() {
       </FormRow>
       <FormRow label="Equipment photos">
         <FileInput
+          multiple
           id="image"
           accept="image/*"
-          onChange={e => addImage(e.target.files[0])}
+          onChange={e => [...e.target.files].forEach(file => addImage(file))}
         />
       </FormRow>
       {(images.length > 0 ||

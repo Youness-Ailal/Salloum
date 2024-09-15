@@ -19,7 +19,7 @@ function Categories() {
         {categories?.map(item => (
           <Link
             key={item.id}
-            to={"equipments?category=" + item.id}
+            to={"/equipments?category=" + item.id}
             className="text-lg xl:text-xl text-sky-950 font-medium uppercase p-4 xl:p-7 shadow-md bg-sky-50 text-center flex flex-col items-center justify-center gap-3  xl:gap-5 h-32 w-44 xl:w-60 xl:h-52 hover:shadow-xl border border-sky-100 rounded-sm">
             <span className="text-3xl xl:text-5xl text-sky-700">
               <Icon icon={item.icon} />

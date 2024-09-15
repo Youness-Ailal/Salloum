@@ -13,6 +13,9 @@ import { useCategories } from "./useCategories";
 import uuid4 from "uuid4";
 import { BiTrash } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+export function addEmptyOption(array) {
+  array?.push({ label: "None", value: "" });
+}
 
 function CreateEquipmentForm() {
   const { categories: catesApi, isLoading } = useCategories();
@@ -54,6 +57,8 @@ function CreateEquipmentForm() {
       value: item,
       label: item,
     }));
+  addEmptyOption(subCategories);
+  addEmptyOption(SubsubCategories);
   const [subcategory, setSubcategory] = useState(
     catesApi?.at(0)?.subCategories[0]
   );
@@ -77,6 +82,7 @@ function CreateEquipmentForm() {
 
   function onSubmit(data) {
     const { name, description, brand, brochure } = data;
+    const newDesc = description.replace("/\n/g", "<br/>");
 
     createEquipment(
       {
@@ -87,7 +93,7 @@ function CreateEquipmentForm() {
         brochure: brochure[0],
         subsubcategory,
         brand,
-        description,
+        description: newDesc,
         stock,
         imageFiles,
         condition,
@@ -233,9 +239,10 @@ function CreateEquipmentForm() {
       </FormRow>
       <FormRow label="Equipment photos">
         <FileInput
+          multiple
           id="image"
           accept="image/*"
-          onChange={e => addImage(e.target.files[0])}
+          onChange={e => [...e.target.files].forEach(file => addImage(file))}
         />
       </FormRow>
       {images.length > 0 && (

@@ -7,6 +7,9 @@ import { useQuotesContext } from "@/context/QuotesProvider";
 import useEquipments from "@/data/useEquipments";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
+import { PhotoProvider, PhotoSlider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
+
 //@ts-ignore
 import Headroom from "react-headroom";
 import { useTranslation } from "react-i18next";
@@ -23,6 +26,8 @@ function EquipmentPage() {
   const isSmall = useMediaQuery({
     maxWidth: 1200,
   });
+  const [visible, setVisible] = useState(false);
+  const [index, setIndex] = useState(0);
   const NavHeader = isSmall ? <MobileNav /> : <Nav scrollYValue={20} />;
   const { equipments, isLoading } = useEquipments();
   const params = useParams();
@@ -115,17 +120,28 @@ function EquipmentPage() {
       <main className="p-8 grow w-[min(1500px,100%)] mx-auto py-10 lg:py-16 px-4 lg:px-8">
         <div className="grid lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-12">
           <div className="space-y-4 self-start">
+            <PhotoSlider
+              onIndexChange={setIndex}
+              index={index}
+              visible={visible}
+              images={images?.map(item => ({ src: item, key: item }))}
+              onClose={() => setVisible(false)}
+            />
             <img
-              className="h-[300px] border-2 border-sky-900/15 lg:h-[400px] xl:h-[500px] w-full object-cover"
+              onClick={() => setVisible(true)}
+              className="h-[300px] cursor-pointer hover:border-sky-300 transition border-2 border-sky-900/15 lg:h-[400px] xl:h-[500px] w-full object-cover"
               src={mainImage}
               alt={name}
             />
             <div className="flex items-center flex-wrap gap-4">
-              {images.map(item => (
+              {images?.map((item, i) => (
                 <div
                   key={item}
                   className="cursor-pointer"
-                  onClick={() => setMainImage(item)}>
+                  onClick={() => {
+                    setIndex(i);
+                    setMainImage(item);
+                  }}>
                   <img
                     className={cn(
                       "lg:h-20 lg:w-32 h-16 w-28 border-2 object-cover",
@@ -151,29 +167,6 @@ function EquipmentPage() {
             <h2 className="text-xl lg:text-3xl font-medium text-sky-950 lg:leading-10">
               {name}
             </h2>
-            <div className="flex items-center gap-4 flex-wrap w-full my-3">
-              <button
-                onClick={handleContact}
-                className="text-sky-800 p-3 lg:p-4 border outline transition-all outline-2 outline-transparent hover:outline-sky-700 rounded-sm border-sky-700 font-semibold text-lg flex items-center justify-center gap-3 uppercase grow-[.5] ">
-                {t("get_quote")}
-                <span className="font-bold text-xl lg:text-3xl ml-auto">
-                  <BiMessage />
-                </span>
-              </button>
-              {isInQuote ? (
-                <Button
-                  onClick={removeFromQuotes}
-                  className="!text-2xl bg-sky-900 hover:bg-sky-950 lg:p-4 lg:px-4 p-3 h-full">
-                  <IoBagRemoveOutline />
-                </Button>
-              ) : (
-                <Button
-                  onClick={addToQuotes}
-                  className="!text-2xl lg:p-4 lg:px-4 p-3 h-full">
-                  <BsBagPlus />
-                </Button>
-              )}
-            </div>
 
             <div className="space-y-1 text-sky-950">
               <div className="grid grid-cols-[auto_1fr_auto] text-lg mt-4  items-center gap-3">
@@ -181,9 +174,9 @@ function EquipmentPage() {
                 <p className="h-[1px] bg-sky-900 w-full"></p>
                 <IoIosArrowDown />
               </div>
-              <p className="ml-4 text-sky-950/90 text-lg leading-8">
-                {description}{" "}
-              </p>
+              <p
+                className="ml-4 text-sky-950/90 text-lg leading-8"
+                dangerouslySetInnerHTML={{ __html: description }}></p>
             </div>
             <div className="space-y-1 text-sky-950">
               <div className="grid grid-cols-[auto_1fr_auto] text-lg mt-4  items-center gap-3">
@@ -205,6 +198,29 @@ function EquipmentPage() {
                   <p className="font-medium">{condition} </p>
                 </li>
               </ul>
+            </div>
+            <div className="flex items-center gap-4 flex-wrap w-full my-6 mt-8">
+              <button
+                onClick={handleContact}
+                className="text-sky-800 p-3 lg:p-4 border-2 outline transition-all outline-2 outline-transparent hover:outline-sky-700 rounded-sm border-sky-700 font-semibold text-lg flex items-center justify-center gap-3 uppercase grow ">
+                {t("get_quote")}
+                <span className="font-bold text-xl lg:text-3xl ml-auto">
+                  <BiMessage />
+                </span>
+              </button>
+              {isInQuote ? (
+                <Button
+                  onClick={removeFromQuotes}
+                  className="!text-2xl bg-sky-900 hover:bg-sky-950 lg:p-4 lg:px-4 p-3 h-full">
+                  <IoBagRemoveOutline />
+                </Button>
+              ) : (
+                <Button
+                  onClick={addToQuotes}
+                  className="!text-2xl lg:p-4 lg:px-4 p-3 h-full">
+                  <BsBagPlus />
+                </Button>
+              )}
             </div>
             {brochure?.length > 0 && (
               <div className="w-full uppercase font-medium mt-6">

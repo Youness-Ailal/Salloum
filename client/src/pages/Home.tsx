@@ -55,6 +55,8 @@ function Home() {
         </main>
       </MainLayout>
       <div className="p-4 container mx-auto mt-10 flex flex-col gap-8 xl:gap-20">
+        <Categories />
+
         <Brands />
         <Welcome />
         <FeaturedEquipments />
@@ -65,7 +67,6 @@ function Home() {
             alt="salloum"
           />
         )}
-        <Categories />
         {/* <div className="flex flex-col p-4  gap-5 mt-6 xl:mt-14 xl:grid grid-cols-2 xl:gap-9">
           <SellEquiBanner />
           <div>

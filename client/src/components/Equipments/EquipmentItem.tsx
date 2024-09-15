@@ -45,9 +45,15 @@ function EquipmentItem({
       to={"/equipments/" + id}
       className={cn(
         "flex flex-col group relative rounded max-w-72 lg:max-w-96 hover:border-sky-300 border border-sky-200 overflow-hidden",
+        { "grayscale-[.4]": !isInStock },
         className
       )}>
-      <div>
+      <div className="relative">
+        {!isInStock && (
+          <p className="absolute w-full bg-red-600/80 !grayscale-0 text-red-50 text-base lg:text-lg uppercase font-medium p-2 top-1/2 -translate-y-1/2 left-0 z-50 text-center">
+            {t("soldOut")}{" "}
+          </p>
+        )}
         <img
           src={images[0]}
           alt={name}

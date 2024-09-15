@@ -140,5 +140,6 @@
   "sell_your_machines": "VERKAUFEN SIE IHRE MASCHINEN",
   "whatsapp_instructions": "Scannen Sie den QR-Code oder klicken Sie hier, um einen WhatsApp-Chat mit unserem Bewertungsteam zu starten. Senden Sie uns Fotos Ihrer Maschinen, und wir melden uns bald bei Ihnen.",
   "to_sell": "Sie haben eine Ausrüstung zu verkaufen",
-  "to_sell_text_1": "Wenn Sie eine Ausrüstung besitzen und uns verkaufen möchten, lassen Sie es uns wissen."
+  "to_sell_text_1": "Wenn Sie eine Ausrüstung besitzen und uns verkaufen möchten, lassen Sie es uns wissen.",
+  "soldOut": "Ausverkauft"
 }

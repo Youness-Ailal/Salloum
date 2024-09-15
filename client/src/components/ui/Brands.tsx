@@ -40,7 +40,7 @@ function Brands() {
   }, [scrollerRef.current, scrollerInnerRef.current]);
 
   return (
-    <div className="py-2 lg:py-6">
+    <div className="py-2 lg:py-10">
       {/* <p className="text-center p-4 xl:p-6 text-xl lg:text-3xl text-sky-900 font-semibold">
         We provide high-quality used machines from leading European brands.
       </p> */}
@@ -50,13 +50,13 @@ function Brands() {
         className="scroller  overflow-hidden max-h-20">
         <ul
           ref={scrollerInnerRef}
-          className="tag-list scroller__inner flex items-center justify-center gap-8 xl:gap-16 w-full">
+          className="tag-list scroller__inner flex items-center justify-center gap-8 xl:gap-12 w-full">
           {brands?.map(item => (
             <li key={item.id}>
               <img
                 src={item.image}
                 alt="partner"
-                className="max-h-10 lg:max-h-20  object-cover grayscale-[60%] "
+                className="max-h-10 object-cover grayscale-[60%] "
               />
             </li>
           ))}
