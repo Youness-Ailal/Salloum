@@ -97,6 +97,10 @@ function Nav({ scrollYValue = 100 }) {
   const [scrollY, setScrollY] = useState(0);
   const { quotes } = useQuotesContext();
   const { categoriesApi, categoriesLoading } = useCategories();
+  const categories = categoriesApi ? [...categoriesApi].reverse() : [];
+  console.log(categoriesApi);
+  console.log(categories);
+
   const { onMouseEnter, onMouseLeave, isHovering } = useSharedHover();
   useEffect(() => {
     const changeScrollY = () => {
@@ -173,13 +177,13 @@ function Nav({ scrollYValue = 100 }) {
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         className={cn(
-          "absolute -bottom-24 py-6 cursor-pointer translate-y-0 transition  h-full left-44 ",
+          "absolute -bottom-20 py-10 cursor-pointer translate-y-0  transition  h-full left-44 ",
           {
             "opacity-0 pointer-events-none translate-y-3": !isHovering,
           }
         )}>
         <div className="bg-sky-50 w-full py-5 flex flex-col font-medium text-sky-900 gap-2">
-          {categoriesApi?.map(item => (
+          {categories?.map(item => (
             <Link
               key={item.category}
               to={"/equipments?category=" + item.category}
