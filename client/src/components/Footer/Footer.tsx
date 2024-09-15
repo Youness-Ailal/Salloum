@@ -59,6 +59,14 @@ function Footer() {
             </span>{" "}
             +33 6 41 99 43 83
           </a>
+          <a
+            href="tel:+49 17 63 68 62 705"
+            className="hover:underline flex gap-1 items-center">
+            <span>
+              <ImPhone />
+            </span>{" "}
+            +49 17 63 68 62 705
+          </a>
           <p className="max-w-72   flex gap-1 items-start">
             <span>
               <ImLocation />
