@@ -17,9 +17,11 @@ function UpdateSettingsForm() {
   const [localPartnersImages, setLocalPartnersImages] = useState([]);
   const [apiPartnersImages, setApiPartnersImages] = useState([]);
   const [banner, setBanner] = useState("");
+  const [bannerHome, setBannerHome] = useState("");
 
   /*  */
   const newBannerFile = banner?.isNew ? banner.file : null;
+  const newBannerHomeFile = bannerHome?.isNew ? bannerHome.file : null;
   const partnersToDelete = apiPartnersImages
     .filter(item => item?.delete)
     ?.map(item => ({ id: item.id, image: item.image }));
@@ -31,7 +33,10 @@ function UpdateSettingsForm() {
   const btnDisabled =
     isLoading ||
     isUpdating ||
-    (!newBannerFile && !partnersToAdd.length && !partnersToDelete.length);
+    (!newBannerFile &&
+      !partnersToAdd.length &&
+      !partnersToDelete.length &&
+      !newBannerHomeFile);
   useEffect(() => {
     if (!isLoading) {
       setLocalPartnersImages([]);
@@ -46,6 +51,14 @@ function UpdateSettingsForm() {
     const fileReader = new FileReader();
     fileReader.onload = () => {
       setBanner({ file, image: fileReader.result.toString(), isNew: true });
+    };
+
+    fileReader.readAsDataURL(file);
+  }
+  function changeBannerHome(file) {
+    const fileReader = new FileReader();
+    fileReader.onload = () => {
+      setBannerHome({ file, image: fileReader.result.toString(), isNew: true });
     };
 
     fileReader.readAsDataURL(file);
@@ -86,6 +99,7 @@ function UpdateSettingsForm() {
     update({
       newBannerFile,
       partnersToDelete,
+      newBannerHomeFile,
       partnersImagesFiles: partnersToAdd,
     });
   }
@@ -107,7 +121,24 @@ function UpdateSettingsForm() {
       </div>
       <Form>
         <div>
-          <p className="label-text">Banner Image</p>
+          <p className="label-text">Home Page Image</p>
+          <div className="banner-label">
+            <label htmlFor="banner_home">
+              <input
+                onChange={e => changeBannerHome(e.target.files[0])}
+                style={{ display: "none" }}
+                type="file"
+                id="banner_home"
+              />
+              <img src={bannerHome?.image} alt="" />
+              <div className="backdrop">
+                <BiImage />
+              </div>
+            </label>
+          </div>
+        </div>
+        <div style={{ marginTop: "4rem" }}>
+          <p className="label-text">Banner Layout</p>
           <div className="banner-label">
             <label htmlFor="banner">
               <input

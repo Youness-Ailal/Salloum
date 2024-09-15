@@ -2763,7 +2763,12 @@ export const EMAILJS_TEMPLATE = "template_xpw713c";
 export const EMAILJS_SERVICE_ID = "service_bp4lm9j";
 export const social_links = {
   facebook: "https://www.facebook.com/salloumcompany",
-  youtube: "https://www.youtube.com",
-  linkedin: "https://www.linkedin.com",
+  youtube: "https://www.youtube.com/@SALLOUMCOMPANY",
+  linkedin: "https://www.linkedin.com/company/salloumcompany",
   instagram: "https://www.instagram.com",
+};
+export const contact = {
+  phoneGerman: "+49 17 63 68 62 705",
+  phoneFrance: "+33 6 41 99 43 83",
+  email: "contact@salloumcompany.com",
 };

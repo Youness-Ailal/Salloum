@@ -20,6 +20,7 @@ function Home() {
 
   //@ts-ignore
   const banner = layout?.filter(item => item?.type === "banner")[0];
+  //@ts-ignore
   return (
     <>
       <MainLayout>

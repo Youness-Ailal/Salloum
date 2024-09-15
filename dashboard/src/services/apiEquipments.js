@@ -232,6 +232,7 @@ export async function updateLayout({
   partnersImagesFiles = [],
   partnersToDelete = [],
   newBannerFile = null,
+  newBannerHomeFile = null,
 }) {
   if (newBannerFile) {
     try {
@@ -244,6 +245,19 @@ export async function updateLayout({
       await setDoc(docRef, data, { merge: true });
     } catch (error) {
       throw new Error("error updating banner : " + error?.message);
+    }
+  }
+  if (newBannerHomeFile) {
+    try {
+      const image = await uploadImage(newBannerHomeFile);
+      const data = {
+        image,
+        type: "banner_home",
+      };
+      const docRef = doc(DB, "layout", "banner-2");
+      await setDoc(docRef, data, { merge: true });
+    } catch (error) {
+      throw new Error("error updating banner home : " + error?.message);
     }
   }
   if (partnersToDelete.length) {

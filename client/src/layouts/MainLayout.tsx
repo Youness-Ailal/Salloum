@@ -1,6 +1,7 @@
 import { WhatsappIcon } from "@/assets/icons/WhatsappIcon";
 import MobileNav from "@/components/Nav/MobileNav";
 import Nav from "@/components/Nav/Nav";
+import useLayout from "@/data/useLayout";
 import { cn } from "@/lib/utils";
 import { addPageView } from "@/services/api";
 import { getCountry } from "@/utils/helpers";
@@ -19,6 +20,11 @@ function MainLayout({ children, heightMobile = "80vh", height = "70vh" }) {
   });
   const NavHeader = isSmall ? <MobileNav /> : <Nav />;
 
+  const { layout } = useLayout();
+  //@ts-ignore
+  const bannerImage =
+    //@ts-ignore
+    layout?.filter(item => item?.type === "banner_home")[0]?.image;
   useEffect(() => {
     const checkAndSetVisit = async () => {
       const viewedTime = localStorage.getItem("visited-at");
@@ -53,9 +59,12 @@ function MainLayout({ children, heightMobile = "80vh", height = "70vh" }) {
     <>
       <div className="flex flex-col relative">
         <div
-          className={cn(`hero-bg flex flex-col`)}
+          className={cn(`flex flex-col`)}
           style={{
             minHeight: heightMobile,
+            backgroundSize: "100%",
+            backgroundPosition: "50% 50%",
+            backgroundImage: `linear-gradient(to right, rgba(8, 51, 68, 0.95), rgba(8, 51, 68, 0.7)), url("${bannerImage}")`,
             //@ts-expect-error minWidth
             ["@media (min-width: 1024px)"]: {
               minHeight: height,

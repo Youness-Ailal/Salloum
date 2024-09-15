@@ -1,7 +1,7 @@
 import logo from "@/assets/logo.png";
 import { social_links } from "@/utils/constants";
 import { useTranslation } from "react-i18next";
-import { BsFacebook, BsInstagram, BsLinkedin, BsYoutube } from "react-icons/bs";
+import { BsFacebook, BsLinkedin, BsYoutube } from "react-icons/bs";
 
 import { ImLocation, ImPhone } from "react-icons/im";
 import { IoMdMail } from "react-icons/io";
@@ -10,7 +10,7 @@ function Footer() {
   const { t } = useTranslation("translate");
 
   return (
-    <footer className="bg-sky-950  h-full w-full mt-auto p-4">
+    <footer className="bg-sky-950 h-full w-full mt-auto p-4">
       <div className="w-[min(1800px,100%)] mx-auto p-2 xl:p-6 flex gap-2 gap-y-6 flex-wrap xl:gap-10 justify-between border-b border-gray-100">
         <div>
           <Link to="/">
@@ -96,13 +96,6 @@ function Footer() {
               target="_blank"
               rel="noopener noreferrer">
               <BsYoutube />
-            </a>
-            <a
-              className="text-3xl hover:text-sky-300"
-              href={social_links.instagram}
-              target="_blank"
-              rel="noopener noreferrer">
-              <BsInstagram />
             </a>
           </div>
           <div className="my-4">

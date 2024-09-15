@@ -138,9 +138,6 @@ function UpdatCategories() {
       } else if (!icon.length) {
         toast.error("missing icon for " + category);
         hasErrors = true;
-      } else if (!subCategories.length) {
-        toast.error("missing subcategories for " + category);
-        hasErrors = true;
       }
     });
     !hasErrors && updateCategoriesApi(categoriesData);

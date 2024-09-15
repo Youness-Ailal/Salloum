@@ -58,13 +58,6 @@ function ContactDetails() {
           rel="noopener noreferrer">
           <BsYoutube />
         </a>
-        <a
-          className="text-3xl p-2 bg-sky-900 text-white rounded-md"
-          href={social_links.instagram}
-          target="_blank"
-          rel="noopener noreferrer">
-          <BsInstagram />
-        </a>
       </div>
     </div>
   );

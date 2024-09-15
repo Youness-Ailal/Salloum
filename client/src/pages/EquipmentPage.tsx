@@ -7,25 +7,33 @@ import { useQuotesContext } from "@/context/QuotesProvider";
 import useEquipments from "@/data/useEquipments";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
-import { PhotoProvider, PhotoSlider, PhotoView } from "react-photo-view";
+import { PhotoSlider } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 
 //@ts-ignore
 import Headroom from "react-headroom";
 import { useTranslation } from "react-i18next";
 import { BiMessage } from "react-icons/bi";
-import { BsBagPlus } from "react-icons/bs";
+import {
+  BsBagPlus,
+  BsFacebook,
+  BsLinkedin,
+  BsShare,
+  BsTwitter,
+} from "react-icons/bs";
 import { GoDownload } from "react-icons/go";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoBagRemoveOutline } from "react-icons/io5";
 import Skeleton from "react-loading-skeleton";
 import { useMediaQuery } from "react-responsive";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import useShareSocial from "@/hooks/useShareSocial";
 
 function EquipmentPage() {
   const isSmall = useMediaQuery({
     maxWidth: 1200,
   });
+  const { shareToFacebook, shareToLinkedIn, shareToTwitter } = useShareSocial();
   const [visible, setVisible] = useState(false);
   const [index, setIndex] = useState(0);
   const NavHeader = isSmall ? <MobileNav /> : <Nav scrollYValue={20} />;
@@ -199,6 +207,18 @@ function EquipmentPage() {
                 </li>
               </ul>
             </div>
+            {brochure?.length > 0 && (
+              <div className="w-full uppercase font-medium mt-6">
+                <a
+                  href={brochure}
+                  download
+                  target="_blank"
+                  className="flex  underline-offset-4 border-sky-950/60 justify-center rounded-sm text-sky-950 items-center gap-4 text-lg py-3 px-5 border">
+                  <button className="">Download Brochure</button>
+                  <GoDownload className="text-xl" />
+                </a>
+              </div>
+            )}
             <div className="flex items-center gap-4 flex-wrap w-full my-6 mt-8">
               <button
                 onClick={handleContact}
@@ -222,18 +242,26 @@ function EquipmentPage() {
                 </Button>
               )}
             </div>
-            {brochure?.length > 0 && (
-              <div className="w-full uppercase font-medium mt-6">
-                <a
-                  href={brochure}
-                  download
-                  target="_blank"
-                  className="flex  underline-offset-4 border-sky-950/60 justify-center rounded-sm text-sky-950 items-center gap-4 text-lg py-3 px-5 border">
-                  <button className="">Download Brochure</button>
-                  <GoDownload className="text-xl" />
-                </a>
+
+            <div className="flex flex-wrap items-center gap-4 uppercase text-sky-950 font-medium mt-10">
+              <p className="flex items-center gap-2">
+                <BsShare className="text-xl" /> share :
+              </p>
+              <div className="flex items-center gap-5">
+                <BsLinkedin
+                  onClick={shareToLinkedIn}
+                  className="text-2xl lg:text-3xl hover:text-sky-900 cursor-pointer"
+                />
+                <BsFacebook
+                  onClick={shareToFacebook}
+                  className="text-2xl lg:text-3xl hover:text-sky-900 cursor-pointer"
+                />
+                <BsTwitter
+                  onClick={shareToTwitter}
+                  className="text-2xl lg:text-3xl hover:text-sky-900 cursor-pointer"
+                />
               </div>
-            )}
+            </div>
           </div>
         </div>
       </main>
