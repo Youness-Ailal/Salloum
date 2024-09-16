@@ -38,29 +38,31 @@ function VisitsLastDays() {
   const [searchParams] = useSearchParams();
   const lastDays = searchParams.get("last") || 7;
 
+  // Filter analytics data for the last 'n' days
   const analyticsDays = analytics?.filter(item => {
     return differenceInDays(new Date(), new Date(item?.date)) <= +lastDays;
   });
 
+  // Calculate visits per day by summing the 'count' for each day
   const visitsPerDay = analyticsDays?.reduce((acc, item) => {
-    const date = format(
-      (new Date(item?.date), "dd MM yyyy", new Date()),
-      "yyyy-MM-dd"
-    );
-    acc[date] = (acc[date] || 0) + 1;
+    const date = format(new Date(item?.date), "yyyy-MM-dd");
+    acc[date] = (acc[date] || 0) + item.count; // Add the count for the day
     return acc;
   }, {});
 
+  // Generate all the dates within the interval and map them to visit counts
   const allDates = eachDayOfInterval({
     start: subDays(new Date(), +lastDays - 1),
     end: new Date(),
   });
 
+  // Map each date to the corresponding visit count, defaulting to 0 if no data
   const data = allDates.map(date => ({
     label: format(date, "MMM dd"),
     visits: visitsPerDay?.[format(date, "yyyy-MM-dd")] || 0,
   }));
 
+  // Define colors based on dark mode or light mode
   const colors = isDarkMode
     ? {
         visits: { stroke: "rgb(7,89,133)", fill: "rgb(7,89,133)" },

@@ -362,7 +362,7 @@ export async function markMessageAsSeen(id) {
 }
 export async function getAnalytics() {
   try {
-    const res = await getDocs(collection(DB, "analytics"));
+    const res = await getDocs(collection(DB, "visits"));
     const data = res.docs.map(doc => ({
       id: doc.id,
       ...doc.data(),

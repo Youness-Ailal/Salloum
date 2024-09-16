@@ -8,7 +8,13 @@ import {
 } from "@/utils/constants";
 import { getCountry } from "@/utils/helpers";
 import { format } from "date-fns";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDocs,
+  updateDoc,
+} from "firebase/firestore";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import axios from "axios";
 //@ts-ignore
@@ -154,12 +160,36 @@ export async function getCategories() {
 
 //@ts-ignore
 export async function addPageView(country) {
-  const data = {
-    country,
-    date: createdAt(),
-  };
+  const dataViews = await getDocs(collection(DB, "visits"));
+  const views = dataViews.docs.map(doc => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  //@ts-ignore
+  const todayViews = views?.find(item => item?.date === createdAt());
 
-  await addDoc(collection(DB, "analytics"), data);
+  if (todayViews) {
+    //@ts-ignore
+    const oldCount = todayViews?.count || 0;
+    //@ts-ignore
+    const oldCountries = todayViews.countries || {};
+    const OldCountryCount = oldCountries[country] || 0;
+    await updateDoc(doc(DB, "visits", todayViews.id), {
+      count: oldCount + 1,
+      countries: {
+        ...oldCountries,
+        [country]: OldCountryCount + 1,
+      },
+    });
+  } else {
+    await addDoc(collection(DB, "visits"), {
+      count: 1,
+      countries: {
+        [country]: 1,
+      },
+      date: createdAt(),
+    });
+  }
 }
 export async function sendMessage({
   firstName,
@@ -205,5 +235,7 @@ export async function senEmail({ request_name, from_name }) {
       from_name,
     },
   };
-  await axios.post("https://api.emailjs.com/api/v1.0/email/send", data);
+  await axios
+    .post("https://api.emailjs.com/api/v1.0/email/send", data)
+    .catch(() => true);
 }

@@ -49,24 +49,32 @@ function VisitsPerCountry() {
         parse(item.date, "dd LLLL yyyy", new Date())
       ) <= +lastDays
   );
-  const countryCounts =
-    analyticsDays?.reduce((counts, { country }) => {
-      counts[country] = (counts[country] || 0) + 1;
-      return counts;
-    }, {}) || [];
 
+  // Calculate country counts across all days
+  const countryCounts =
+    analyticsDays?.reduce((counts, { countries }) => {
+      // Loop over each country in the 'countries' object
+      for (const [country, count] of Object.entries(countries)) {
+        counts[country] = (counts[country] || 0) + count; // Sum up counts per country
+      }
+      return counts;
+    }, {}) || {};
+
+  // Sort the countries by their total visit counts
   const sortedCountries = Object.entries(countryCounts)
     .sort(([, countA], [, countB]) => countB - countA)
     .map(([country]) => country);
 
+  // Get top 4 countries and calculate the rest
   const topCountries = sortedCountries.slice(0, 4);
   const restCountries = sortedCountries.slice(4);
   const restCountriesCount = restCountries.reduce(
     (sum, country) => sum + countryCounts[country],
     0
   );
-  const restEntry = { country: "Others", count: restCountriesCount };
 
+  // Combine top countries and "Others" into the result array
+  const restEntry = { country: "Others", count: restCountriesCount };
   const result = [
     ...topCountries.map(country => ({
       country,
@@ -74,6 +82,8 @@ function VisitsPerCountry() {
     })),
     restEntry,
   ];
+
+  // Filter out countries with 0 counts and assign colors
   const data = result.filter(entry => entry.count > 0);
   const coloredData = data.map((item, i) => {
     if (item.country === "Others") return { ...item, color: colors[4] };

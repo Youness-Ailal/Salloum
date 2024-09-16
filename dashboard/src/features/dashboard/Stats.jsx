@@ -35,7 +35,10 @@ function Stats() {
   const equipmentsCount = equipments?.length;
   const sellCount = sellsDays?.length;
   const buysCount = buysDays?.length;
-  const visitsCount = visitsDays?.length;
+  const visitsCount = visitsDays?.reduce(
+    (total, curr) => curr.count + total,
+    0
+  );
   return (
     <>
       <Stat

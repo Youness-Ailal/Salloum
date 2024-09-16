@@ -21,6 +21,7 @@ function App() {
       },
     },
   });
+
   return (
     <QueryClientProvider client={client}>
       <ReactQueryDevtools initialIsOpen={false} />
