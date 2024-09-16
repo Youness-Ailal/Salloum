@@ -13,7 +13,6 @@ import { EnglishFlag } from "@/assets/icons/EnglishFlag";
 import CustomSelect from "../ui/CustomSelect";
 import { useTranslation } from "react-i18next";
 import useCategories from "@/data/useCategories";
-import { useHover } from "@uidotdev/usehooks";
 import { cn } from "@/lib/utils";
 import { useSharedHover } from "@/hooks/useSharedHover";
 
@@ -64,6 +63,8 @@ export const links: link[] = [
 ];
 function Nav({ scrollYValue = 100 }) {
   const { t, i18n } = useTranslation(["translate"]);
+  const categoriesTranslation = t("categories", { returnObjects: true });
+
   const links: link[] = [
     {
       name: t("translate:equipments_to_buy"),
@@ -83,6 +84,8 @@ function Nav({ scrollYValue = 100 }) {
     },
   ];
   const [showQuote, setShowQuote] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("");
+
   function handleLanguageChange(lng: "fr" | "en" | "de") {
     //@ts-ignore
     i18n.changeLanguage(lng.value);
@@ -97,11 +100,19 @@ function Nav({ scrollYValue = 100 }) {
   const [scrollY, setScrollY] = useState(0);
   const { quotes } = useQuotesContext();
   const { categoriesApi, categoriesLoading } = useCategories();
-  const categories = categoriesApi ? [...categoriesApi].reverse() : [];
-  console.log(categoriesApi);
-  console.log(categories);
 
-  const { onMouseEnter, onMouseLeave, isHovering } = useSharedHover();
+  const subcategories =
+    categoriesApi?.filter(item => item.category === selectedCategory)[0]
+      ?.subCategories || [];
+
+  const categories = categoriesApi ? [...categoriesApi].reverse() : [];
+
+  const { onMouseEnter, onMouseLeave, isHovering, changeHoveringState } =
+    useSharedHover();
+  useEffect(() => {
+    if (!isHovering) setSelectedCategory("");
+  }, [isHovering]);
+
   useEffect(() => {
     const changeScrollY = () => {
       setScrollY(window.scrollY);
@@ -177,24 +188,54 @@ function Nav({ scrollYValue = 100 }) {
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         className={cn(
-          "absolute -bottom-20 py-10 cursor-pointer translate-y-0  transition  h-full left-44 ",
+          "absolute -bottom-20 py-10 grid grid-cols-[auto_2fr] cursor-pointer translate-y-0  transition  h-full left-44 ",
           {
             "opacity-0 pointer-events-none translate-y-3": !isHovering,
           }
         )}>
-        <div className="bg-sky-50 w-full py-5 flex flex-col font-medium text-sky-900 gap-2">
+        <div className="bg-sky-50 w-full pb-4 flex flex-col font-medium text-sky-900 gap-2">
+          <p className="px-4 py-4 border-b border-gray-300 text-center uppercase">
+            Categories
+          </p>
           {categories?.map(item => (
             <Link
+              onClick={() => changeHoveringState(false)}
+              onMouseEnter={() => setSelectedCategory(item.category)}
               key={item.category}
               to={"/equipments?category=" + item.category}
-              className="flex items-center gap-4 p-2 px-6 hover:bg-sky-100 hover:text-sky-950">
+              className={cn(
+                "flex items-center gap-4 p-2 px-6 hover:bg-sky-100 hover:text-sky-950",
+                {
+                  "bg-sky-100": selectedCategory === item?.category,
+                }
+              )}>
               <span className="text-sky-700 text-2xl">
                 <Icon icon={item.icon} />
               </span>
-              {item.category}
+              {
+                //@ts-ignore
+                categoriesTranslation[item.category] || item.category
+              }
             </Link>
           ))}
         </div>
+        {subcategories.length > 0 && (
+          <div className="bg-sky-50 max-h-[1000px] overflow-y-auto w-full flex flex-col gap-2 border-l border-gray-200 text-sky-900">
+            <p className="px-4 sticky bg-sky-50 top-0 py-4 border-b font-medium border-gray-300 text-center uppercase">
+              &nbsp;
+            </p>
+            <div className="grid grid-cols-3 gap-2">
+              {subcategories?.map(item => (
+                <Link
+                  onClick={() => changeHoveringState(false)}
+                  className="px-2 hover:underline hover:text-sky-950"
+                  to={"/equipments?category=" + selectedCategory}>
+                  {item}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

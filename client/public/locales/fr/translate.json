@@ -139,5 +139,13 @@
   "whatsapp_instructions": "Scannez le code QR ou cliquez ici pour démarrer une conversation WhatsApp avec notre équipe d'évaluation. Envoyez-nous des photos de vos machines et nous vous répondrons bientôt.",
   "to_sell": "Vous avez un équipement à vendre",
   "to_sell_text_1": "Si vous possédez un équipement et souhaitez nous le vendre, faites-le nous savoir.",
-  "soldOut": "Épuisé"
+  "soldOut": "Épuisé",
+  "categories": {
+    "Air Compressors": "Compresseurs d'air",
+    "Boilers": "Chaudières",
+    "Electricity": "Électricité",
+    "Meat Machine": "Machine à viande",
+    "Pumps & Electric motor": "Pompes et moteur électrique",
+    "Cooling": "Refroidissement"
+  }
 }

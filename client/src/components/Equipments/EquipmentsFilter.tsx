@@ -17,6 +17,7 @@ function EquipmentsFilter({
   setStockStatus,
 }) {
   const { t } = useTranslation("translate");
+  const categoriesTranslation = t("categories", { returnObjects: true });
   const { equipments } = useEquipments();
   const { categoriesApi, categoriesLoading } = useCategories();
   const categories = categoriesApi?.map(item => ({
@@ -73,7 +74,10 @@ function EquipmentsFilter({
             <span className="text-xl xl:text-2xl">
               <Icon icon={item.icon} />
             </span>
-            {item.name}
+            {
+              //@ts-ignore
+              categoriesTranslation[item.name] || item.name
+            }
           </button>
         ))}
         <button

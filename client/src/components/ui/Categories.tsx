@@ -6,6 +6,8 @@ import { Icon } from "@iconify-icon/react";
 
 function Categories() {
   const { t } = useTranslation(["translate"]);
+  const categoriesTranslation = t("categories", { returnObjects: true });
+
   const { categoriesApi } = useCategories();
   const categories = categoriesApi?.map(item => ({
     name: item.category,
@@ -24,7 +26,10 @@ function Categories() {
             <span className="text-3xl xl:text-5xl text-sky-700">
               <Icon icon={item.icon} />
             </span>
-            {item.name}
+            {
+              //@ts-ignore
+              categoriesTranslation[item.name] || item.name
+            }
           </Link>
         ))}
       </div>

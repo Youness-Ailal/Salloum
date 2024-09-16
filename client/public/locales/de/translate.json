@@ -141,5 +141,13 @@
   "whatsapp_instructions": "Scannen Sie den QR-Code oder klicken Sie hier, um einen WhatsApp-Chat mit unserem Bewertungsteam zu starten. Senden Sie uns Fotos Ihrer Maschinen, und wir melden uns bald bei Ihnen.",
   "to_sell": "Sie haben eine Ausrüstung zu verkaufen",
   "to_sell_text_1": "Wenn Sie eine Ausrüstung besitzen und uns verkaufen möchten, lassen Sie es uns wissen.",
-  "soldOut": "Ausverkauft"
+  "soldOut": "Ausverkauft",
+  "categories": {
+    "Air Compressors": "Luftkompressoren",
+    "Boilers": "Kessel",
+    "Electricity": "Elektrizität",
+    "Meat Machine": "Fleischmaschine",
+    "Pumps & Electric motor": "Pumpen & Elektromotor",
+    "Cooling": "Kühlung"
+  }
 }

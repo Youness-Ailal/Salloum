@@ -137,5 +137,13 @@
   "whatsapp_instructions": "Scan the QR code or click here to start a WhatsApp chat with our valuation team. Send us photos of your machinery, and we’ll get back to you soon.",
   "to_sell": "You got equipment to sell",
   "to_sell_text_1": "If you own equipment and would like to sell it to us, let us know.",
-  "soldOut": "Sold out"
+  "soldOut": "Sold out",
+  "categories": {
+    "Air Compressors": "Air Compressors",
+    "Boilers": "Boilers",
+    "Electricity": "Electricity",
+    "Meat Machine": "Meat Machine",
+    "Pumps & Electric motor": "Pumps & Electric motor",
+    "Cooling": "Cooling"
+  }
 }

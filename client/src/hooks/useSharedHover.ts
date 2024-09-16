@@ -5,6 +5,7 @@ export function useSharedHover() {
 
   const onMouseEnter = () => setIsHovering(true);
   const onMouseLeave = () => setIsHovering(false);
+  const changeHoveringState = (newState: boolean) => setIsHovering(newState);
 
-  return { onMouseEnter, onMouseLeave, isHovering };
+  return { onMouseEnter, onMouseLeave, isHovering, changeHoveringState };
 }
