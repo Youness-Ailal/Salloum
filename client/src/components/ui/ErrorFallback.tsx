@@ -1,5 +1,6 @@
 import Button from "./Button";
 
+//@ts-ignore
 function ErrorFallback({ error, resetErrorBoundary }) {
   return (
     <div className="min-h-screen w-screen flex items-center justify-center">

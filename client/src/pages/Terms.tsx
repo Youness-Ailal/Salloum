@@ -3,7 +3,7 @@ import PageHeader from "@/components/ui/PageHeader";
 import { useTranslation } from "react-i18next";
 
 function Terms() {
-  const { t } = useTranslation("terms");
+  const { t } = useTranslation("translate");
   return (
     <div className="min-h-screen flex flex-col">
       <PageHeader title={"TERMS & CONDITIONS"} />

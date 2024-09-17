@@ -21,7 +21,7 @@
   "sell_equipments": "Vendez Vos Équipements",
   "always_welcome": "Vous êtes toujours les bienvenus pour nous rendre visite, mais nous vous serions reconnaissants de bien vouloir prendre rendez-vous à l'avance.",
   "about_us": "À propos de nous",
-  "privacy_policy": "Politique de Confidentialité",
+  "privacy_policy_title": "Politique de Confidentialité",
   "terms_and_conditions": "Termes & Conditions",
   "company_address": "Schlossbergstrasse 115, 66798 Wallerfangen, Deutschland",
   "footer_copyright": "Salloum Company 2024 © - Tous droits réservés",
@@ -147,5 +147,14 @@
     "Meat Machine": "Machine à viande",
     "Pumps & Electric motor": "Pompes et moteur électrique",
     "Cooling": "Refroidissement"
-  }
+  },
+  "dispute_resolution": "Résolution des litiges",
+  "dispute_resolution_text": "La Commission européenne propose une plateforme pour la résolution des litiges en ligne (OS) :",
+  "odr_link": "https://ec.europa.eu/consumers/odr",
+  "responsibility_for_content": "Responsabilité pour le contenu",
+  "content_text": "En tant que prestataire de services, nous sommes responsables de notre propre contenu sur ces pages conformément aux lois générales, conformément à l'article 7, paragraphe 1 de la TMG. Cependant, selon les articles 8 à 10 TMG, nous ne sommes pas tenus de surveiller les informations transmises ou stockées par des tiers, ni d'enquêter sur des circonstances indiquant une activité illégale. Les obligations de supprimer ou de bloquer l'utilisation d'informations conformément aux lois générales restent inchangées. Cependant, la responsabilité à cet égard n'est possible qu'à partir du moment où nous prenons connaissance d'une violation concrète de la loi. Si nous prenons connaissance de violations légales correspondantes, nous supprimerons immédiatement ce contenu.",
+  "responsibility_for_links": "Responsabilité pour les liens",
+  "links_text": "Notre offre contient des liens vers des sites Web externes tiers, dont nous n'avons aucune influence sur le contenu. Par conséquent, nous ne pouvons assumer aucune responsabilité pour ce contenu externe. Le fournisseur ou opérateur respectif des pages est toujours responsable du contenu des pages liées. Les pages liées ont été vérifiées pour d'éventuelles violations de la loi au moment de la liaison. Aucun contenu illégal n'était apparent au moment de la liaison. Cependant, une surveillance permanente du contenu des pages liées n'est pas raisonnable sans preuve concrète d'une infraction. Si nous prenons connaissance de violations légales, nous supprimerons immédiatement ces liens.",
+  "copyright": "Droits d'auteur",
+  "copyright_text": "Les contenus et œuvres présents sur ces pages, créés par les opérateurs du site, sont soumis à la législation allemande sur le droit d'auteur. La reproduction, le traitement, la distribution et toute forme d'exploitation au-delà des limites de la législation sur le droit d'auteur nécessitent le consentement écrit de l'auteur ou du créateur respectif. Les téléchargements et copies de cette page ne sont autorisés que pour un usage privé et non commercial. Si le contenu de ce site n'a pas été créé par l'opérateur, les droits d'auteur de tiers sont respectés. Le contenu tiers est spécifiquement marqué comme tel. Si vous constatez une violation des droits d'auteur, nous vous prions de nous en informer. Si nous prenons connaissance de violations légales, nous supprimerons immédiatement ce contenu."
 }

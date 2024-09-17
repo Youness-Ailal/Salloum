@@ -36,7 +36,7 @@ function Footer() {
             {t("about_us")}
           </Link>
           <Link className="hover:underline" to={"/privacy"}>
-            {t("privacy_policy")}
+            {t("privacy_policy_title")}
           </Link>
           <Link className="hover:underline" to={"/terms"}>
             {t("terms_and_conditions")}
