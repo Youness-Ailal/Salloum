@@ -41,7 +41,9 @@ function UpdateSettingsForm() {
     if (!isLoading) {
       setLocalPartnersImages([]);
       const banner = layout?.filter(item => item.type === "banner")[0];
-      setBanner(banner);
+      const bannerHome = layout?.filter(item => item.type === "banner_home")[0];
+      setBannerHome({ image: bannerHome?.image, isNew: false });
+      setBanner({ image: banner?.image, isNew: false });
       const partners = layout?.filter(item => item.type === "partner");
       setApiPartnersImages(partners);
     }
@@ -125,6 +127,7 @@ function UpdateSettingsForm() {
           <div className="banner-label">
             <label htmlFor="banner_home">
               <input
+                accept="image/*"
                 onChange={e => changeBannerHome(e.target.files[0])}
                 style={{ display: "none" }}
                 type="file"
@@ -142,6 +145,7 @@ function UpdateSettingsForm() {
           <div className="banner-label">
             <label htmlFor="banner">
               <input
+                accept="image/*"
                 onChange={e => changeBanner(e.target.files[0])}
                 style={{ display: "none" }}
                 type="file"
