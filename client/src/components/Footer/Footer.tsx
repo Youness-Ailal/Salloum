@@ -1,5 +1,8 @@
 import logo from "@/assets/logo.png";
+import { subscribeToNewsletter } from "@/services/api";
 import { social_links } from "@/utils/constants";
+import { useMutation } from "@tanstack/react-query";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { BsFacebook, BsLinkedin, BsYoutube } from "react-icons/bs";
 
@@ -8,6 +11,21 @@ import { IoMdMail } from "react-icons/io";
 import { Link } from "react-router-dom";
 function Footer() {
   const { t } = useTranslation("translate");
+  const [message, setMessage] = useState("");
+  const [email, setEmail] = useState("");
+  const { mutate: subscribeApi, status } = useMutation({
+    mutationFn: subscribeToNewsletter,
+    onSuccess: () => {
+      setMessage("Welcome to our Newsletter!");
+      setEmail("");
+    },
+  });
+  const isLoading = status === "pending";
+
+  function subscribeToNewsletterForm(e) {
+    e.preventDefault();
+    subscribeApi(email);
+  }
 
   return (
     <footer className="bg-sky-950 h-full w-full mt-auto p-4">
@@ -100,12 +118,29 @@ function Footer() {
           </div>
           <div className="my-4">
             <p className="text-white text-lg pb-4">{t("subscribe")}</p>
-            <a
-              className="uppercase py-2 tracking-widest px-4 bg-sky-700 text-center text-white w-full "
-              data-formkit-toggle="172432890a"
-              href="https://salloum-company.ck.page/172432890a">
-              {t("subscribe_now")}
-            </a>
+            <form onSubmit={subscribeToNewsletterForm}>
+              <input
+                className="w-full mb-2 p-2 rounded-sm outline-none focus:outline-none"
+                placeholder={"example@email.com"}
+                required
+                type="email"
+                name="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                id="email"
+              />
+              <button
+                disabled={isLoading}
+                className="uppercase disabled:opacity-70 py-2 tracking-widest px-4 bg-sky-700 text-center text-white w-full "
+                data-formkit-toggle="172432890a">
+                {t("subscribe_now")}
+              </button>
+              {message && (
+                <p className="w-full py-2 text-sm uppercase text-green-50">
+                  {message}
+                </p>
+              )}
+            </form>
           </div>
         </div>
       </div>

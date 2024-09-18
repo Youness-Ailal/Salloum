@@ -2772,3 +2772,7 @@ export const contact = {
   phoneFrance: "+33 6 41 99 43 83",
   email: "contact@salloumcompany.com",
 };
+
+export const API_BENCHMARK = {
+  key: "07D85C32-1F14-49B8-8A06-09F8A098B8DC",
+};

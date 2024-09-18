@@ -9,11 +9,15 @@ function Categories() {
   const categoriesTranslation = t("categories", { returnObjects: true });
 
   const { categoriesApi } = useCategories();
-  const categories = categoriesApi?.map(item => ({
-    name: item.category,
-    id: item.id,
-    icon: item.icon,
-  }));
+  const categories = categoriesApi
+    ? [
+        ...categoriesApi.map(item => ({
+          name: item.category,
+          id: item.id,
+          icon: item.icon,
+        })),
+      ].reverse()
+    : [];
   return (
     <div className="">
       <Header title1={t("translate:check")} title2={t("translate:top")} />

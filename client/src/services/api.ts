@@ -239,3 +239,14 @@ export async function senEmail({ request_name, from_name }) {
     .post("https://api.emailjs.com/api/v1.0/email/send", data)
     .catch(() => true);
 }
+
+export async function subscribeToNewsletter(email: string) {
+  try {
+    await axios.post(`https://api.convertkit.com/v3/forms/7086343/subscribe`, {
+      api_key: "IhyvmjvF2DLT6dJssa-1jQ",
+      email,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
