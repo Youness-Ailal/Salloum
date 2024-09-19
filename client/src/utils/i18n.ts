@@ -13,7 +13,7 @@ i18n
   .use(LanguageDetector)
   .init({
     debug: false,
-    lng: localStorage.getItem("i18nextLng") || isDE ? "de" : isFR ? "fr" : "en",
+    lng: isDE ? "de" : isFR ? "fr" : localStorage.getItem("i18nextLng") || "en",
     fallBackLng: isDE ? "de" : isFR ? "fr" : "en",
     whiteliste: ["en", "fr", "de"],
     backend: {
