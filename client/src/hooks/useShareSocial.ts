@@ -15,7 +15,16 @@ function useShareSocial() {
   const shareToGoogle = () => {
     window.open(`https://plus.google.com/share?url=${shareUrl}`);
   };
-  return { shareToFacebook, shareToTwitter, shareToLinkedIn, shareToGoogle };
+  const shareToWhatsapp = () => {
+    window.open(`https://wa.me/?text=${encodeURIComponent(shareUrl)}`);
+  };
+  return {
+    shareToFacebook,
+    shareToTwitter,
+    shareToLinkedIn,
+    shareToGoogle,
+    shareToWhatsapp,
+  };
 }
 
 export default useShareSocial;

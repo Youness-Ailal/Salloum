@@ -20,6 +20,8 @@ import {
   BsLinkedin,
   BsShare,
   BsTwitter,
+  BsTwitterX,
+  BsWhatsapp,
 } from "react-icons/bs";
 import { GoDownload } from "react-icons/go";
 import { IoIosArrowDown } from "react-icons/io";
@@ -33,7 +35,8 @@ function EquipmentPage() {
   const isSmall = useMediaQuery({
     maxWidth: 1200,
   });
-  const { shareToFacebook, shareToLinkedIn, shareToTwitter } = useShareSocial();
+  const { shareToFacebook, shareToLinkedIn, shareToTwitter, shareToWhatsapp } =
+    useShareSocial();
   const [visible, setVisible] = useState(false);
   const [index, setIndex] = useState(0);
   const NavHeader = isSmall ? <MobileNav /> : <Nav scrollYValue={20} />;
@@ -256,8 +259,12 @@ function EquipmentPage() {
                   onClick={shareToFacebook}
                   className="text-2xl lg:text-3xl hover:text-sky-900 cursor-pointer"
                 />
-                <BsTwitter
+                <BsTwitterX
                   onClick={shareToTwitter}
+                  className="text-2xl lg:text-3xl hover:text-sky-900 cursor-pointer"
+                />
+                <BsWhatsapp
+                  onClick={shareToWhatsapp}
                   className="text-2xl lg:text-3xl hover:text-sky-900 cursor-pointer"
                 />
               </div>
