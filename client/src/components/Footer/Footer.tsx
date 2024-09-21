@@ -29,10 +29,10 @@ function Footer() {
 
   return (
     <footer className="bg-sky-950 h-full w-full mt-auto p-4">
-      <div className="w-[min(1800px,100%)] mx-auto p-2 xl:p-6 flex gap-2 gap-y-6 flex-wrap xl:gap-10 justify-between border-b border-gray-100">
+      <div className="w-[min(2000px,100%)] mx-auto p-2 xl:p-6 flex gap-2 gap-y-6 flex-wrap xl:gap-10 justify-between border-b border-gray-100">
         <div>
           <Link to="/">
-            <img src={logo} className="xl:h-20" alt="salloum logo" />
+            <img src={logo} className="xl:h-14" alt="salloum logo" />
           </Link>
         </div>
         <div className="text-white text-lg flex flex-col gap-1 xl:gap-2">

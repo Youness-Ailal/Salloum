@@ -77,7 +77,7 @@ function EquipmentItemY({
           {name}{" "}
         </p>
         <p className="whitespace-nowrap text-ellipsis overflow-hidden max-w-96 opacity-75 text-sky-950">
-          {description}
+          {description?.replaceAll("<br/>", "")}
         </p>
         <div className="flex flex-wrap sm:grid sm:grid-cols-[1fr_auto] max-w-[500px] pt-4 mt-auto gap-2 lg:gap-4  lg:mt-5">
           <button
