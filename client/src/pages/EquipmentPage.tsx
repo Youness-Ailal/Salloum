@@ -16,7 +16,9 @@ import { useTranslation } from "react-i18next";
 import { BiMessage } from "react-icons/bi";
 import {
   BsBagPlus,
+  BsCopy,
   BsFacebook,
+  BsLink,
   BsLinkedin,
   BsShare,
   BsTwitter,
@@ -35,8 +37,13 @@ function EquipmentPage() {
   const isSmall = useMediaQuery({
     maxWidth: 1200,
   });
-  const { shareToFacebook, shareToLinkedIn, shareToTwitter, shareToWhatsapp } =
-    useShareSocial();
+  const {
+    shareToFacebook,
+    shareToLinkedIn,
+    shareToTwitter,
+    shareToWhatsapp,
+    copyLink,
+  } = useShareSocial();
   const [visible, setVisible] = useState(false);
   const [index, setIndex] = useState(0);
   const NavHeader = isSmall ? <MobileNav /> : <Nav scrollYValue={20} />;
@@ -186,7 +193,7 @@ function EquipmentPage() {
                 <IoIosArrowDown />
               </div>
               <p
-                className="ml-4 text-sky-950/90 text-lg leading-8"
+                className="ml-4 text-sky-950/90 text-lg leading-8 overflow-hidden whitespace-nowrap overflow-ellipsis"
                 dangerouslySetInnerHTML={{ __html: description }}></p>
             </div>
             <div className="space-y-1 text-sky-950">
@@ -266,6 +273,10 @@ function EquipmentPage() {
                 <BsWhatsapp
                   onClick={shareToWhatsapp}
                   className="text-2xl lg:text-3xl hover:text-sky-900 cursor-pointer"
+                />
+                <BsCopy
+                  onClick={copyLink}
+                  className="text-xl lg:text-2xl hover:text-sky-900 cursor-pointer"
                 />
               </div>
             </div>

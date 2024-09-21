@@ -18,12 +18,16 @@ function useShareSocial() {
   const shareToWhatsapp = () => {
     window.open(`https://wa.me/?text=${encodeURIComponent(shareUrl)}`);
   };
+  const copyLink = () => {
+    navigator.clipboard.writeText(shareUrl).then(() => alert("link copied!"));
+  };
   return {
     shareToFacebook,
     shareToTwitter,
     shareToLinkedIn,
     shareToGoogle,
     shareToWhatsapp,
+    copyLink,
   };
 }
 

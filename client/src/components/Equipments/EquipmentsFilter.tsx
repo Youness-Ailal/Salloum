@@ -64,6 +64,8 @@ function EquipmentsFilter({
               // setCategory(prev => (prev === item.id ? "" : item.id));
               if (category !== item.name) {
                 search.set("category", item.name);
+                setFilterSubcategories([]);
+                setFilterSubSubcategories([]);
                 search.delete("query");
                 setSearch(search);
               } else {

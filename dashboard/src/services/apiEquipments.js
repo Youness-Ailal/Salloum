@@ -43,8 +43,8 @@ export async function deleteMultipleImages(imagePaths) {
 }
 
 export async function uploadImage(file) {
-  if (file.size > 5 * 1024 * 1024) {
-    throw new Error("Image size is larger than 5MB");
+  if (file.size > 50 * 1024 * 1024) {
+    throw new Error("File size is larger than 50 MB");
   }
 
   try {

@@ -27,10 +27,7 @@ function UserAvatar() {
 
   return (
     <StyledUserAvatar>
-      <Avatar
-        src={photoURL?.length ? photoURL : "default-user.jpg"}
-        alt={`Avatar of ${displayName}`}
-      />
+      <Avatar src={photoURL?.length ? photoURL : "default-user.jpg"} />
       <p>{displayName}</p>
     </StyledUserAvatar>
   );

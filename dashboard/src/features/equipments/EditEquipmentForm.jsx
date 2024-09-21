@@ -113,7 +113,11 @@ function EditEquipmentForm() {
   delete editValues.image;
   const defaultDescription = editValues?.description?.replace(/<br\/>/g, "\n");
   const { register, handleSubmit, reset, formState } = useForm({
-    defaultValues: { ...editValues, description: defaultDescription },
+    defaultValues: {
+      ...editValues,
+      description: defaultDescription,
+      brochure: null,
+    },
   });
   const { errors } = formState;
 
@@ -127,7 +131,7 @@ function EditEquipmentForm() {
         name,
         isFeatured: isFeatured === "Yes",
         isActive: isActive === "Active",
-        brochure: brochure[0],
+        brochure: brochure ? brochure[0] : null,
         category,
         subcategory,
         subsubcategory,

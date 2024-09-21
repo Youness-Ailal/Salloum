@@ -76,8 +76,11 @@ function EquipmentItemY({
         <p className="text-lg group-hover:text-sky-900 group-hover:underline xl:text-2xl text-sky-800 font-medium my-2 overflow-hidden overflow-ellipsis whitespace-nowrap">
           {name}{" "}
         </p>
-        <p className="whitespace-nowrap text-ellipsis overflow-hidden max-w-96 opacity-75 text-sky-950">
-          {description?.replaceAll("<br/>", "")}
+        <p className="whitespace-nowrap text-ellipsis overflow-hidden opacity-75 text-sky-950">
+          {description
+            ?.replaceAll("<br/>", "")
+            .replaceAll("<strong>", "")
+            .replaceAll("</strong>", "")}
         </p>
         <div className="flex flex-wrap sm:grid sm:grid-cols-[1fr_auto] max-w-[500px] pt-4 mt-auto gap-2 lg:gap-4  lg:mt-5">
           <button

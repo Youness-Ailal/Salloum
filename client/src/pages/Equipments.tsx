@@ -26,9 +26,22 @@ function Equipments() {
   const category = search.get("category");
 
   const query = search.get("query");
+  const subCategoryParam = search.get("subcategory");
   const { t } = useTranslation("translate");
 
-  const [filterSubcategories, setFilterSubcategories] = useState<string[]>([]);
+  const [filterSubcategories, setFilterSubcategories] = useState<string[]>(() =>
+    subCategoryParam ? [subCategoryParam] : []
+  );
+
+  useEffect(() => {
+    if (
+      subCategoryParam &&
+      filterSubcategories.length === 1 &&
+      !filterSubcategories.includes(subCategoryParam)
+    ) {
+      setFilterSubcategories([subCategoryParam]);
+    }
+  }, [subCategoryParam]);
   const [filterSubSubcategories, setFilterSubSubcategories] = useState<
     string[]
   >([]);

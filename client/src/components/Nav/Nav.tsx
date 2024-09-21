@@ -227,9 +227,15 @@ function Nav({ scrollYValue = 100 }) {
             <div className="grid grid-cols-3 gap-2">
               {subcategories?.map(item => (
                 <Link
+                  key={item}
                   onClick={() => changeHoveringState(false)}
                   className="px-2 hover:underline hover:text-sky-950"
-                  to={"/equipments?category=" + selectedCategory}>
+                  to={
+                    "/equipments?category=" +
+                    selectedCategory +
+                    "&subcategory=" +
+                    item
+                  }>
                   {item}
                 </Link>
               ))}
