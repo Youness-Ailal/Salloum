@@ -147,7 +147,7 @@ function EquipmentPage() {
             />
             <img
               onClick={() => setVisible(true)}
-              className="h-[300px] cursor-pointer hover:border-sky-300 transition border-2 border-sky-900/15 lg:h-[400px] xl:h-[500px] w-full object-cover"
+              className="h-[300px]  cursor-pointer hover:border-sky-300 transition border-2 border-sky-900/15 lg:h-[400px] xl:h-[500px] w-full object-cover"
               src={mainImage}
               alt={name}
             />
@@ -193,7 +193,8 @@ function EquipmentPage() {
                 <IoIosArrowDown />
               </div>
               <p
-                className="ml-4 text-sky-950/90 text-lg leading-8 overflow-hidden whitespace-nowrap overflow-ellipsis"
+                className="ml-4 text-sky-950/90 text-lg leading-8 "
+                style={{ wordBreak: "break-word" }}
                 dangerouslySetInnerHTML={{ __html: description }}></p>
             </div>
             <div className="space-y-1 text-sky-950">

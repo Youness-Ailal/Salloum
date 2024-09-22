@@ -14,7 +14,7 @@ import uuid4 from "uuid4";
 import { BiTrash } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 export function addEmptyOption(array) {
-  array?.push({ label: "None", value: "" });
+  array?.push({ label: "None", value: "none" });
 }
 
 function CreateEquipmentForm() {
@@ -92,7 +92,7 @@ function CreateEquipmentForm() {
         subcategory,
         brochure: brochure[0],
         subsubcategory,
-        brand,
+        brand: brand,
         description: newDesc,
         stock,
         imageFiles,

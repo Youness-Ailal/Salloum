@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next";
 import useCategories from "@/data/useCategories";
 import { cn } from "@/lib/utils";
 import { useSharedHover } from "@/hooks/useSharedHover";
+import { useProductFilterContext } from "@/context/ProductFilterProvider";
 
 interface OptionType {
   value: string;
@@ -64,6 +65,7 @@ export const links: link[] = [
 function Nav({ scrollYValue = 100 }) {
   const { t, i18n } = useTranslation(["translate"]);
   const categoriesTranslation = t("categories", { returnObjects: true });
+  const { changeCategory, setFilterSubcategories } = useProductFilterContext();
 
   const links: link[] = [
     {
@@ -202,7 +204,11 @@ function Nav({ scrollYValue = 100 }) {
               onClick={() => changeHoveringState(false)}
               onMouseEnter={() => setSelectedCategory(item.category)}
               key={item.category}
-              to={"/equipments?category=" + item.category}
+              onClickCapture={() => {
+                changeCategory(item.category);
+                setFilterSubcategories([]);
+              }}
+              to={"/equipments"}
               className={cn(
                 "flex items-center gap-4 p-2 px-6 hover:bg-sky-100 hover:text-sky-950",
                 {
@@ -228,14 +234,13 @@ function Nav({ scrollYValue = 100 }) {
               {subcategories?.map(item => (
                 <Link
                   key={item}
+                  onClickCapture={() => {
+                    changeCategory(selectedCategory);
+                    setFilterSubcategories([item]);
+                  }}
                   onClick={() => changeHoveringState(false)}
                   className="px-2 hover:underline hover:text-sky-950"
-                  to={
-                    "/equipments?category=" +
-                    selectedCategory +
-                    "&subcategory=" +
-                    item
-                  }>
+                  to={"/equipments?category="}>
                   {item}
                 </Link>
               ))}

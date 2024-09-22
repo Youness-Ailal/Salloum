@@ -6,6 +6,7 @@ import { links, options } from "./Nav";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import CustomSelect from "../ui/CustomSelect";
+import { useProductFilterContext } from "@/context/ProductFilterProvider";
 
 function MobileMenu({ closeNav }: any) {
   const { t, i18n } = useTranslation("translate");
@@ -31,6 +32,7 @@ function MobileMenu({ closeNav }: any) {
       path: "/contact",
     },
   ];
+  const { changeCategory } = useProductFilterContext();
   return createPortal(
     <>
       <div className="animate-drawer fixed right-0 top-0 z-[999] h-[100dvh] p-6 w-[min(500px,100%)] bg-sky-900 flex flex-col gap-8">

@@ -12,6 +12,7 @@ import { useMediaQuery } from "react-responsive";
 import { ImFilter } from "react-icons/im";
 import Drawer from "@/components/drawer/Drawer";
 import SellMachineBanner from "@/components/ui/SellMachineBanner";
+import { useProductFilterContext } from "@/context/ProductFilterProvider";
 
 function Equipments() {
   const { isLoading, equipments: alltempEuipments } = useEquipments();
@@ -22,26 +23,13 @@ function Equipments() {
   // @ts-ignore
   const tempEquipments = alltempEuipments?.filter(item => item.isActive);
   const [equipments, setEquipments] = useState(tempEquipments);
-  const [search, setSearch] = useSearchParams();
-  const category = search.get("category");
+  const [search] = useSearchParams();
 
   const query = search.get("query");
-  const subCategoryParam = search.get("subcategory");
   const { t } = useTranslation("translate");
 
-  const [filterSubcategories, setFilterSubcategories] = useState<string[]>(() =>
-    subCategoryParam ? [subCategoryParam] : []
-  );
+  const { filterSubcategories, category } = useProductFilterContext();
 
-  useEffect(() => {
-    if (
-      subCategoryParam &&
-      filterSubcategories.length === 1 &&
-      !filterSubcategories.includes(subCategoryParam)
-    ) {
-      setFilterSubcategories([subCategoryParam]);
-    }
-  }, [subCategoryParam]);
   const [filterSubSubcategories, setFilterSubSubcategories] = useState<
     string[]
   >([]);
@@ -130,8 +118,6 @@ function Equipments() {
               buttonName="APPLY FILTERS">
               <div className="py-8">
                 <EquipmentsFilter
-                  filterSubcategories={filterSubcategories}
-                  setFilterSubcategories={setFilterSubcategories}
                   filterSubSubcategories={filterSubSubcategories}
                   setFilterSubSubcategories={setFilterSubSubcategories}
                   conditionFilter={conditionFilter}
@@ -174,8 +160,6 @@ function Equipments() {
       <PageHeader title={t("explore_our_equipments")} />
       <div className="p-2 py-4 grid grid-cols-[300px_1fr] gap-8 lg:gap-14 lg:py-10 w-[min(1500px,100%)] mx-auto">
         <EquipmentsFilter
-          filterSubcategories={filterSubcategories}
-          setFilterSubcategories={setFilterSubcategories}
           filterSubSubcategories={filterSubSubcategories}
           setFilterSubSubcategories={setFilterSubSubcategories}
           conditionFilter={conditionFilter}

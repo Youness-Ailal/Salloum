@@ -158,8 +158,10 @@ export async function updateEquipmentApi({
     }
 
     if (brochure) {
+      console.log("started uploading");
       const brochurePdf = await uploadImage(brochure);
       data.brochure = brochurePdf;
+      console.log("finished uploading");
     }
 
     const ref = doc(DB, "equipments", id);

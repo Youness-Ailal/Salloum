@@ -5,10 +5,9 @@ import Skeleton from "react-loading-skeleton";
 import useCategories from "@/data/useCategories";
 import { Icon } from "@iconify-icon/react";
 import { useTranslation } from "react-i18next";
+import { useProductFilterContext } from "@/context/ProductFilterProvider";
 
 function EquipmentsFilter({
-  filterSubcategories,
-  setFilterSubcategories,
   filterSubSubcategories,
   setFilterSubSubcategories,
   conditionFilter,
@@ -17,6 +16,12 @@ function EquipmentsFilter({
   setStockStatus,
 }) {
   const { t } = useTranslation("translate");
+  const {
+    filterSubcategories,
+    setFilterSubcategories,
+    changeCategory,
+    category,
+  } = useProductFilterContext();
   const categoriesTranslation = t("categories", { returnObjects: true });
   const { equipments } = useEquipments();
   const { categoriesApi, categoriesLoading } = useCategories();
@@ -45,7 +50,6 @@ function EquipmentsFilter({
   );
 
   const [search, setSearch] = useSearchParams();
-  const category = search.get("category");
   if (categoriesLoading) return <FilterSkeleton />;
   return (
     <div className="flex flex-col gap-2 sticky top-6 pr-5 border-r border-s-sky-950/50">
@@ -63,13 +67,9 @@ function EquipmentsFilter({
             onClick={() => {
               // setCategory(prev => (prev === item.id ? "" : item.id));
               if (category !== item.name) {
-                search.set("category", item.name);
+                changeCategory(item.name);
                 setFilterSubcategories([]);
-                setFilterSubSubcategories([]);
                 search.delete("query");
-                setSearch(search);
-              } else {
-                search.delete("category");
                 setSearch(search);
               }
             }}>
@@ -87,7 +87,11 @@ function EquipmentsFilter({
             "flex hover:bg-sky-700 hover:text-white text-sky-900 items-center gap-2 transition rounded-sm py-2 px-4 border border-sky-700"
           )}
           onClick={() => {
-            search.delete("category");
+            changeCategory("");
+            setFilterSubcategories([]);
+            setFilterSubcategories([]);
+            setConditionFilter("");
+            setStockStatus("");
             search.delete("query");
             setSearch(search);
           }}>
