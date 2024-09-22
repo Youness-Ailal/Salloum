@@ -134,8 +134,6 @@ function EditEquipmentForm() {
   function onSubmit(data) {
     const { name, description, brand, brochure } = data;
     const newDesc = description.replace(/\n/g, "<br/>");
-    alert(subcategory);
-    return;
     updateEquipment(
       {
         id,
