@@ -61,6 +61,10 @@ function EditEquipmentForm() {
     setImageFiles(prev => [...prev.filter(item => item.id !== id)]);
     setImages(prev => [...prev.filter(item => item.id !== id)]);
   }
+  const [subcategory, setSubcategory] = useState(equipmentToEdit?.subcategory);
+  const [subsubcategory, setSubsubcategory] = useState(
+    equipmentToEdit?.subsubcategory
+  );
 
   useEffect(() => {
     if (!isLoading && !equipsLoading) {
@@ -92,10 +96,6 @@ function EditEquipmentForm() {
     }));
   addEmptyOption(subCategories);
   addEmptyOption(SubsubCategories);
-  const [subcategory, setSubcategory] = useState(equipmentToEdit?.subcategory);
-  const [subsubcategory, setSubsubcategory] = useState(
-    equipmentToEdit?.subsubcategory
-  );
   const [isFeatured, setIsFeatured] = useState(
     equipmentToEdit?.isFeatured ? "Yes" : "No"
   );
@@ -109,6 +109,16 @@ function EditEquipmentForm() {
   const isWorking = isUpdating;
 
   const { id, ...editValues } = equipmentToEdit || {};
+  const [isFirstRender, setIsFirstRender] = useState(true);
+  useEffect(() => {
+    if (!isFirstRender) {
+      setSubcategory(subCategories[0].value);
+      setSubsubcategory(SubsubCategories[0].value);
+    }
+  }, [category]);
+  useEffect(() => {
+    setIsFirstRender(false);
+  }, []);
 
   delete editValues.image;
   const defaultDescription = editValues?.description?.replace(/<br\/>/g, "\n");
@@ -124,7 +134,8 @@ function EditEquipmentForm() {
   function onSubmit(data) {
     const { name, description, brand, brochure } = data;
     const newDesc = description.replace(/\n/g, "<br/>");
-
+    alert(subcategory);
+    return;
     updateEquipment(
       {
         id,
@@ -176,7 +187,7 @@ function EditEquipmentForm() {
         />
       </FormRow>
 
-      <FormRow label="Category" error={errors?.maxCapacity?.message}>
+      <FormRow label="Category">
         <Select
           value={category}
           disabled={isWorking}
@@ -184,7 +195,7 @@ function EditEquipmentForm() {
           options={categories}
         />
       </FormRow>
-      <FormRow label="Subcategory" error={errors?.maxCapacity?.message}>
+      <FormRow label="Subcategory">
         <Select
           value={subcategory}
           disabled={isWorking}
@@ -192,7 +203,7 @@ function EditEquipmentForm() {
           options={subCategories}
         />
       </FormRow>
-      <FormRow label=" Sub-Subcategory" error={errors?.maxCapacity?.message}>
+      <FormRow label=" Sub-Subcategory">
         <Select
           value={subsubcategory}
           disabled={isWorking}

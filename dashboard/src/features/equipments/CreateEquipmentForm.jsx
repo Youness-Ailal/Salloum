@@ -23,6 +23,7 @@ function CreateEquipmentForm() {
 
   const { isCreating, createEquipment } = useCreateEquipment();
   const [category, setcategory] = useState(catesApi?.at(0)?.category);
+
   const [images, setImages] = useState([]);
   const [imageFiles, setImageFiles] = useState([]);
   function addImage(file) {
@@ -65,6 +66,17 @@ function CreateEquipmentForm() {
   const [subsubcategory, setSubsubcategory] = useState(
     catesApi?.at(0)?.subSubCategories[0]
   );
+  const [isFirstRender, setIsFirstRender] = useState(true);
+  useEffect(() => {
+    if (!isFirstRender) {
+      setSubcategory(subCategories[0].value);
+      setSubsubcategory(SubsubCategories[0].value);
+    }
+  }, [category]);
+  useEffect(() => {
+    setIsFirstRender(false);
+  }, []);
+
   useEffect(() => {
     if (!isLoading) {
       setcategory(catesApi[0].category);

@@ -151,7 +151,10 @@ export async function getCategories() {
       id: doc.id,
       ...doc.data(),
     }));
-    return data[0].categories;
+    const categories = data[0].categories.sort(
+      (a, b) => Number(a?.order) - Number(b?.order)
+    );
+    return categories;
   } catch (error) {
     //@ts-ignore
     throw new Error(error?.message);

@@ -107,7 +107,7 @@ function Nav({ scrollYValue = 100 }) {
     categoriesApi?.filter(item => item.category === selectedCategory)[0]
       ?.subCategories || [];
 
-  const categories = categoriesApi ? [...categoriesApi].reverse() : [];
+  const categories = categoriesApi;
 
   const { onMouseEnter, onMouseLeave, isHovering, changeHoveringState } =
     useSharedHover();

@@ -31,6 +31,7 @@ function UpdatCategories() {
         icon: "",
         subCategories: [],
         subSubCategories: [],
+        order: categoriesData.length + 1,
       },
       ...prev,
     ]);
@@ -113,6 +114,14 @@ function UpdatCategories() {
       }),
     ]);
   }
+  function updateCategoryOrder(id, order) {
+    setCategoriesData(prev => [
+      ...prev.map(item => {
+        if (item.id === id) return { ...item, order: order };
+        return item;
+      }),
+    ]);
+  }
   function changeIcon(id, icon, onCloseModal) {
     setCategoriesData(prev => [
       ...prev.map(item => {
@@ -130,7 +139,7 @@ function UpdatCategories() {
       return;
     }
     categoriesData.forEach(item => {
-      const { category, icon, subSubCategories, subCategories } = item;
+      const { category, icon, subSubCategories, subCategories, order } = item;
 
       if (!category.length) {
         toast.error("missing category name");
@@ -158,7 +167,14 @@ function UpdatCategories() {
           <HiPlus /> Add new category
         </button>
         {categoriesData?.map((item, i) => {
-          const { id, category, subCategories, icon, subSubCategories } = item;
+          const {
+            id,
+            category,
+            subCategories,
+            icon,
+            subSubCategories,
+            order = 0,
+          } = item;
           return (
             <div
               className="py-16
@@ -218,18 +234,28 @@ function UpdatCategories() {
                   placeholder="Sub-Subcategories"
                 />
               </div>
+
               <Modal>
-                <Modal.Open opens={"icons"}>
-                  <button className="p-4 border border-gray-200 bg-gray-100 mt-6 uppercase font-medium text-gray-600 flex text-2xl items-center gap-4 hover:bg-gray-200/80 px-10 py-3 rounded-sm">
-                    Category Icon
-                    {icon?.length ? (
-                      <Icon className="text-5xl text-sky-600" icon={icon} />
-                    ) : null}
-                  </button>
-                </Modal.Open>
-                <Modal.Window name={"icons"}>
-                  <UpdateIcon id={id} changeIcon={changeIcon} />
-                </Modal.Window>
+                <div className="flex mt-6 items-center gap-4">
+                  <Modal.Open opens={"icons"}>
+                    <button className="p-4 border border-gray-200 bg-gray-100 uppercase font-medium text-gray-600 flex text-2xl items-center gap-4 hover:bg-gray-200/80 px-10 py-3 rounded-sm">
+                      Category Icon
+                      {icon?.length ? (
+                        <Icon className="text-5xl text-sky-600" icon={icon} />
+                      ) : null}
+                    </button>
+                  </Modal.Open>
+                  <Modal.Window name={"icons"}>
+                    <UpdateIcon id={id} changeIcon={changeIcon} />
+                  </Modal.Window>
+                  <Input
+                    value={order}
+                    onChange={e => updateCategoryOrder(id, e.target.value)}
+                    className="h-full w-40"
+                    type="number"
+                    placeholder="Order"
+                  />
+                </div>
               </Modal>
             </div>
           );
