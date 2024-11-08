@@ -148,7 +148,7 @@ function Footer() {
         <p className="text-sm text-white">{t("footer_copyright")}</p>
         <a
           target="_blank"
-          href="https://viralwave.co.ma"
+          href="https://viralwave.agency"
           className="text-sm text-white">
           {t("created_by")}
         </a>
